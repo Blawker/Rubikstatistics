@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <title> Rubik'Statistics </title>
+  <head>
+    <link rel="stylesheet" href="../css/dark_theme.css">
+  </head>
+
+  <body>
+    <h3> Rubik'Statistics </h3>
+
+    <table>
+      <tr align="center">
+        <td colspan=2><input type="file" id="fileUpload" size="10"></td>
+      </tr>
+      <tr>
+        <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>
+        <td>
+          <div>
+            <input list="cubes" type="text" id="choix_cubes" size="5">
+            <datalist id="cubes">
+              <option value="2x2x2">
+              <option value="3x3x3">
+              <option value="4x4x4">
+              <option value="5x5x5">
+              <option value="6x6x6">
+              <option value="7x7x7">
+              <option value="Megaminx">
+            </datalist>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Nombre de cubes :</label></td>
+        <td>
+          <input id="periode_input" type="text" name="text_input" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2><button type="button" name="button" onclick="main_dark()" style="width:100%"> Display </button></td>
+      </tr>
+    </table>
+    <br></br>
+
+    <table>
+      <tr>
+        <td id="PB" width="32%">PB:</td>
+        <td colspan=2 width="23%">Moyenne</td>
+      	<td colspan=2 width="23%">Ecart-type</td>
+      	<td colspan=2 width="23%">Coeff de corr&eacute;lation</td>
+      </tr>
+      <tr>
+        <td>5 derniers</td>
+        <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True" ></td>
+        <td id="avg5"></td>
+        <td width="1%"><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
+        <td id="ect5"></td>
+        <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="std5"></td>
+      </tr>
+      <tr>
+        <td>12 derniers</td>
+        <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
+        </td><td id="avg12"></td>
+        <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
+        <td id="ect12"></td>
+        <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="std12"></td>
+      </tr>
+      <tr>
+        <td>50 derniers</td>
+        <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+        <td id="avg50"></td>
+        <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
+        <td id="ect50"></td>
+        <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="std50"></td>
+      </tr>
+      <tr>
+        <td>100 derniers</td>
+        <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+        <td id="avg100"></td>
+        <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
+        <td id="ect100"></td>
+        <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="std100"></td>
+      </tr>
+      <tr>
+        <td>1000 derniers</td>
+        <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+        <td id="avg1000"></td>
+        <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
+      	<td id="ect1000"></td>
+        <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="std1000"></td>
+      </tr>
+    </table>
+
+    <div>
+      <canvas id="canvas" height=1500 width=1500 style=""></canvas>
+    </div>
+
+    <div>
+      <p>
+        Le Graphique du Coefficient de Corr&eacute;lation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
+        Si votre CC est en dessous de 8.0, vous ma&icirc;trisez votre m&eacute;thode et il serait avantageux d'apprendre de nouvelles formules ou techniques.
+        Si votre CC est entre 8.0 et 12.0, vous &ecirc;tes dans une progression constante.
+        Si votre CC est au dessus de 12.0, il faut vous entra&icirc;ner d'avantage pour vous am&eacute;liorer.
+        Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (std100 ou std1000).
+      </p>
+      <p>Le coefficient de &eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
+    </div>
+
+    <script type="text/javascript" src="../js/math.js"></script>
+    <script type="text/javascript" src="../js/drawing.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+
+  </body>
+</html>
