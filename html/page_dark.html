@@ -21,8 +21,13 @@
 
     <table>
       <tr align="center">
-        <td><input type="file" id="fileUpload" size="10"></td>
-        <td> Filetype:
+        <td colspan="2"><input type="file" id="fileUpload" size="8"></input></td>
+
+        <td colspan="2"> Exponential Regression </td>
+      </tr>
+      <tr>
+        <td> Filetype: </td>
+        <td>
           <div>
             <input list="application" type="text" id="choice_application" size="9" value="Cube Timer"></input>
             <datalist id="application">
@@ -30,7 +35,8 @@
             </datalist>
           </div>
         </td>
-        <td colspan="2"> Exponential Regression </td>
+        <td> Allow prediction </td>
+        <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
       </tr>
       <tr>
         <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>

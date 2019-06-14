@@ -42,17 +42,16 @@ function graphique(canvas,context,liste,val,color,style,scale,d,l) { // val=vale
     plot_pb(canvas,context,liste_temp,"pink",val[i],x_m,c,d);
   }
 
-
-  //var liste_exp=graph_exp(mobile_average(liste,12));
-  const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
-  var liste_exp=graph_exp_reg_II(liste,offset_exp);
-  var liste_temp_exp=[];
-  for (var j=0; j<liste_exp.length; j++) {
-    liste_temp_exp.push(height-((liste_exp[j]-x_m)*c+d)) ;
+  // Exponential Regression
+  if (document.getElementById("reg_check").checked==true) {
+      const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
+    var liste_exp=graph_exp_reg_II(liste,offset_exp);
+    var liste_temp_exp=[];
+    for (var j=0; j<liste_exp.length; j++) {
+      liste_temp_exp.push(height-((liste_exp[j]-x_m)*c+d));
+    }
+    plot(context,liste_temp_exp,width,offset_exp,color[0],".-","");
   }
-  //console.log(liste_temp_exp) ;
-  plot(context,liste_temp_exp,width,offset_exp,color[0],".-","") ;
-
 
   // plot moyenne & écart-type
   for (i=1; i<val.length; i++) {
