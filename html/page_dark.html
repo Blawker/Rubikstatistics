@@ -2,7 +2,7 @@
 <html>
   <title> Rubik'Statistics </title>
   <head>
-    <link rel="stylesheet" href="css/theme_dark.css">
+    <link rel="stylesheet" href="../css/theme_dark.css">
   </head>
 
   <body>
@@ -10,18 +10,18 @@
 
     <nav style="position:absolute;margin-top:-70px;">
       <div>
-        <a href='html/page_dark.html'><button class="color_mode"> Dark </button></a>
-        <a href='html/page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
+        <a href='page_dark.html'><button class="color_mode"> Dark </button></a>
+        <a href='page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
       </div>
       <div>
-        <a href='html/page_light.html'><button class="color_mode"> Light </button></a>
-        <a href='html/page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
+        <a href='page_light.html'><button class="color_mode"> Light </button></a>
+        <a href='page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
       </div>
     </nav>
 
     <table>
       <tr align="center">
-        <td><input type="file" id="fileUpload" size="8"></input></td>
+        <td><input type="file" id="fileUpload" size="10"></td>
         <td> Filetype:
           <div>
             <input list="application" type="text" id="choice_application" size="9" value="Cube Timer"></input>
@@ -54,7 +54,7 @@
       <tr>
         <td><label> Nombre de cubes : </label></td>
         <td><input id="periode_input" type="text" name="text_input" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input></td>
-        <td> Estimation sub <input id="sub_reg_input" type="text" name="text_input" required minlength="1" size="1" value=120>s</input></td>
+        <td> Estimation number cube required to sub <input id="sub_reg_input" type="text" name="text_input" required minlength="1" size="1" value=120>s</input></td>
         <td><label id="estimation_nb_cube_sub"></label></td>
       </tr>
       <tr>
@@ -81,8 +81,8 @@
       </tr>
       <tr>
         <td>12 derniers</td>
-        <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg12"></td>
+        <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
+        </td><td id="avg12"></td>
         <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
         <td id="ect12"></td>
         <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
@@ -132,9 +132,9 @@
       <p>Le coefficient de &eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
     </div>
 
-    <script type="text/javascript" src="js/math.js"></script>
-    <script type="text/javascript" src="js/drawing.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/math.js"></script>
+    <script type="text/javascript" src="../js/drawing.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 
   </body>
 </html>
