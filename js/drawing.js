@@ -125,8 +125,8 @@ function grid_std(canvas,context,scale,mini,maxi,c,d,x_m,color) {
       draw_text(context, String(i),canvas.width-40,y,"red",17) ;
     }
     else {
-      draw_single_line(context, 0,y, canvas.width,y, color) ;
-      draw_text(context, String(i),canvas.width-40,y,color,17) ;
+      draw_single_line(context,0,y,canvas.width,y,color);
+      draw_text(context,String(i),canvas.width-40,y,color,17);
     }
   }
 }

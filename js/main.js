@@ -98,11 +98,11 @@ function Upload(theme) {
 
         // graphique chrono & moyenne & écart-type
         draw_text(context,"Graphique des Chronos",10,30,color[0],26);
-        graphique(canvas,context,liste,val,color,style,scale,canvas.height*2/3,canvas.height*2/3-2*30); // d = distance par rapport au bord haut du canvas(1000,940); l = largeur du graphique
+        graphique(canvas,context,liste,val,color,style,scale,canvas.height*2/3,canvas.height*2/3-2*40); // d = distance par rapport au bord haut du canvas(1000,940); l = largeur du graphique
 
         // graphique coefficient de corrélation
-        draw_text(context,"Graphique du Coefficient de Corr\u00e9lation",10,1040,color[0],26) ;
-        graph_coeff_corr(canvas,context,liste,val,color,style,canvas.height/6,canvas.height/3-2*30); // 250,440
+        draw_text(context,"Graphique du Coefficient de Corr\u00e9lation",10,canvas.height*2/3+30,color[0],26) ;
+        graph_coeff_corr(canvas,context,liste,val,color,style,canvas.height/6,canvas.height/3-2*40); // 250,440
       }
       reader.readAsText(fileUpload.files[0]);
     }
