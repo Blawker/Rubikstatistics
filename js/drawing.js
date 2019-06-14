@@ -106,7 +106,7 @@ function plot_pb(canvas,context,liste,color,offset,x_m,c,d) {
       pbliste=[i,liste[i]];
     }
   }
-  document.getElementById("PB").innerHTML="PB: "+compte_to_time((height-pbliste[1]-d)/c+x_m);
+  //document.getElementById("PB").innerHTML="PB: "+compte_to_time((height-pbliste[1]-d)/c+x_m);
 }
 
 function grid_plot(canvas,context,scale,mini,maxi,c,d,x_m,color) {

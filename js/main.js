@@ -87,6 +87,7 @@ function Upload(theme) {
         }
         liste.reverse();
 
+
         // choix de l'échelle de la grille
         for (var i=0; i<type_cube.length; i++) {
           if (categorie===type_cube[i]) {
