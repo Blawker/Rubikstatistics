@@ -14,13 +14,25 @@ function Upload(theme) {
   if (regex.test(fileUpload.value.toLowerCase())) {
     if (typeof(FileReader)!="undefined") {
       var reader=new FileReader();
-      reader.onload=function (e) {
+      reader.onload=function(e) {
         var liste=[];
         var table=document.createElement("table");
         var rows=e.target.result.split("\n");
         const periode=parseInt(document.getElementById("periode_input").value);
 
-        if (document.getElementById("choice_application").value=="Cube Timer") {
+        if (document.getElementById("choice_application").value=="Twisty Timer") {
+          if (categorie=="3x3x3") {
+            for (var i=0; i<rows.length-1; i++) {
+              const temp=rows[i].split(";")[0].split("\"")[1];
+              if (temp!="--") {
+                liste.push(parseFloat(temp));
+              }
+            }
+          }
+          liste.reverse();
+        }
+
+        else if (document.getElementById("choice_application").value=="Cube Timer") {
           // cherche les données dans le fichier .csv
           for (var i=0; i<rows.length; i++) {
             var row=table.insertRow(-1);
