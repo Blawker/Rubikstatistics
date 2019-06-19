@@ -21,7 +21,7 @@
 
     <table>
       <tr align="center">
-        <td colspan="2"><input type="file" id="fileUpload" size="8"></input></td>
+        <td colspan="2"><input type="file" id="fileUpload" size="8" style="border-radius:6px;"></input></td>
 
         <td colspan="2"> Exponential Regression </td>
       </tr>
@@ -29,7 +29,7 @@
         <td> Filetype: </td>
         <td>
           <div>
-            <input list="application" type="text" id="choice_application" size="9"></input>
+            <input list="application" type="text" id="choice_application" size="9" class="input_style"></input>
             <datalist id="application">
               <option value="Cube Timer">
               <option value="Twisty Timer">
@@ -40,10 +40,10 @@
         <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
       </tr>
       <tr>
-        <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>
+        <td width="40%"><label for="choix_cubes"> Indiquez le cube : </label></td>
         <td>
           <div>
-            <input list="cubes" type="text" id="choix_cubes" size="5"></input>
+            <input list="cubes" type="text" id="choix_cubes" size="5" class="input_style"></input>
             <datalist id="cubes">
               <option value="2x2x2">
               <option value="3x3x3">
@@ -56,19 +56,17 @@
           </div>
         </td>
         <td> Average </td>
-        <td><input id="avg_reg_input" type="text" name="text_input" required minlength="1" size="1" value=50></input></td>
+        <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
       </tr>
       <tr>
         <td> Nombre de cubes : </td>
-        <td><input id="periode_input" type="text" name="text_input" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input></td>
-        <td> Estimation sub <input id="sub_reg_input" type="text" name="text_input" required minlength="1" size="1" value=120>s</input></td>
+        <td><input id="periode_input" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input></td>
+        <td> Estimation sub <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=120>s</input></td>
         <td><label id="estimation_nb_cube_sub"></label></td>
       </tr>
-      <tr>
-        <td colspan="4"><button type="button" name="button" onclick="main_dark()" style="width:100%"> Display </button></td>
-      </tr>
     </table>
-    <br></br>
+
+    <button type="button" name="button" onclick="main_dark()" class="display"> Display </button>
 
     <table>
       <tr>
@@ -78,8 +76,8 @@
       	<td colspan=2 width="23%">Coeff de corr&eacute;lation</td>
       </tr>
       <tr>
-        <td>5 derniers</td>
-        <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True" ></td>
+        <td>5</td>
+        <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg5"></td>
         <td width="1%"><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
         <td id="ect5"></td>
@@ -87,7 +85,7 @@
       	<td id="std5"></td>
       </tr>
       <tr>
-        <td>12 derniers</td>
+        <td>12</td>
         <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg12"></td>
         <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
@@ -96,7 +94,7 @@
       	<td id="std12"></td>
       </tr>
       <tr>
-        <td>50 derniers</td>
+        <td>50</td>
         <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg50"></td>
         <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
@@ -105,7 +103,7 @@
       	<td id="std50"></td>
       </tr>
       <tr>
-        <td>100 derniers</td>
+        <td>100</td>
         <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg100"></td>
         <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
@@ -114,7 +112,7 @@
       	<td id="std100"></td>
       </tr>
       <tr>
-        <td>1000 derniers</td>
+        <td>1000</td>
         <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg1000"></td>
         <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
@@ -125,7 +123,7 @@
     </table>
 
     <div>
-      <canvas id="canvas" height=1500 width=1500 style=""></canvas>
+      <canvas id="canvas" height=1000 width=1500 style=""></canvas>
     </div>
 
     <div>
