@@ -3,3 +3,18 @@
   text-align:center;
   height:auto;
 }
+
+.gear {
+  position:absolute;
+  right:1%;
+  height:100%;
+  width:auto;
+  border-radius:15px;
+}
+
+.gear:hover {
+	transition-duration: .5s;
+  transition-timing-function: ease-in;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
