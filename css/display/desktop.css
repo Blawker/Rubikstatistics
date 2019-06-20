@@ -20,9 +20,11 @@ p {
 div.frame {
   border-radius: 6px;
   flex:auto;
+  height:100%;
   text-align: center;
   text-decoration: none;
-  margin:10px;
+  margin-right:10px;
+  margin-left:10px;
 }
 
 div.div_style {
@@ -49,6 +51,7 @@ input.largerCheckbox {
 }
 
 input.input_style {
+  border:none;
   border-radius: 6px;
   padding-left: 5px;
 }
@@ -81,7 +84,7 @@ button.display {
 button.update {
   border:none;
   border-radius:6px;
-  padding:5px;
+  padding:0px;
   text-align: center;
   display: inline-block;
   width:100%;

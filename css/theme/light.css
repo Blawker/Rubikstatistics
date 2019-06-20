@@ -3,6 +3,14 @@ html {
   background-color:white;
 }
 
+div.frame {
+  border:1px solid #dddddd;
+}
+
+input.input_style {
+  border: 1px solid #dddddd;
+}
+
 button {
   color:black;
 }
@@ -12,7 +20,7 @@ button {
 }
 
 table {
-  border:1px solid #ffffff;
+  border:1px solid #dddddd;
 }
 
 td, th {
@@ -25,5 +33,5 @@ tr:nth-child(even) {
 }*/
 
 canvas {
-  border:1px solid #ffffff;
+  border:1px solid #dddddd;
 }
