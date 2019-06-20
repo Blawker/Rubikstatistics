@@ -1,0 +1,51 @@
+#window { /* define window */
+	width: 99%;
+  height:300px;
+	/*padding: 10px;*/
+	background: #bbb;
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+}
+#window a.open,#window a.close { /* define button */
+	/*padding: 10px 25px;*/
+  height:30px;
+  width:30px;
+	/*background: #555;
+	color: #fff;*/
+	text-decoration: none;
+}
+
+#window { /* define position and transition window */
+	position: absolute;
+  top: -250px;
+	-webkit-transition: all .5s ease-in;
+	-moz-transition: all .5s ease-in;
+	transition: all .5s ease-in;
+}
+#window a.open,#window a.close { /* define position button */
+	position: absolute;
+	right: 1%;
+	/*top: 300px;*/
+	/*-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);*/
+	/*-moz-radius: 0 0 8px 8px;
+	border-radius: 0 0 8px 8px;*/
+}
+#window a.close { /* hide button close */
+	display: none;
+}
+#window:target { /* final position window */
+	top: 0px;
+}
+
+#window:target a.close { /* display button close */
+	display: block;
+}
+#window:target a.open { /* hide button open */
+	display: none;
+}
+#window_close:target #window { /* unset the window to the intial position */
+	top: -250px;
+}

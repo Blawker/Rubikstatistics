@@ -2,132 +2,177 @@
 <html>
   <title> Rubik'Statistics </title>
   <head>
-    <link rel="stylesheet" href="../css/theme_dark.css">
+    <link rel="stylesheet" href="../css/display/desktop.css">
+    <link rel="stylesheet" href="../css/theme/dark.css">
+    <link rel="stylesheet" href="../css/window.css">
+    <link rel="stylesheet" href="../css/window_menu_container.css">
   </head>
 
   <body>
-    <h3> Rubik'Statistics </h3>
-
-    <nav style="position:absolute;margin-top:-70px;">
-      <div>
-        <a href='page_dark.html'><button class="color_mode"> Dark </button></a>
-        <a href='page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
+    <div style="position:absolute;top:65px;height:82%;">
+      <div style="display:flex;height:20%;">
+        <div class="frame">
+          <h2 id="PB">PB:0:00.000</h2>
+        </div>
+        <div class="frame">
+          <h2 id="estimation_avg_sub"></h2>
+        </div>
+        <div class="frame">
+          <button type="button" name="button" onclick="main_dark()" class="update"> Update </button>
+        </div>
       </div>
-      <div>
-        <a href='page_light.html'><button class="color_mode"> Light </button></a>
-        <a href='page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
+
+      <div style="display:flex;height:80%;">
+        <canvas id="canvas" height=1000 width=2200 style="height:100%;width:65%;margin-right:10px;"></canvas>
+
+        <table style="height:100%;width:35%;margin-right:3px;">
+          <tr>
+            <td></td>
+            <td width="23%">Avg</td>
+          	<td width="23%">Std</td>
+          	<td width="23%">Correlation Coefficient</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td id="avg5"></td>
+            <td id="ect5"></td>
+          	<td id="std5"></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td id="avg12"></td>
+            <td id="ect12"></td>
+          	<td id="std12"></td>
+          </tr>
+          <tr>
+            <td>50</td>
+            <td id="avg50"></td>
+            <td id="ect50"></td>
+          	<td id="std50"></td>
+          </tr>
+          <tr>
+            <td>100</td>
+            <td id="avg100"></td>
+            <td id="ect100"></td>
+          	<td id="std100"></td>
+          </tr>
+          <tr>
+            <td>1000</td>
+            <td id="avg1000"></td>
+          	<td id="ect1000"></td>
+          	<td id="std1000"></td>
+          </tr>
+        </table>
       </div>
-    </nav>
-
-    <table>
-      <tr align="center">
-        <td colspan="2"><input type="file" id="fileUpload" size="8"></input></td>
-
-        <td colspan="2"> Exponential Regression </td>
-      </tr>
-      <tr>
-        <td> Filetype: </td>
-        <td>
-          <div>
-            <input list="application" type="text" id="choice_application" size="9"></input>
-            <datalist id="application">
-              <option value="Cube Timer">
-              <option value="Twisty Timer">
-            </datalist>
-          </div>
-        </td>
-        <td> Prediction </td>
-        <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
-      </tr>
-      <tr>
-        <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>
-        <td>
-          <div>
-            <input list="cubes" type="text" id="choix_cubes" size="5"></input>
-            <datalist id="cubes">
-              <option value="2x2x2">
-              <option value="3x3x3">
-              <option value="4x4x4">
-              <option value="5x5x5">
-              <option value="6x6x6">
-              <option value="7x7x7">
-              <option value="Megaminx">
-            </datalist>
-          </div>
-        </td>
-        <td> Average </td>
-        <td><input id="avg_reg_input" type="text" name="text_input" required minlength="1" size="1" value=50></input></td>
-      </tr>
-      <tr>
-        <td> Nombre de cubes : </td>
-        <td><input id="periode_input" type="text" name="text_input" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input></td>
-        <td> Estimation sub <input id="sub_reg_input" type="text" name="text_input" required minlength="1" size="1" value=120>s</input></td>
-        <td><label id="estimation_nb_cube_sub"></label></td>
-      </tr>
-      <tr>
-        <td colspan="4"><button type="button" name="button" onclick="main_dark()" style="width:100%"> Display </button></td>
-      </tr>
-    </table>
-    <br></br>
-
-    <table>
-      <tr>
-        <td id="PB" width="32%">PB:</td>
-        <td colspan=2 width="23%">Moyenne</td>
-      	<td colspan=2 width="23%">Ecart-type</td>
-      	<td colspan=2 width="23%">Coeff de corr&eacute;lation</td>
-      </tr>
-      <tr>
-        <td>5 derniers</td>
-        <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True" ></td>
-        <td id="avg5"></td>
-        <td width="1%"><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
-        <td id="ect5"></td>
-        <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std5"></td>
-      </tr>
-      <tr>
-        <td>12 derniers</td>
-        <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
-        </td><td id="avg12"></td>
-        <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
-        <td id="ect12"></td>
-        <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std12"></td>
-      </tr>
-      <tr>
-        <td>50 derniers</td>
-        <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg50"></td>
-        <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
-        <td id="ect50"></td>
-        <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std50"></td>
-      </tr>
-      <tr>
-        <td>100 derniers</td>
-        <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg100"></td>
-        <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
-        <td id="ect100"></td>
-        <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std100"></td>
-      </tr>
-      <tr>
-        <td>1000 derniers</td>
-        <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg1000"></td>
-        <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
-      	<td id="ect1000"></td>
-        <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std1000"></td>
-      </tr>
-    </table>
-
-    <div>
-      <canvas id="canvas" height=1000 width=1500 style=""></canvas>
     </div>
 
+    <div id="window_close">
+    	<div id="window">
+
+        <div style="position:absolute;bottom:10px;width:100%;display:flex;flex-direction:row;">
+          <label class="wm_container" style="font-size:20pt;"> Rubik'Statistics </label>
+
+          <input id="choix_cubes" type="text" list="cubes" class="input_style" class="wm_container" onfocus="this.value=''" value="Cube choice"></input>
+          <datalist id="cubes">
+            <option value="2x2x2">
+            <option value="3x3x3">
+            <option value="4x4x4">
+            <option value="5x5x5">
+            <option value="6x6x6">
+            <option value="7x7x7">
+            <option value="Megaminx">
+          </datalist>
+
+          <div class="wm_container">
+            <input id="input_nb_chronos" type="text" name="text_input" class="input_style" class="wm_container" required minlength="1" size="3" value=100>/<label id="nb_total_chronos" value="0">0</label>
+          </div>
+
+          <div class="wm_container">
+            <img src="../image/gear.jpg" style="position:absolute;right:1%;height:100%;width:auto;">
+            <a href="#window" class="open"></a>
+            <a href="#window_close" class="close"></a>
+          </div>
+        </div>
+
+
+        <table style="width:50%;margin:10px;">
+          <tr>
+            <td></td>
+            <td>5</td>
+            <td>12</td>
+            <td>50</td>
+            <td>100</td>
+            <td>1000</td>
+          </tr>
+          <tr>
+            <td colspan=1 width="23%">Avg</td>
+            <td><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+          </tr>
+          <tr>
+            <td colspan=1 width="23%">Std</td>
+            <td><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
+          </tr>
+          <tr>
+            <td colspan=1 width="23%">Correlation Coefficient</td>
+            <td><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+          </tr>
+        </table>
+
+        <table style="position:absolute;top:0;left:55%;width:30%;margin:10px;">
+          <tr>
+            <td colspan=2> Exponential Regression </td>
+          </tr>
+          <tr>
+            <td> Prediction </td>
+            <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
+          </tr>
+          <tr>
+            <td> Average </td>
+            <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
+          </tr>
+          <tr>
+            <td> Estimation avg sub <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=120>s</input></td>
+            <td><label id="estimation_avg_sub"></label></td>
+          </tr>
+        </table>
+
+        <div style="margin-left:10px;width:50%;display:flex;">
+          <input type="file" id="fileUpload" size="3" style="flex:auto;"></input>
+
+          <input list="application" type="text" id="choice_application" size="9" class="input_style" onfocus="this.value=''" style="flex:auto;"></input>
+          <datalist id="application">
+            <option value="Cube Timer">
+            <option value="Twisty Timer">
+          </datalist>
+        </div>
+
+        <nav style="position:absolute;top:10px;right:10px;">
+          <div>
+            <a href='html/page_dark.html'><button class="color_mode"> Dark </button></a>
+            <a href='html/page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
+          </div>
+          <div>
+            <a href='html/page_light.html'><button class="color_mode"> Light </button></a>
+            <a href='html/page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
+          </div>
+        </nav>
+
+    	</div>
+    </div>
+
+    <!--
     <div>
       <p>
         Le Graphique du Coefficient de Corr&eacute;lation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
@@ -137,7 +182,7 @@
         Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (std100 ou std1000).
       </p>
       <p>Le coefficient de &eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
-    </div>
+    </div>-->
 
     <script type="text/javascript" src="../js/math.js"></script>
     <script type="text/javascript" src="../js/drawing.js"></script>

@@ -286,6 +286,6 @@ function graph_exp_reg_II(liste,offset) {
     y.push(a*Math.exp(-b*i));
   }
   const sub_time=parseFloat(document.getElementById("sub_reg_input").value);
-  document.getElementById("estimation_nb_cube_sub").innerHTML=String(parseInt(1/b*Math.log(a/sub_time)-avg_liste.length));
+  document.getElementById("estimation_avg_sub").innerHTML=String(parseInt(1/b*Math.log(a/sub_time)-avg_liste.length))+" Cubes before sub"+String(sub_time);
   return(y);
 }

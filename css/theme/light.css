@@ -1,0 +1,29 @@
+html {
+  color: black;
+  background-color:white;
+}
+
+button {
+  color:black;
+}
+
+.color_mode {
+  color:black;
+}
+
+table {
+  border:1px solid #ffffff;
+}
+
+td, th {
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+/*
+tr:nth-child(even) {
+  background-color: #dddddd;
+}*/
+
+canvas {
+  border:1px solid #ffffff;
+}

@@ -2,48 +2,34 @@
 <html>
   <title> Rubik'Statistics </title>
   <head>
-    <link rel="stylesheet" href="css/theme_dark.css">
+    <link rel="stylesheet" href="css/display/desktop.css">
+    <link rel="stylesheet" href="css/theme/dark.css">
   </head>
 
   <body>
-    <h3> Rubik'Statistics </h3>
-
-    <nav style="position:absolute;margin-top:-70px;">
-      <div>
-        <a href='html/page_dark.html'><button class="color_mode"> Dark </button></a>
-        <a href='html/page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
-      </div>
-      <div>
-        <a href='html/page_light.html'><button class="color_mode"> Light </button></a>
-        <a href='html/page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
-      </div>
+    <nav style="position:absolute;">
+      <a href='html/page_mobile_dark.html'><button class="color_mode"> Mobile </button></a>
     </nav>
 
-    <table>
-      <tr align="center">
-        <td colspan="2"><input type="file" id="fileUpload" size="8" style="border-radius:6px;"></input></td>
+    <div class="center" style="width:70%;">
+      <h3> Rubik'Statistics </h3>
 
-        <td colspan="2"> Exponential Regression </td>
-      </tr>
-      <tr>
-        <td> Filetype: </td>
-        <td>
-          <div>
-            <input list="application" type="text" id="choice_application" size="9" class="input_style" onfocus="this.value=''"></input>
+      <div style="text-align:center;width:100%;">
+        <div class="div_style" style="width:100%;">
+          <input type="file" id="fileUpload" class="input_file_style" style="width:100%;"></input>
+        </div>
+
+        <div class="div_style" style="width:100%;display:flex;">
+          <div style="width:50%;margin-right:10px;">
+            <input id="choice_application" type="text" list="application" class="input_style" onfocus="this.value=''" value="Filetype" style="width:100%;"></input>
             <datalist id="application">
               <option value="Cube Timer">
               <option value="Twisty Timer">
             </datalist>
           </div>
-        </td>
-        <td> Prediction </td>
-        <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
-      </tr>
-      <tr>
-        <td width="40%"><label for="choix_cubes"> Indiquez le cube : </label></td>
-        <td>
-          <div>
-            <input list="cubes" type="text" id="choix_cubes" size="5" class="input_style" onfocus="this.value=''"></input>
+
+          <div style="width:50%;margin-left:10px;">
+            <input id="choix_cubes" type="text" list="cubes" class="input_style" onfocus="this.value=''" value="Cube choice" style="width:100%;"></input>
             <datalist id="cubes">
               <option value="2x2x2">
               <option value="3x3x3">
@@ -54,92 +40,16 @@
               <option value="Megaminx">
             </datalist>
           </div>
-        </td>
-        <td> Average </td>
-        <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
-      </tr>
-      <tr>
-        <td> Nombre de cubes : </td>
-        <td><input id="periode_input" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_chronos"></label></input></td>
-        <td> Estimation sub <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=120>s</input></td>
-        <td><label id="estimation_nb_cube_sub"></label></td>
-      </tr>
-    </table>
+        </div>
 
-    <button type="button" name="button" onclick="main_dark()" class="display"> Display </button>
+        <div class="div_style">
+          <nav>
+            <a href='html/page_dark.html'><button type="button" class="display"> Display </button></a>
+          </nav>
+        </div>
 
-    <table>
-      <tr>
-        <td id="PB" width="32%">PB:</td>
-        <td colspan=2 width="23%">Moyenne</td>
-      	<td colspan=2 width="23%">Ecart-type</td>
-      	<td colspan=2 width="23%">Coeff de corr&eacute;lation</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg5"></td>
-        <td width="1%"><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
-        <td id="ect5"></td>
-        <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std5"></td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg12"></td>
-        <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
-        <td id="ect12"></td>
-        <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std12"></td>
-      </tr>
-      <tr>
-        <td>50</td>
-        <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg50"></td>
-        <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
-        <td id="ect50"></td>
-        <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std50"></td>
-      </tr>
-      <tr>
-        <td>100</td>
-        <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg100"></td>
-        <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
-        <td id="ect100"></td>
-        <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std100"></td>
-      </tr>
-      <tr>
-        <td>1000</td>
-        <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-        <td id="avg1000"></td>
-        <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
-      	<td id="ect1000"></td>
-        <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std1000"></td>
-      </tr>
-    </table>
-
-    <div>
-      <canvas id="canvas" height=1000 width=1500 style=""></canvas>
+      </div>
     </div>
-
-    <div>
-      <p>
-        Le Graphique du Coefficient de Corr&eacute;lation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
-        Si votre CC est en dessous de 8.0, vous ma&icirc;trisez votre m&eacute;thode et il serait avantageux d'apprendre de nouvelles formules ou techniques.
-        Si votre CC est entre 8.0 et 12.0, vous &ecirc;tes dans une progression constante.
-        Si votre CC est au dessus de 12.0, il faut vous entra&icirc;ner d'avantage pour vous am&eacute;liorer.
-        Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (std100 ou std1000).
-      </p>
-      <p>Le coefficient de &eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
-    </div>
-
-    <script type="text/javascript" src="js/math.js"></script>
-    <script type="text/javascript" src="js/drawing.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
 
   </body>
 </html>

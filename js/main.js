@@ -18,7 +18,7 @@ function Upload(theme) {
         var liste=[];
         var table=document.createElement("table");
         var rows=e.target.result.split("\n");
-        const periode=parseInt(document.getElementById("periode_input").value);
+        const periode=parseInt(document.getElementById("input_nb_chronos").value);
 
         if (document.getElementById("choice_application").value=="Twisty Timer") {
           if (categorie=="3x3x3") {
@@ -71,8 +71,9 @@ function Upload(theme) {
 
         // setup cube
         const type_cube=["2x2x2","3x3x3","4x4x4","5x5x5","6x6x6","7x7x7","Megaminx"];
-        var scale_table=[ 1,      1,      10,     15,     15,     15,     10];
+        const scale_table=[ 1,      1,      10,     15,     15,     15,     10];
         var scale=1;
+        context.lineWidth=2;
 
         context.clearRect(0,0,canvas.width,canvas.height);
 

@@ -50,7 +50,7 @@ function compte_to_time(n) {
 
 
 function valeurs_tableau(liste,val) {
-  document.getElementById("nb_chronos").innerHTML=" "+String(liste.length);
+  document.getElementById("nb_total_chronos").innerHTML=" "+String(liste.length);
   document.getElementById("PB").innerHTML="PB: "+compte_to_time(mini_liste(liste));
   for (var i=1; i<val.length; i++) {
     const n=val[i];
