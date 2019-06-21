@@ -63,7 +63,7 @@ function Upload(theme) {
         const style=[".-","-","-","-","-","-"];
         var color;
         if (theme==="dark") {
-          color=["white",'#F30','#FD0','#6C0','#09F',"purple"];
+          color=["white",'#F30','#FD0','#6C0','#09F',"#D501FF"];
         }
         else {
           color=["black","red","orange","green","blue","purple"];
