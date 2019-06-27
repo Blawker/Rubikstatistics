@@ -78,52 +78,52 @@
         <td id="PB" width="32%">PB:</td>
         <td colspan=2 width="23%">Avg</td>
       	<td colspan=2 width="23%">Std</td>
-      	<td colspan=2 width="23%">Correlation Coefficient</td>
+      	<td colspan=2 width="23%">Rsd</td>
       </tr>
       <tr>
         <td>5</td>
         <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True" ></td>
         <td id="avg5"></td>
-        <td width="1%"><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
-        <td id="ect5"></td>
-        <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std5"></td>
+        <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox"></td>
+        <td id="std5"></td>
+        <td width="1%"><input type="checkbox" id="rsd5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="rsd5"></td>
       </tr>
       <tr>
         <td>12</td>
         <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
         </td><td id="avg12"></td>
-        <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
-        <td id="ect12"></td>
-        <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std12"></td>
+        <td><input type="checkbox" id="std12_check" class="largerCheckbox"></td>
+        <td id="std12"></td>
+        <td><input type="checkbox" id="rsd12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="rsd12"></td>
       </tr>
       <tr>
         <td>50</td>
         <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg50"></td>
-        <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
-        <td id="ect50"></td>
-        <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std50"></td>
+        <td><input type="checkbox" id="std50_check" class="largerCheckbox"></td>
+        <td id="std50"></td>
+        <td><input type="checkbox" id="rsd50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="rsd50"></td>
       </tr>
       <tr>
         <td>100</td>
         <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg100"></td>
-        <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
-        <td id="ect100"></td>
-        <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-      	<td id="std100"></td>
+        <td><input type="checkbox" id="std100_check" class="largerCheckbox"></td>
+        <td id="std100"></td>
+        <td><input type="checkbox" id="rsd100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="rsd100"></td>
       </tr>
       <tr>
         <td>1000</td>
         <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg1000"></td>
-        <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
-      	<td id="ect1000"></td>
-        <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+        <td><input type="checkbox" id="std1000_check" class="largerCheckbox"></td>
       	<td id="std1000"></td>
+        <td><input type="checkbox" id="rsd1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+      	<td id="rsd1000"></td>
       </tr>
     </table>
 
@@ -133,17 +133,18 @@
 
     <div>
       <p>
-        Le Graphique du Coefficient de Corr&eacute;lation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
+        Le Graphique du Coefficient de variation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
         Si votre CC est en dessous de 8.0, vous ma&icirc;trisez votre m&eacute;thode et il serait avantageux d'apprendre de nouvelles formules ou techniques.
         Si votre CC est entre 8.0 et 12.0, vous &ecirc;tes dans une progression constante.
         Si votre CC est au dessus de 12.0, il faut vous entra&icirc;ner d'avantage pour vous am&eacute;liorer.
         Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (std100 ou std1000).
       </p>
-      <p>Le coefficient de &eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
+      <p>Le coefficient de l'&eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
     </div>
 
     <script type="text/javascript" src="../js/math.js"></script>
     <script type="text/javascript" src="../js/drawing.js"></script>
+    <script type="text/javascript" src="../js/display.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
 
   </body>

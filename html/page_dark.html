@@ -9,58 +9,58 @@
   </head>
 
   <body>
-    <div style="position:absolute;top:65px;height:85%;">
-      <div style="display:flex;height:8%;">
-        <div class="frame">
-          <label id="PB">PB: 0:00.000</label>
+    <div style="position:absolute;top:65px;height:85%;width:99%;">
+      <div style="display:flex;height:8%;width:100%;">
+        <div class="frame" style="margin-left:0;">
+          <label id="PB" class="label_frame">PB: 0:00.000</label>
         </div>
         <div class="frame">
-          <label id="estimation_avg_sub">0 cubes before avg50 sub20</label>
+          <label id="estimation_avg_sub" class="label_frame">0 cubes before avg50 sub20</label>
         </div>
         <div class="frame">
           <button type="button" name="button" onclick="main_dark()" class="update"> Update </button>
         </div>
       </div>
 
-      <div style="display:flex;height:92%;">
-        <canvas id="canvas" height=1000 width=2000 style="height:100%;width:auto;margin-right:10px;"></canvas>
+      <div style="display:flex;height:92%;width:100%;">
+        <canvas id="canvas" height=1000 width=2000 style="height:100%;width:70%;margin-right:1%;"></canvas>
 
-        <table style="height:100%;width:35%;margin-right:3px;">
+        <table style="height:100%;width:28%;margin-right:1%;">
           <tr>
             <td></td>
-            <td width="23%">Avg</td>
-          	<td width="23%">Std</td>
-          	<td width="23%">Correlation Coefficient</td>
+            <td width="27%">Avg</td>
+          	<td width="27%">Std</td>
+          	<td width="27%">Rsd</td>
           </tr>
           <tr>
             <td>5</td>
             <td id="avg5"></td>
-            <td id="ect5"></td>
-          	<td id="std5"></td>
+            <td id="std5"></td>
+          	<td id="rsd5"></td>
           </tr>
           <tr>
             <td>12</td>
             <td id="avg12"></td>
-            <td id="ect12"></td>
-          	<td id="std12"></td>
+            <td id="std12"></td>
+          	<td id="rsd12"></td>
           </tr>
           <tr>
             <td>50</td>
             <td id="avg50"></td>
-            <td id="ect50"></td>
-          	<td id="std50"></td>
+            <td id="std50"></td>
+          	<td id="rsd50"></td>
           </tr>
           <tr>
             <td>100</td>
             <td id="avg100"></td>
-            <td id="ect100"></td>
-          	<td id="std100"></td>
+            <td id="std100"></td>
+          	<td id="rsd100"></td>
           </tr>
           <tr>
             <td>1000</td>
             <td id="avg1000"></td>
-          	<td id="ect1000"></td>
           	<td id="std1000"></td>
+          	<td id="rsd1000"></td>
           </tr>
         </table>
       </div>
@@ -118,19 +118,19 @@
           </tr>
           <tr>
             <td colspan=1 width="23%">Std</td>
-            <td><input type="checkbox" id="ect5_check" class="largerCheckbox"></td>
-            <td><input type="checkbox" id="ect12_check" class="largerCheckbox"></td>
-            <td><input type="checkbox" id="ect50_check" class="largerCheckbox"></td>
-            <td><input type="checkbox" id="ect100_check" class="largerCheckbox"></td>
-            <td><input type="checkbox" id="ect1000_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="std5_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="std12_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="std50_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="std100_check" class="largerCheckbox"></td>
+            <td><input type="checkbox" id="std1000_check" class="largerCheckbox"></td>
           </tr>
           <tr>
-            <td colspan=1 width="23%">Correlation Coefficient</td>
-            <td><input type="checkbox" id="std5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-            <td><input type="checkbox" id="std12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-            <td><input type="checkbox" id="std50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-            <td><input type="checkbox" id="std100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
-            <td><input type="checkbox" id="std1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td colspan=1 width="23%">Rsd</td>
+            <td><input type="checkbox" id="rsd5_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="rsd12_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="rsd50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="rsd100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
+            <td><input type="checkbox" id="rsd1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
           </tr>
         </table>
 
@@ -190,6 +190,7 @@
 
     <script type="text/javascript" src="../js/math.js"></script>
     <script type="text/javascript" src="../js/drawing.js"></script>
+    <script type="text/javascript" src="../js/display.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
 
   </body>

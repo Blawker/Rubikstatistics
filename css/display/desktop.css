@@ -17,14 +17,20 @@ p {
   font-size:6pt;
 }
 
+label.label_frame {
+  text-align:center;
+  vertical-align:sub;
+
+}
+
 div.frame {
   border-radius: 6px;
   flex:auto;
   height:100%;
   text-align: center;
   text-decoration: none;
-  margin-right:10px;
-  margin-left:10px;
+  margin-right:1%;
+  margin-left:1%;
 }
 
 div.div_style {
