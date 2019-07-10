@@ -7,13 +7,13 @@
   context.stroke();
 }
 
-function draw_arc(context, x, y, r_courbure) {
+function draw_arc(context,x,y,r_courbure) {
   context.beginPath();
   context.arc(x, y, r_courbure, 0, 2*Math.PI);
   context.stroke();
 }
 
-function draw_text(context, text,x,y,color,size) {
+function draw_text(context,text,x,y,color,size) {
   context.fillStyle = color ;
   context.strokeStyle = color ;
   context.font = String(size)+'px helvetica' ;
@@ -42,6 +42,7 @@ function graphique(canvas,context,liste,val,color,style,scale,d,l,margin) { // v
     const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
     const liste_exp=graph_exp_reg_II(liste,offset_exp);
     plot(context,x0+(offset_exp-1)*scale_x,y0,scale_x,scale_y,liste_exp,color[0],".-","");
+    //plot(context,x0+(offset_exp-1)*scale_x,y0-350,scale_x,scale_y,exp(),"red","-","");
   }
 
   // plot average & standard deviation
@@ -203,4 +204,50 @@ function graph_rsd(canvas,context,liste,val,color,style,d,l,margin) {
       }
     }
   }
+}
+
+
+function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,l,margin) {
+  const x0=10,y0=canvas.height-margin/2;
+  context.clearRect(0,0,canvas.width,canvas.height);
+  context.lineWidth=1;
+
+  draw_text(context,"Repartition Function",margin,2*margin,color[0],18);
+
+  //Prototype: // Repartition function
+  const dt=(maxi_liste(liste)-mini_liste(liste))/1000;
+  const t0=mini_liste(liste);
+  const liste_rep=repartition_function(liste,t0,dt);
+  plot(context,x0,y0,(canvas.width-2*margin)/liste_rep.length,l-margin,liste_rep,color[1],".-","");
+
+  // middle of the repartition function
+  var offset_sig=0;
+  for (var i=0; i<liste_rep.length-1; i++) {
+    if (liste_rep[i]<=0.5 && liste_rep[i+1]>=0.5) {
+      offset_sig=dt*(2*i+1)/2;
+      break;
+    }
+  }
+  var a=4*derivate(liste_rep,offset_sig,dt,50);
+  var liste_sig=[];
+  for (var i=0; i<liste_rep.length; i++) {
+    liste_sig.push(sigmoid(i*dt-offset_sig,a));
+  }
+  context.lineWidth=2;
+  console.log(liste_sig);
+  plot(context,x0,y0,(canvas.width-2*margin)/liste_sig.length,l-margin,liste_sig,color[4],"-","");
+
+  // add an interface for the probability to between to chronos
+  const upper_chrono=time_to_compte([parseFloat(document.getElementById("upper_chrono_min_input").value),parseFloat(document.getElementById("upper_chrono_sec_input").value)]);
+  const lower_chrono=time_to_compte([parseFloat(document.getElementById("lower_chrono_min_input").value),parseFloat(document.getElementById("lower_chrono_sec_input").value)]);
+  const x_up=x0+(upper_chrono-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
+  const x_lo=x0+(lower_chrono-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
+
+  draw_text(context,"P = "+String(Math.round(1000*100*(sigmoid(upper_chrono-t0+50*dt-offset_sig,a)-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)))/1000)+"%",margin,4*margin,color[0],14);
+
+  draw_single_line(context,x_up,y0,x_up,y0-sigmoid(upper_chrono-t0+50*dt-offset_sig,a)*(l-margin),color[3]);
+  draw_text(context,compte_to_time(upper_chrono),x_up+10,y0,color[3],14);
+
+  draw_single_line(context,x_lo,y0,x_lo,y0-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)*(l-margin),color[3]);
+  draw_text(context,compte_to_time(lower_chrono),x_lo+10,y0,color[3],14);
 }

@@ -58,6 +58,12 @@ function display(theme,categorie,data) {
       break;
     }
   }
+
+
+  var canvas_repartition=document.getElementById("canvas_repartition");
+  var context_repartion=canvas_repartition.getContext("2d");
+  plot_repartition_function(canvas_repartition,context_repartion,liste,val,color,style,scale,canvas_repartition.height-10,canvas_repartition.height-10/2,10);
+
   if (nb_graph==1) {
     // graphique chrono & moyenne & écart-type
     draw_text(context,"Graphique des Chronos",10,30,color[0],26);

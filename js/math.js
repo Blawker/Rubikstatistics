@@ -55,21 +55,23 @@ function valeurs_tableau(liste,val) {
   for (var i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
-      affichage("avg"+String(n),"std"+String(n),"rsd"+String(n),liste,n);
+      affichage("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n),liste,n);
     }
     else {
-      vide("avg"+String(n),"std"+String(n),"rsd"+String(n));
+      vide("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n));
     }
   }
 }
 
-function affichage(avg,std,rsd,liste,n) {
+function affichage(best_avg,avg,std,rsd,liste,n) {
+  document.getElementById(best_avg).innerHTML=compte_to_time(mini_liste(mobile_average(liste,n)));
   document.getElementById(avg).innerHTML=compte_to_time(mobile_average(liste,n)[0]);
   document.getElementById(std).innerHTML=Math.round(standard_deviation(liste,n)[0]*1000)/1000;
   document.getElementById(rsd).innerHTML=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
 }
 
-function vide(avg,std,rsd) {
+function vide(best_avg,avg,std,rsd) {
+  document.getElementById(best_avg).innerHTML="";
   document.getElementById(avg).innerHTML="";
   document.getElementById(std).innerHTML="";
   document.getElementById(rsd).innerHTML="";
@@ -143,6 +145,18 @@ function solve_expression(m1,m2,n) {
   }
   return(xf);
 }
+/*
+function randn() {
+  return(Math.exp(-Math.pow((Math.random()-0.5)*10,2)));
+}
+function exp() {
+  var liste=[];
+  for (var i=-2; i<5; i+=0.1) {
+    liste.push(Math.exp(-i)+randn());
+  }
+  return(liste);
+}
+*/
 
 /* Prototype
 function graph_exp(liste) {
@@ -212,7 +226,7 @@ function graph_exp_reg(liste) {
   return(y);
 }
 */
-function graph_exp_reg_II(liste,offset) {
+function graph_exp_reg_II(liste,offset) { // test and fonctionnal
   const avg_liste=mobile_average(liste,offset);
   const n=avg_liste.length;
   var m1=0,m2=0;
@@ -237,9 +251,12 @@ function graph_exp_reg_II(liste,offset) {
 }
 
 
-function repartition_function(liste,dt) {
+function repartition_function(liste,t0,dt) {
   var rep=[];
-  for (var i=0; i<maxi_liste(liste)+10*dt; i+=dt) {
+  for (var i=t0-50*dt; i<t0; i+=dt) {
+    rep.push(0);
+  }
+  for (var i=t0; i<maxi_liste(liste)+10*dt; i+=dt) {
     var compt=0;
     for (var j=0; j<liste.length; j++) {
       if (liste[j]<i) {

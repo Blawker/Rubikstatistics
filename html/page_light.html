@@ -22,47 +22,56 @@
         </div>
       </div>
 
-      <div style="display:flex;height:92%;width:100%;">
-        <canvas id="canvas" height=1000 width=2000 style="height:100%;width:70%;margin-right:1%;"></canvas>
+      <div style="display:flex;height:92%;width:auto;">
+        <canvas id="canvas" height=1000 width=1600 style="height:100%;width:65%;margin-right:1%;"></canvas>
 
-        <table style="height:100%;width:28%;margin-right:1%;">
+        <div style="height:100%;width:35%;margin-right:1%;">
+          <table style="height:65%;width:100%;"> <!-- style="height:100%;width:35%;margin-right:1%;"-->
           <tr>
             <td></td>
-            <td width="27%">Avg</td>
-          	<td width="27%">Std</td>
-          	<td width="27%">Rsd</td>
+            <td width="25%">Best Avg</td>
+            <td width="25%">Avg</td>
+          	<td width="20%">Std</td>
+          	<td width="20%">Rsd</td>
           </tr>
           <tr>
             <td>5</td>
+            <td id="best_avg5"></td>
             <td id="avg5"></td>
             <td id="std5"></td>
           	<td id="rsd5"></td>
           </tr>
           <tr>
             <td>12</td>
+            <td id="best_avg12"></td>
             <td id="avg12"></td>
             <td id="std12"></td>
           	<td id="rsd12"></td>
           </tr>
           <tr>
             <td>50</td>
+            <td id="best_avg50"></td>
             <td id="avg50"></td>
             <td id="std50"></td>
           	<td id="rsd50"></td>
           </tr>
           <tr>
             <td>100</td>
+            <td id="best_avg100"></td>
             <td id="avg100"></td>
             <td id="std100"></td>
           	<td id="rsd100"></td>
           </tr>
           <tr>
             <td>1000</td>
+            <td id="best_avg1000"></td>
             <td id="avg1000"></td>
           	<td id="std1000"></td>
           	<td id="rsd1000"></td>
           </tr>
         </table>
+          <canvas id="canvas_repartition" height=200 width=550 style="height:33%;width:100%;margin-top:0px;"></canvas>
+        </div>
       </div>
     </div>
 
@@ -134,23 +143,41 @@
           </tr>
         </table>
 
-        <table style="position:absolute;top:0;left:55%;width:30%;margin:10px;">
-          <tr>
-            <td colspan=2> Exponential Regression </td>
-          </tr>
-          <tr>
-            <td> Prediction </td>
-            <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
-          </tr>
-          <tr>
-            <td> Average </td>
-            <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
-          </tr>
-          <tr>
-            <td> Traget sub </td>
-            <td><input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20>s</input></td>
-          </tr>
-        </table>
+        <div style="position:absolute;top:0;left:55%;width:30%;">
+          <table style="height:100%;width:100%;margin:10px;">
+            <tr>
+              <td colspan=2> Exponential Regression </td>
+            </tr>
+            <tr>
+              <td> Prediction </td>
+              <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
+            </tr>
+            <tr>
+              <td> Average </td>
+              <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
+            </tr>
+            <tr>
+              <td> Traget sub </td>
+              <td><input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20>s</input></td>
+            </tr>
+          </table>
+
+          <table style="height:100%;width:100%;margin:10px;">
+            <tr>
+              <td colspan=2> Probability between </td>
+            </tr>
+            <tr>
+              <td>
+                <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+                <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=15></input>
+              </td>
+              <td>
+                <input id="upper_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+                <input id="upper_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=25></input>
+              </td>
+            </tr>
+          </table>
+        </div>
 
         <div style="margin-left:10px;width:50%;display:flex;">
           <input type="file" id="fileUpload" size="3" style="flex:auto;"></input>
