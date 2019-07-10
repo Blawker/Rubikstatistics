@@ -228,7 +228,7 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
       break;
     }
   }
-  var a=4*derivate(liste_rep,offset_sig,dt,50);
+  const a=4*derivate(liste_rep,offset_sig,dt,50);
   var liste_sig=[];
   for (var i=0; i<liste_rep.length; i++) {
     liste_sig.push(sigmoid(i*dt-offset_sig,a));
