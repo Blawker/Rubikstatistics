@@ -22,13 +22,8 @@
 
     <table>
       <tr align="center">
-        <td colspan="2" width="20%"><input type="file" id="fileUpload" size="8" style="font-size:20pt;"></input></td>
-        <td colspan="2" width="33%"> Exp Reg <input type="checkbox" id="reg_check" class="largerCheckbox"></td>
-        <td colspan="1" width="37%"> Proba </td>
-      </tr>
-      <tr>
-        <td> Filetype : </td>
-        <td>
+        <td colspan="2" width="50%"><input type="file" id="fileUpload" size="8" style="font-size:20pt;"></input></td>
+        <td colspan="2">
           <div>
             <input list="application" type="text" id="choice_application" class="input_style" onfocus="this.value=''" size="8"></input>
             <datalist id="application">
@@ -37,15 +32,9 @@
             </datalist>
           </div>
         </td>
-        <td> Avg </td>
-        <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
-        <td>
-          <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
-          <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=15></input>
-        </td>
       </tr>
       <tr>
-        <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>
+        <td width="40%"><label for="choix_cubes">Cube:</label></td>
         <td>
           <div>
             <input list="cubes" type="text" id="choix_cubes" class="input_style" onfocus="this.value=''" size="5"></input>
@@ -65,23 +54,64 @@
             </datalist>
           </div>
         </td>
-        <td> Sub </td>
+
+        <td> Number: </td>
         <td>
-          <input id="sub_reg_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
-          <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20></input>
+          <input id="input_nb_chronos" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_total_chronos"></label></input>
         </td>
-        <td>
-          <input id="upper_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
-          <input id="upper_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=25></input>
-        </td>
-      </tr>
-      <tr>
-        <td> Number cubes : </td>
-        <td><input id="input_nb_chronos" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_total_chronos"></label></input></td>
-        <td colspan="2"><label id="estimation_avg_sub"></label></td>
-        <td><label id="probability_between_output"></label></td>
       </tr>
     </table>
+
+    <div style="display:flex;width:100%;">
+      <table style="margin-right:1%;">
+        <tr>
+          <td colspan="2" width="33%" style="text-align:center;"> Exp Reg <input type="checkbox" id="reg_check" class="largerCheckbox"></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;"> Avg </td>
+          <td style="text-align:center;">
+            <input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align:center;"> Sub </td>
+          <td style="text-align:center;">
+            <input id="sub_reg_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+            <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20></input>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;">
+            <label id="estimation_avg_sub">0 cubes before avg50 sub20</label>
+          </td>
+        </tr>
+      </table>
+
+      <table style="margin-left:1%;">
+        <tr>
+          <td colspan="2" width="37%" style="text-align:center;"> Proba </td>
+        </tr>
+        <tr>
+          <td  style="text-align:center;"> Lowest </td>
+          <td style="text-align:center;">
+            <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+            <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=15></input>
+          </td>
+        </tr>
+        <tr>
+          <td  style="text-align:center;"> Highest </td>
+          <td style="text-align:center;">
+            <input id="upper_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+            <input id="upper_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=25></input>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;">
+            <label id="probability_between_output">P=0%</label>
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <td colspan="4"><button type="button" name="button" class="display" onclick="main_dark()"> Display </button></td>
 
