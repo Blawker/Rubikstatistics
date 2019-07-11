@@ -66,16 +66,16 @@ function display(theme,categorie,data) {
 
   if (nb_graph==1) {
     // graphique chrono & moyenne & écart-type
-    draw_text(context,"Graphique des Chronos",10,30,color[0],26);
+    draw_text(context,"Chronos Chart",10,30,color[0],26);
     graphique(canvas,context,liste,val,color,style,scale,canvas.height*2/3,canvas.height*2/3-margin/2,margin); // d=distance par rapport au bord du canvas(1000,940); l=largeur du graphique
 
     // graphique coefficient de corrélation
-    draw_text(context,"Graphique du Coefficient de Corr\u00e9lation",10,canvas.height*2/3+30,color[0],26) ;
+    draw_text(context,"Graph of Correlation Coefficient",10,canvas.height*2/3+30,color[0],26) ;
     graph_rsd(canvas,context,liste,val,color,style,0,canvas.height/3,margin); // 250,440
   }
   else if (nb_graph==0) {
     // graphique chrono & moyenne & écart-type
-    draw_text(context,"Graphique des Chronos",10,30,color[0],26);
+    draw_text(context,"Chronos Chart",10,30,color[0],26);
     graphique(canvas,context,liste,val,color,style,scale,canvas.height,canvas.height-margin/2,margin);
   }
 }

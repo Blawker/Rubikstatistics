@@ -22,8 +22,9 @@
 
     <table>
       <tr align="center">
-        <td colspan="2"><input type="file" id="fileUpload" size="8" style="font-size:20pt;"></input></td>
-        <td colspan="2"> Exp Reg </td>
+        <td colspan="2" width="20%"><input type="file" id="fileUpload" size="8" style="font-size:20pt;"></input></td>
+        <td colspan="2" width="33%"> Exp Reg <input type="checkbox" id="reg_check" class="largerCheckbox"></td>
+        <td colspan="1" width="37%"> Proba </td>
       </tr>
       <tr>
         <td> Filetype : </td>
@@ -36,8 +37,12 @@
             </datalist>
           </div>
         </td>
-        <td> Prediction </td>
-        <td><input type="checkbox" id="reg_check" class="largerCheckbox"></td>
+        <td> Avg </td>
+        <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
+        <td>
+          <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+          <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=15></input>
+        </td>
       </tr>
       <tr>
         <td width="40%"><label for="choix_cubes">Indiquez le cube :</label></td>
@@ -60,14 +65,21 @@
             </datalist>
           </div>
         </td>
-        <td> Average </td>
-        <td><input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=50></input></td>
+        <td> Sub </td>
+        <td>
+          <input id="sub_reg_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+          <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20></input>
+        </td>
+        <td>
+          <input id="upper_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0></input>:
+          <input id="upper_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=25></input>
+        </td>
       </tr>
       <tr>
         <td> Number cubes : </td>
         <td><input id="input_nb_chronos" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_total_chronos"></label></input></td>
-        <td> Sub <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20></input></td>
-        <td><label id="estimation_avg_sub"></label></td>
+        <td colspan="2"><label id="estimation_avg_sub"></label></td>
+        <td><label id="probability_between_output"></label></td>
       </tr>
     </table>
 
@@ -75,13 +87,15 @@
 
     <table>
       <tr>
-        <td id="PB" width="32%">PB:</td>
-        <td colspan=2 width="23%">Avg</td>
-      	<td colspan=2 width="23%">Std</td>
-      	<td colspan=2 width="23%">Rsd</td>
+        <td id="PB" width="28%">PB:</td>
+        <td width="21%">Best Avg</td>
+        <td colspan=2 width="21%">Avg</td>
+      	<td colspan=2 width="15%">Std</td>
+      	<td colspan=2 width="15%">Rsd</td>
       </tr>
       <tr>
         <td>5</td>
+        <td id="best_avg5"></td>
         <td width="1%"><input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True" ></td>
         <td id="avg5"></td>
         <td width="1%"><input type="checkbox" id="std5_check" class="largerCheckbox"></td>
@@ -91,6 +105,7 @@
       </tr>
       <tr>
         <td>12</td>
+        <td id="best_avg12"></td>
         <td><input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
         </td><td id="avg12"></td>
         <td><input type="checkbox" id="std12_check" class="largerCheckbox"></td>
@@ -100,6 +115,7 @@
       </tr>
       <tr>
         <td>50</td>
+        <td id="best_avg50"></td>
         <td><input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg50"></td>
         <td><input type="checkbox" id="std50_check" class="largerCheckbox"></td>
@@ -109,6 +125,7 @@
       </tr>
       <tr>
         <td>100</td>
+        <td id="best_avg100"></td>
         <td><input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg100"></td>
         <td><input type="checkbox" id="std100_check" class="largerCheckbox"></td>
@@ -118,6 +135,7 @@
       </tr>
       <tr>
         <td>1000</td>
+        <td id="best_avg1000"></td>
         <td><input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True"></td>
         <td id="avg1000"></td>
         <td><input type="checkbox" id="std1000_check" class="largerCheckbox"></td>
@@ -129,15 +147,17 @@
 
     <div>
       <canvas id="canvas" height=1500 width=1500></canvas>
+
+      <canvas id="canvas_repartition" height=200 width=550 style="height:33%;width:100%;margin-top:0px;"></canvas>
     </div>
 
     <div>
       <p>
         Le Graphique du Coefficient de variation indique la ma&icirc;trise ou non de votre m&eacute;thode de r&eacute;solution actuelle.
         Si votre CC est en dessous de 8.0, vous ma&icirc;trisez votre m&eacute;thode et il serait avantageux d'apprendre de nouvelles formules ou techniques.
-        Si votre CC est entre 8.0 et 12.0, vous &ecirc;tes dans une progression constante.
+        Si votre CC est entre 8.0 et 12.0, vous &ecirc;tes dans une progression constante et il vous reste un peu d'entra&icirc;nement pour ma&icirc;triser votre technique.
         Si votre CC est au dessus de 12.0, il faut vous entra&icirc;ner d'avantage pour vous am&eacute;liorer.
-        Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (std100 ou std1000).
+        Il est conseill&eacute; d'utiliser le CC avec la plus grande moyenne (Rsd100 ou Rsd1000).
       </p>
       <p>Le coefficient de l'&eacute;cart-type est de 1.96 soit 95% des chronos sont compris dans l'intervalle de confiance.</p>
     </div>

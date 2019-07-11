@@ -234,7 +234,6 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
     liste_sig.push(sigmoid(i*dt-offset_sig,a));
   }
   context.lineWidth=2;
-  console.log(liste_sig);
   plot(context,x0,y0,(canvas.width-2*margin)/liste_sig.length,l-margin,liste_sig,color[4],"-","");
 
   // add an interface for the probability to between to chronos
@@ -243,11 +242,18 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
   const x_up=x0+(upper_chrono-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
   const x_lo=x0+(lower_chrono-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
 
-  draw_text(context,"P = "+String(Math.round(1000*100*(sigmoid(upper_chrono-t0+50*dt-offset_sig,a)-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)))/1000)+"%",margin,4*margin,color[0],14);
+  const text_prob_betw=String(Math.round(1000*100*(sigmoid(upper_chrono-t0+50*dt-offset_sig,a)-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)))/1000)+"%";
+  if (document.getElementById("probability_between_output")!='undefined' && document.getElementById("probability_between_output")!=null) {
+    document.getElementById("probability_between_output").innerHTML="P="+text_prob_betw;
+  }
+  else {
+    draw_text(context,"P = "+text_prob_betw,margin,4*margin,color[0],18);
+  }
+
 
   draw_single_line(context,x_up,y0,x_up,y0-sigmoid(upper_chrono-t0+50*dt-offset_sig,a)*(l-margin),color[3]);
-  draw_text(context,compte_to_time(upper_chrono),x_up+10,y0,color[3],14);
+  draw_text(context,str_min_round(compte_to_time(upper_chrono)),x_up-35,y0,color[0],16);
 
   draw_single_line(context,x_lo,y0,x_lo,y0-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)*(l-margin),color[3]);
-  draw_text(context,compte_to_time(lower_chrono),x_lo+10,y0,color[3],14);
+  draw_text(context,str_min_round(compte_to_time(lower_chrono)),x_lo+10,y0,color[0],16);
 }

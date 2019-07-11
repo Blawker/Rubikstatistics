@@ -51,7 +51,7 @@ function compte_to_time(n) {
 
 function valeurs_tableau(liste,val) {
   document.getElementById("nb_total_chronos").innerHTML=" "+String(liste.length);
-  document.getElementById("PB").innerHTML="PB: "+compte_to_time(mini_liste(liste));
+  document.getElementById("PB").innerHTML="PB: "+str_round(compte_to_time(mini_liste(liste)));
   for (var i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
@@ -64,10 +64,53 @@ function valeurs_tableau(liste,val) {
 }
 
 function affichage(best_avg,avg,std,rsd,liste,n) {
-  document.getElementById(best_avg).innerHTML=compte_to_time(mini_liste(mobile_average(liste,n)));
-  document.getElementById(avg).innerHTML=compte_to_time(mobile_average(liste,n)[0]);
-  document.getElementById(std).innerHTML=Math.round(standard_deviation(liste,n)[0]*1000)/1000;
-  document.getElementById(rsd).innerHTML=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
+  document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
+  document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
+  document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
+  document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+}
+
+function str_min_round(str) {
+  let i=0,j=1;
+  while (str[i]!=":" && i!=str.length) {
+    i++;
+  }
+  if (i!=str.length) {
+    while (str[i+j]!="." && i+j!=str.length) {
+      j++;
+    }
+    if (j==2) {
+      var temp="";
+      for (var k=0; k<str.length; k++) {
+        temp+=str[k];
+        if (k==i) {
+          temp+="0";
+        }
+      }
+      return(temp);
+    }
+  }
+  return(str);
+}
+
+function str_round(str) {
+  str=str_min_round(str);
+  let i=0;
+  while (str[i]!="." && i!=str.length) {
+    i++;
+  }
+  if (str.length-i-1==3) {
+    return(str);
+  }
+  else if (str.length-i-1==2) {
+    return(str+"0");
+  }
+  else if (str.length-i-1==1) {
+    return(str+"00");
+  }
+  else {
+    return(str+".000");
+  }
 }
 
 function vide(best_avg,avg,std,rsd) {
@@ -245,7 +288,7 @@ function graph_exp_reg_II(liste,offset) { // test and fonctionnal
   for (var i=0; i<n; i++) {
     y.push(a*Math.exp(-b*i));
   }
-  const sub_time=parseFloat(document.getElementById("sub_reg_input").value);
+  const sub_time=time_to_compte([parseFloat(document.getElementById("sub_reg_min_input").value),parseFloat(document.getElementById("sub_reg_input").value)]);
   document.getElementById("estimation_avg_sub").innerHTML=String(parseInt(1/b*Math.log(a/sub_time)-avg_liste.length))+" Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
   return(y);
 }
