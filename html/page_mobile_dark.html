@@ -23,7 +23,7 @@
     <table>
       <tr align="center">
         <td colspan="2" width="50%"><input type="file" id="fileUpload" size="8" style="font-size:20pt;"></input></td>
-        <td colspan="2">
+        <td colspan="2" width="50%">
           <div>
             <input list="application" type="text" id="choice_application" class="input_style" onfocus="this.value=''" size="8"></input>
             <datalist id="application">
@@ -34,8 +34,8 @@
         </td>
       </tr>
       <tr>
-        <td width="40%"><label for="choix_cubes">Cube:</label></td>
-        <td>
+        <td width="20%"><label for="choix_cubes">Cube:</label></td>
+        <td width="30%">
           <div>
             <input list="cubes" type="text" id="choix_cubes" class="input_style" onfocus="this.value=''" size="5"></input>
             <datalist id="cubes">
@@ -55,15 +55,15 @@
           </div>
         </td>
 
-        <td> Number: </td>
-        <td>
+        <td width="20%"> Number: </td>
+        <td width="30%">
           <input id="input_nb_chronos" type="text" name="text_input" class="input_style" required minlength="1" size="3" value=100>/<label id="nb_total_chronos"></label></input>
         </td>
       </tr>
     </table>
 
     <div style="display:flex;width:100%;">
-      <table style="margin-right:1%;">
+      <table style="height:100%;margin-right:1%;">
         <tr>
           <td colspan="2" width="33%" style="text-align:center;"> Exp Reg <input type="checkbox" id="reg_check" class="largerCheckbox"></td>
         </tr>
@@ -87,7 +87,7 @@
         </tr>
       </table>
 
-      <table style="margin-left:1%;">
+      <table style="height:100%;margin-left:1%;">
         <tr>
           <td colspan="2" width="37%" style="text-align:center;"> Proba </td>
         </tr>
