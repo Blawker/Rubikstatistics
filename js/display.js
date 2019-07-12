@@ -26,7 +26,7 @@ function display(theme,categorie,data) {
   context.clearRect(0,0,canvas.width,canvas.height);
 
   // update image cube selection
-  document.getElementById("cube_selection_image").src="../image/cube/"+categorie+".png";
+  document.getElementById("cube_selection_image").src="../image/cube/"+categorie+".jpg";
 
   // update the value of the table
   valeurs_tableau(data,val);
