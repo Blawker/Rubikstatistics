@@ -4,6 +4,13 @@
   height:auto;
 }
 
+.cube_selection {
+  position:relative;
+  height:24.5px;
+  width:24.5px;
+  margin:3px;
+}
+
 .gear {
   position:absolute;
   right:1%;

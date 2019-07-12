@@ -33,6 +33,14 @@ div.frame {
   margin-left:1%;
 }
 
+div.cube_img_container {
+  width:30px;
+  height:30px;
+  background-color:white;
+  border-radius:6px;
+  margin-right:6px;
+}
+
 div.div_style {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -71,6 +79,17 @@ button {
   font-size:16pt;
 }
 
+button.device_mode_index {
+  border:none;
+  border-radius:8px;
+  text-align: center;
+  font-size: 16pt;
+  display: inline-block;
+  height:40px;
+  width:100%;
+  margin:3px;
+}
+
 button.color_mode {
   border:none;
   border-radius:8px;
@@ -82,10 +101,10 @@ button.color_mode {
   margin:3px;
 }
 
-button.display {
+button.start {
   border:none;
   border-radius:8px;
-  padding:5px;
+  padding:13px;
   text-align: center;
   display: inline-block;
 }

@@ -247,7 +247,7 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
     document.getElementById("probability_between_output").innerHTML="P="+text_prob_betw;
   }
   else {
-    draw_text(context,"P = "+text_prob_betw,margin,4*margin,color[0],18);
+    draw_text(context,"P("+str_min_round(compte_to_time(lower_chrono))+"<X<"+str_min_round(compte_to_time(upper_chrono))+") = "+text_prob_betw,margin,4*margin,color[0],18);
   }
 
 
