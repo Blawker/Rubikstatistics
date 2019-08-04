@@ -313,15 +313,15 @@ function repartition_function(liste,t0,dt) {
 
 function derivate(liste,t,dt,n) {
   //return((liste[parseInt(t/dt+n/2)]-liste[parseInt(t/dt-n/2)])/(n*dt));
-  // vartical linear regression to find the slope of mid sigmoid (cf Wikipedia)
+  // vertical linear regression to find the slope of mid sigmoid (cf Wikipedia)
   var x=[],y=[];
   for (var i=0; i<n; i++) {
-    const temp=parseInt(t+dt*(-n/2+i));
+    const temp=t+dt*(-n/2+i);
     x.push(temp);
     y.push(liste[parseInt(temp/dt)]);
   }
-  const x_=mobile_average(x,n);
-  const y_=mobile_average(y,n);
+  const x_=mobile_average(x,n)[0];
+  const y_=mobile_average(y,n)[0];
 
   var temp_num=0,temp_den=0;
   for (var i=0; i<n; i++) {

@@ -127,7 +127,8 @@ function plot_pb(context,x0,y0,scale_x,scale_y,liste,color) {
 }
 
 function grid_plot(context,y0,scale_y,scale,min,max,color) {
-  for (var i=parseInt(min); i<=parseInt(max); i+=scale) {
+  const cst=parseInt(min)%scale;
+  for (var i=parseInt(min)-cst; i<=parseInt(max); i+=scale) {
     draw_single_line(context,0,y0-i*scale_y,canvas.width,y0-i*scale_y,color);
     draw_text(context,String(compte_to_time(i)),canvas.width-40,y0-i*scale_y,color,17);
   }
