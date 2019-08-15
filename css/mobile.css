@@ -6,13 +6,25 @@ html {
   font-family: 'Nunito', sans-serif;
   height: 100%;
   color: white;
+  overflow-y: hidden;
 }
 
 p {
   margin: 0;
 }
+body {
+  margin: 0;
+}
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
+.body {
+  margin: 8px;
+}
 .header {
   display: flex;
   flex-direction: row;
@@ -158,15 +170,14 @@ p {
   justify-content: space-between;
 
   background-color: #2C3E5B;
-
 }
 
-.graph__average__img, .graph__time__img {
+.graph__average__img, .graph__time__img, .probability__img {
   width: 25px;
   height: max-content;
 }
 
-.graph__average__text, .graph__time__text {
+.graph__average__text, .graph__time__text, .probability__text {
   font-size: 12px;
   font-weight: bold;
 }
@@ -205,4 +216,46 @@ p {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   text-align: center;
+}
+
+.probability {
+  padding: 3%;
+  margin: 5% 0;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: row;
+
+  background-color: #2C3E5B;
+}
+
+.probability__text {
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+.footer__menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5%;
+
+  background-color: #2C3E5B;
+}
+
+.footer__menu button{
+  background: none;
+  border: none;
+}
+
+.footer__img {
+  width: 24px;
+  height: max-content;
+}
+
+@media screen and (min-width: 640px) {
+  html {
+    background-color: red;
+  }
 }

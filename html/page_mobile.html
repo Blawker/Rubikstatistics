@@ -1,92 +1,108 @@
 <!DOCTYPE html>
 <html>
+  <meta charset="utf-8">
   <title> Rubik'Statistics </title>
   <head>
-    <link rel="stylesheet" href="../css/mobile.css">
+    <link media="screen and (max-width:800px)" rel="stylesheet" href="../css/mobile.css">
   </head>
 
   <body>
-    <div class="header">
-        <div class="header__cube">
-            <img class="header__img" alt="3x3 cube" src="../image/cube/Cube.png"/>
-        </div>
-        <div class="header__label">
-            <p class="header__name">
-                Vincent Vegas
-            </p>
-            <p class="header__level">
-                <b>Niveau:</b> Epique
-            </p>
-        </div>
-        <img class="header__img" alt="parameters" src="../image/gear_white.png" />
-    </div>
-    <div class="chronos">
-        <img class="chronos__img" alt="chronos" src="../image/chronos.png" />
-        <div class="chronos__text">
-          <p class="chronos__selected" id="chronos_selected"> 100 </p>
-          <p> / </p>
-          <p id="chronos_total"> 200 </p>
-        </div>
-    </div>
-    <div class="average">
-        <div class="average__title">
-            <div class="average__title__label">
-                <h2>Moyenne</h2>
-                <p> Meilleurs moyenne des 5</p>
-            </div>
-            <p class="average__title__result" id="best_average"> 12.102s</p>
-        </div>
-        <div class="average__results__container">
-            <div class="average__results">
-              <p class="average__results__label">
-                  5 derniers
+    <div class="body">
+      <div class="header">
+          <div class="header__cube">
+              <img class="header__img" alt="3x3 cube" src="../image/cube/Cube.png"/>
+          </div>
+          <div class="header__label">
+              <p class="header__name">
+                  Vincent Vegas
               </p>
-              <p class="average__results__chrono" id="average_results__5"> 18.560 s</p>
-            </div>
-            <hr/>
-            <div class="average__results">
-              <p class="average__results__label">
-                  20 derniers
+              <p class="header__level">
+                  <b>Niveau:</b> Epique
               </p>
-              <p class="average__results__chrono" id="average_results__5"> 17.960 s</p>
-            </div>
-            <hr/>
-            <div class="average__results">
-              <p class="average__results__label">
-                  50 derniers
+          </div>
+          <img class="header__img" alt="parameters" src="../image/gear_white.png" />
+      </div>
+      <div class="chronos">
+          <img class="chronos__img" alt="chronos" src="../image/chronos.png" />
+          <div class="chronos__text">
+            <p class="chronos__selected" id="chronos_selected"> 100 </p>
+            <p> / </p>
+            <p id="chronos_total"> 200 </p>
+          </div>
+      </div>
+      <div class="average">
+          <div class="average__title">
+              <div class="average__title__label">
+                  <h2>Moyenne</h2>
+                  <p> Meilleurs moyenne des 5</p>
+              </div>
+              <p class="average__title__result" id="best_average"> 12.102s</p>
+          </div>
+          <div class="average__results__container">
+              <div class="average__results">
+                <p class="average__results__label">
+                    5 derniers
+                </p>
+                <p class="average__results__chrono" id="average_results__5"> 18.560 s</p>
+              </div>
+              <hr/>
+              <div class="average__results">
+                <p class="average__results__label">
+                    20 derniers
+                </p>
+                <p class="average__results__chrono" id="average_results__5"> 17.960 s</p>
+              </div>
+              <hr/>
+              <div class="average__results">
+                <p class="average__results__label">
+                    50 derniers
+                </p>
+                <p class="average__results__chrono" id="average_results__5"> 19.241 s</p>
+              </div>
+          </div>
+      </div>
+      <div class="graph__average">
+            <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
+            <p class="graph__average__text"> Voir le graphique des moyennes</p>
+            <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+      </div>
+      <div class="extremum">
+          <div class="extremum__best">
+              <p class="extremum__best__label">
+                  Meilleurs temps
               </p>
-              <p class="average__results__chrono" id="average_results__5"> 19.241 s</p>
-            </div>
-        </div>
-    </div>
-    <div class="graph__average">
-          <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
-          <p class="graph__average__text"> Voir le graphique des moyennes</p>
-          <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
-    </div>
-    <div class="extremum">
-        <div class="extremum__best">
-            <p class="extremum__best__label">
-                Meilleurs temps
+              <p class="extremum__best__time">
+                  10.103 s
+              </p>
+          </div>
+          <div class="extremum__worst">
+            <p class="extremum__worst__label">
+                Meilleurs moyennes des 5
             </p>
-            <p class="extremum__best__time">
-                10.103 s
+            <p class="extremum__worst__time">
+                12.230 s
             </p>
-        </div>
-        <div class="extremum__worst">
-          <p class="extremum__worst__label">
-              Meilleurs moyennes des 5
-          </p>
-          <p class="extremum__worst__time">
-              12.230 s
-          </p>
-        </div>
+          </div>
+      </div>
+      <div class="graph__time">
+            <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
+            <p class="graph__time__text"> Voir la répartition des chronos</p>
+            <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
+      </div>
+      <div class="probability">
+            <img class="probability__img" alt="graphic" src="../image/cube/Cube.png" />
+            <p class="probability__text" id="probability"> 0 cubes avant avg50 sub20</p>
+      </div>
     </div>
-    <div class="graph__time">
-          <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
-          <p class="graph__time__text"> Voir la répartition des chronos</p>
-          <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
-    </div>
-
+    <footer>
+        <div class="footer__menu">
+            <button>
+                <img class="footer__img" alt="chronos" src="../image/chronos.png"/>
+            </button>
+            <button>
+                <img class="footer__img" alt="share" src="../image/share.png"/>
+            </button>
+        </div>
+    </footer>
   </body>
 </html>
