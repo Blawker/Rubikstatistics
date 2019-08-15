@@ -39,7 +39,7 @@ html {
 }
 
 .header__level {
-  color: #8790A1;
+  color: #8790A1; /* grey */
   font-size: 10px;
 }
 
@@ -47,4 +47,40 @@ html {
   width: 25px;
   height: 25px;
   align-self: center;
+}
+
+.chronos {
+  width: 100px;
+  height: 20px;
+  float: right;
+  margin-top: 5%;
+
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 10px;
+  background-color:  #324768; /* blue */
+  justify-content: space-evenly;
+}
+
+.chronos p {
+  color: white;
+  margin: 0;
+  font-size: 13px;
+}
+
+.chronos__img {
+  width: 12px;
+  height: max-content;
+  align-self: center;
+}
+
+.chronos__text {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.chronos__selected {
+  font-weight: bold;
 }
