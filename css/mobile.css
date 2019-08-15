@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600i,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
 html {
   background: linear-gradient(359.75deg, #18243D 69.07%, #2A3D5C 99.93%);
   font-family: 'Nunito', sans-serif;
   height: 100%;
+  color: white;
 }
+
+p {
+  margin: 0;
+}
+
+
 .header {
   display: flex;
   flex-direction: row;
@@ -64,7 +72,6 @@ html {
 }
 
 .chronos p {
-  color: white;
   margin: 0;
   font-size: 13px;
 }
@@ -83,4 +90,119 @@ html {
 
 .chronos__selected {
   font-weight: bold;
+}
+
+.average {
+  background: linear-gradient(63.5deg, #0038FF 0%, #00FFFF 100%);
+  border-radius: 15px;
+  margin-top:15%;
+  padding: 4%;
+}
+
+.average__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10%;
+}
+
+.average__results__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.average__results__container hr {
+  border: 1px solid white;
+  border-radius: 10px;
+  opacity: 0.5;
+  margin: 0;
+}
+
+.average__title__label h2 {
+  margin: 0;
+}
+
+.average__title__label p {
+  font-size: 12px;
+}
+
+.average__title__result {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.average__results {
+  width: 100%;
+  text-align: center;
+}
+
+.average__results__label {
+  font-size: 12px;
+}
+
+.average__results__chrono {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  margin: 5% 0;
+}
+
+.graph__average, .graph__time {
+  padding: 3%;
+  margin: 5% 0;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: #2C3E5B;
+
+}
+
+.graph__average__img, .graph__time__img {
+  width: 25px;
+  height: max-content;
+}
+
+.graph__average__text, .graph__time__text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.graph__average__button, .graph__time__button {
+  width: 12px;
+  height: max-content;
+  align-self: center;
+}
+
+.extremum {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.extremum__best, .extremum__worst {
+  width: 47%;
+  height: 150px;
+  background-color: #2C3E5B;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.extremum__best__label, .extremum__worst__label {
+  font-size: 12px;
+  line-height: 93.4%;
+
+  text-align: center;
+}
+
+.extremum__worst__time, .extremum__best__time {
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
