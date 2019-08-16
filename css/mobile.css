@@ -236,6 +236,9 @@ footer {
 }
 
 .footer__menu {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -254,8 +257,51 @@ footer {
   height: max-content;
 }
 
-@media screen and (min-width: 640px) {
-  html {
-    background-color: red;
+.footer__button {
+  position: relative;
+  z-index: 3;
+
+  background: linear-gradient(34.53deg, #0038FF 11.14%, #00FFFF 83.88%);
+
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  margin: -12%  auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 5px solid #18243D;
+}
+
+.footer__button__img {
+  width: 35px;
+}
+
+.button__container {
+  width: 75%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media only screen and (max-height: 736px) {
+  .chronos {
+    margin-top: 2%;
+  }
+  .average {
+    margin-top: 12%;
+  }
+  .average__title {
+    margin-bottom: 5%;
+  }
+  .graph__average, .graph__time {
+    margin: 3% 0;
+  }
+  .probability {
+    margin: 0;
   }
 }
