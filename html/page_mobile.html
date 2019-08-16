@@ -95,7 +95,7 @@
       </div>
     </div>
     <footer>
-        <div class="footer__button">
+        <div class="footer__button" id="addBtn">
             <img class="footer__button__img" alt="add" src="../image/add.png" />
         </div>
         <div class="footer__menu">
@@ -109,30 +109,33 @@
             </div>
         </div>
     </footer>
-    <div class="modal__add" id="AddButton">
-            <h2> Ajouter un fichier</h2>
-            <button class="modal__add__button">Ajouter</button>
-            <div class="modal__button__container">
-                <p>Average</p>
-                <p class="modal__arrow">▼</p>
-            </div>
-            <div class="modal__button__container">
-                <p>Standard deviation</p>
-                <p class="modal__arrow">▼</p>
-            </div>
-            <div class="modal__button__container">
-                <p>Relative Standard Deviation</p>
-                <p class="modal__arrow">▼</p>
-            </div>
-            <div class="modal__button__container">
-                <p>Exponential Regression</p>
-                <p class="modal__arrow">▼</p>
-            </div>
-            <div class="modal__button__container">
-                <p>Probability</p>
-                <p class="modal__arrow">▼</p>
-            </div>
-            <button class="modal__add__param">Paramètres par défaut</button>
+    <div class="modal" id="addModal">
+      <div class="modal__add" id="insideModal">
+        <h2> Ajouter un fichier</h2>
+        <button class="modal__add__button">Ajouter</button>
+        <div class="modal__button__container">
+            <p>Average</p>
+            <p class="modal__arrow">▼</p>
+        </div>
+        <div class="modal__button__container">
+            <p>Standard deviation</p>
+            <p class="modal__arrow">▼</p>
+        </div>
+        <div class="modal__button__container">
+            <p>Relative Standard Deviation</p>
+            <p class="modal__arrow">▼</p>
+        </div>
+        <div class="modal__button__container">
+            <p>Exponential Regression</p>
+            <p class="modal__arrow">▼</p>
+        </div>
+        <div class="modal__button__container">
+            <p>Probability</p>
+            <p class="modal__arrow">▼</p>
+        </div>
+        <button class="modal__add__param">Paramètres par défaut</button>
+      </div>
     </div>
   </body>
+  <script type="text/javascript" src="../js/eventHandler.js"></script>
 </html>

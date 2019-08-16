@@ -296,8 +296,16 @@ button {
   justify-content: space-between;
 }
 
-#AddButton {
-  display: none;
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+
+#addModal {
+  display: none;;
 }
 
 .modal__add {
