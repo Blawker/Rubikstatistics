@@ -32,3 +32,10 @@ cubeModal.addEventListener('click', (e) => {
     cubeModal.style.display = 'none';
   }
 })
+
+/** ALERT Chrono et Share btn **/
+
+const chrono = document.getElementById('openChronos');
+chrono.addEventListener('click', () => alert('fonctionalité indisponible (en cours de dev)'));
+const share = document.getElementById('share');
+share.addEventListener('click', () => alert('fonctionalité indisponible (en cours de dev)'));

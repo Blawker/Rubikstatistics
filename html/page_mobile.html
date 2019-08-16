@@ -100,10 +100,10 @@
         </div>
         <div class="footer__menu">
             <div class="button__container">
-              <button>
+              <button id="openChronos">
                   <img class="footer__img" alt="chronos" src="../image/chronos.png"/>
               </button>
-              <button>
+              <button id="share">
                   <img class="footer__img" alt="share" src="../image/share.png"/>
               </button>
             </div>
@@ -112,7 +112,10 @@
     <div class="modal" id="addModal">
       <div class="modal__add" id="insideModal">
         <h2> Ajouter un fichier</h2>
-        <button class="modal__add__button">Ajouter</button>
+        <div class="modal__add__button__wrapper">
+          <button class="modal__add__button">Ajouter</button>
+          <input type="file" class="modal__add__button" id="fileUpload" size="8" style="font-size:20pt;"></input>
+        </div>
         <div class="modal__button__container">
             <p>Average</p>
             <p class="modal__arrow">▼</p>

@@ -332,6 +332,20 @@ button {
   margin-bottom: 5%;
 }
 
+.modal__add__button__wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 29%;
+}
+
+.modal__add__button__wrapper input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
 .modal__add__button {
   display: flex;
   align-items: center;
@@ -401,6 +415,8 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  margin-top: 8%;
 }
 
 #cubeModal {
