@@ -10,7 +10,7 @@
     <div class="body">
       <div class="header">
           <div class="header__cube">
-              <img class="header__img" alt="3x3 cube" src="../image/cube/Cube.png"/>
+              <img class="header__img" id="activeCube" alt="3x3 cube" src="../image/cube/Cube3.png"/>
           </div>
           <div class="header__label">
               <p class="header__name">
@@ -20,7 +20,7 @@
                   <b>Niveau:</b> Epique
               </p>
           </div>
-          <img class="header__img" alt="parameters" src="../image/gear_white.png" />
+          <img class="header__img" id="openParamModal" alt="parameters" src="../image/gear_white.png" />
       </div>
       <div class="chronos">
           <img class="chronos__img" alt="chronos" src="../image/chronos.png" />
@@ -90,7 +90,7 @@
             <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
       </div>
       <div class="probability">
-            <img class="probability__img" alt="graphic" src="../image/cube/Cube.png" />
+            <img class="probability__img" alt="graphic" src="../image/cube/Cube3.png" />
             <p class="probability__text" id="probability"> 0 cubes avant avg50 sub20</p>
       </div>
     </div>
@@ -134,6 +134,60 @@
             <p class="modal__arrow">▼</p>
         </div>
         <button class="modal__add__param">Paramètres par défaut</button>
+      </div>
+    </div>
+    <div class="modal" id="paramModal">
+        <div class="modal__param" id="insideParamModal">
+          <div class="modal__param__container">
+              <button class="modal__add__param">Paramètres par défaut</button>
+          </div>
+
+          <div class="modal__button__container">
+              <p>Average</p>
+              <p class="modal__arrow">▼</p>
+          </div>
+          <div class="modal__button__container">
+              <p>Standard deviation</p>
+              <p class="modal__arrow">▼</p>
+          </div>
+          <div class="modal__button__container">
+              <p>Relative Standard Deviation</p>
+              <p class="modal__arrow">▼</p>
+          </div>
+          <div class="modal__button__container">
+              <p>Exponential Regression</p>
+              <p class="modal__arrow">▼</p>
+          </div>
+          <div class="modal__button__container">
+              <p>Probability</p>
+              <p class="modal__arrow">▼</p>
+          </div>
+
+        </div>
+    </div>
+    <div class="modal" id="cubeModal">
+      <div class="modal__cube">
+        <h2> Sélectionne ton cube : </h2>
+        <div class="modal__cube__container">
+            <div class="modal__cube__image__container" id="active">
+                <img src="../image/cube/Cube3.png" alt="3x3" />
+            </div>
+            <div class="modal__cube__image__container">
+                <img src="../image/cube/Cube2.png" alt="2x2" />
+            </div>
+            <div class="modal__cube__image__container">
+                <img src="../image/cube/Cube4.png" alt="4x4" />
+            </div>
+            <div class="modal__cube__image__container">
+                <img src="../image/cube/Cube5.png" alt="5x5" />
+            </div>
+            <div class="modal__cube__image__container">
+                <img src="../image/cube/Cube6.png" alt="6x6" />
+            </div>
+            <div class="modal__cube__image__container">
+                <img src="../image/cube/Cube7.png" alt="7x7" />
+            </div>
+        </div>
       </div>
     </div>
   </body>

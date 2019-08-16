@@ -380,6 +380,78 @@ button {
   font-family: 'Aldrich', sans-serif;
 }
 
+#paramModal {
+  display: none;
+}
+
+.modal__param {
+  position: fixed;
+  top: -15px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #2C3E5B;
+}
+
+.modal__param > * {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.modal__param__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#cubeModal {
+  display: none;
+}
+
+#active {
+  background: linear-gradient(225deg, #00FFFF 0%, #0038FF 100%);
+}
+
+.modal__cube {
+  position: fixed;
+  top: 50px;
+  width: 90%;
+  margin-left: 5%;
+  background-color: #2C3E5B;
+}
+
+.modal__cube > * {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.modal__cube h2 {
+  width: 100%;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.modal__cube__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal__cube__image__container {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 5%;
+}
+
+.modal__cube__image__container img{
+  width: 40px;
+  height: 40px;
+}
+
 @media only screen and (max-height: 736px) {
   .chronos {
     margin-top: 2%;
