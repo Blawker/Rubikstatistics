@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600i,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aldrich&display=swap');
 
 html {
   background: linear-gradient(359.75deg, #18243D 69.07%, #2A3D5C 99.93%);
@@ -20,6 +21,13 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+button {
+  border: none;
+  color: inherit;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
 }
 
 .body {
@@ -261,7 +269,7 @@ footer {
   position: relative;
   z-index: 3;
 
-  background: linear-gradient(34.53deg, #0038FF 11.14%, #00FFFF 83.88%);
+  background: linear-gradient(34.53deg, #0038FF 11.14%, #00FFFF 83.88%, #0038FF 100%);
 
   width: 75px;
   height: 75px;
@@ -286,6 +294,82 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#AddButton {
+  display: none;
+}
+
+.modal__add {
+  position: fixed;
+  bottom: -5px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #2C3E5B;
+}
+
+.modal__add > * {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.modal__add h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+
+  margin-top:8  %;
+  margin-bottom: 5%;
+}
+
+.modal__add__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 155px;
+  height: 40px;
+  margin:auto;
+  margin-bottom: 5%;
+
+  background: linear-gradient(255.01deg, #00FFFF 0%, #0038FF 101.47%);
+  border-radius: 32px;
+
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: bold;
+
+}
+
+.modal__button__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal__button__container p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+
+.modal__add__param {
+  width: 230px;
+  height:40px;
+  background: linear-gradient(276.25deg, #00FFFF 5.33%, #0038FF 94.88%);
+  border-radius: 45px;
+  margin-bottom: 8%;
+  margin-top: 8%;
+
+  font-weight: bold;
+  font-size: 14px;
+
+}
+
+.modal__arrow {
+  font-family: 'Aldrich', sans-serif;
 }
 
 @media only screen and (max-height: 736px) {
