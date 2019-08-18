@@ -19,7 +19,7 @@ function display(theme,categorie,data) {
 
   // setup cube
   const type_cube=["2x2x2","3x3x3","4x4x4","5x5x5","6x6x6","7x7x7","Megaminx"];
-  const scale_table=[ 1,      1,       5,     15,     15,     15,     10]; // en secondes
+  const scale_table=[ 1,      1,      5,      15,     15,     15,     10]; // en secondes
   var scale=1;
   //context.lineWidth=2;
 

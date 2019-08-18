@@ -53,7 +53,17 @@ function valeurs_tableau(liste,val) {
   document.getElementById("chronos_total").innerHTML=" "+String(liste.length);
   document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
   document.getElementById("extremum__worst__time").innerHTML=str_round(compte_to_time(maxi_liste(liste)));
-  for (var i=1; i<val.length; i++) {
+
+  const level_score=[5,10,15,30]; // for the 3x3
+  const level_name=["Legendary","Epique","Rare","Common"];
+  for (let i=0; i<level_score.length; i++) {
+    if (mini_liste(liste)<=level_score[i]) {
+      document.getElementById("level_cuber").innerHTML=level_name[i];
+      break;
+    }
+  }
+
+  for (let i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
       affichage("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n),liste,n);
