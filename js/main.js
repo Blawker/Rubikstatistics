@@ -8,7 +8,7 @@ function main_dark() {
 
 
 function main(theme) {
-  const categorie=String(document.getElementById("choix_cubes").value);
+  const categorie="3x3x3"; //String(document.getElementById("choix_cubes").value);
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 
@@ -20,7 +20,9 @@ function main(theme) {
         var table=document.createElement("table");
         var rows=e.target.result.split("\n");
 
-        if (document.getElementById("choice_application").value=="Twisty Timer") {
+        const application="Cube Timer"; //document.getElementById("choice_application").value;
+        
+        if (application=="Twisty Timer") {
           if (categorie=="3x3x3") {
             for (var i=0; i<rows.length-1; i++) {
               const temp=rows[i].split(";")[0].split("\"")[1];
@@ -32,7 +34,7 @@ function main(theme) {
           liste.reverse();
         }
 
-        else if (document.getElementById("choice_application").value=="Cube Timer") {
+        else if (application=="Cube Timer") {
           // cherche les données dans le fichier .csv
           for (var i=0; i<rows.length; i++) {
             var row=table.insertRow(-1);

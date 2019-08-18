@@ -1,7 +1,7 @@
 function display(theme,categorie,data) {
-  const periode=parseInt(document.getElementById("input_nb_chronos").value);
-  var canvas=document.getElementById("canvas");
-  var context=canvas.getContext("2d");
+  const periode=parseInt(document.getElementById("chronos_selected").value);
+  //var canvas=document.getElementById("canvas");
+  //var context=canvas.getContext("2d");
   const len_l=data.length;
   const margin=100;
   var liste=[];
@@ -21,16 +21,17 @@ function display(theme,categorie,data) {
   const type_cube=["2x2x2","3x3x3","4x4x4","5x5x5","6x6x6","7x7x7","Megaminx"];
   const scale_table=[ 1,      1,       5,     15,     15,     15,     10]; // en secondes
   var scale=1;
-  context.lineWidth=2;
+  //context.lineWidth=2;
 
-  context.clearRect(0,0,canvas.width,canvas.height);
+  //context.clearRect(0,0,canvas.width,canvas.height);
 
   // update image cube selection
-  document.getElementById("cube_selection_image").src="../image/cube/"+categorie+".jpg";
+  //document.getElementById("cube_selection_image").src="../image/cube/"+categorie+".jpg";
 
   // update the value of the table
   valeurs_tableau(data,val);
 
+  /*
   // restriction du nombre de données
   if (len_l>periode) {
     for (var i=0; i<periode; i++) {
@@ -80,5 +81,5 @@ function display(theme,categorie,data) {
     // graphique chrono & moyenne & écart-type
     draw_text(context,"Chronos Chart",10,30,color[0],26);
     graphique(canvas,context,liste,val,color,style,scale,canvas.height,canvas.height-margin/2,margin);
-  }
+  }*/
 }

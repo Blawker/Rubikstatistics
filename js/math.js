@@ -50,8 +50,9 @@ function compte_to_time(n) {
 
 
 function valeurs_tableau(liste,val) {
-  document.getElementById("nb_total_chronos").innerHTML=" "+String(liste.length);
-  document.getElementById("PB").innerHTML="PB: "+str_round(compte_to_time(mini_liste(liste)));
+  document.getElementById("chronos_total").innerHTML=" "+String(liste.length);
+  document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
+  document.getElementById("extremum__worst__time").innerHTML=str_round(compte_to_time(maxi_liste(liste)));
   for (var i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
@@ -64,10 +65,18 @@ function valeurs_tableau(liste,val) {
 }
 
 function affichage(best_avg,avg,std,rsd,liste,n) {
-  document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
-  document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
-  document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
-  document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+  if (document.getElementById(best_avg)!=null) {
+    document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
+  }
+  if (document.getElementById(avg)!=null) {
+    document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
+  }
+  if (document.getElementById(std)!=null) {
+    document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
+  }
+  if (document.getElementById(rsd)!=null) {
+    document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+  }
 }
 
 function str_min_round(str) {
@@ -114,10 +123,18 @@ function str_round(str) {
 }
 
 function vide(best_avg,avg,std,rsd) {
-  document.getElementById(best_avg).innerHTML="";
-  document.getElementById(avg).innerHTML="";
-  document.getElementById(std).innerHTML="";
-  document.getElementById(rsd).innerHTML="";
+  if (document.getElementById(best_avg)!=null) {
+    document.getElementById(best_avg).innerHTML="";
+  }
+  if (document.getElementById(avg)!=null) {
+    document.getElementById(avg).innerHTML="";
+  }
+  if (document.getElementById(std)!=null) {
+    document.getElementById(std).innerHTML="";
+  }
+  if (document.getElementById(rsd)!=null) {
+    document.getElementById(rsd).innerHTML="";
+  }
 }
 
 
