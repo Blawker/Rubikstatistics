@@ -61,6 +61,11 @@
               </div>
           </div>
       </div>
+      <div class="table__average graph__average">
+            <img class="graph__average__img" alt="graphic" src="../image/table.png" />
+            <p class="graph__average__text"> Voir le tableau des moyennes</p>
+            <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+      </div>
       <div class="graph__average">
             <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
             <p class="graph__average__text"> Voir le graphique des moyennes</p>
@@ -112,10 +117,20 @@
     <div class="modal" id="addModal" onclick="main_dark()">
       <div class="modal__add" id="insideModal">
         <h2> Ajouter un fichier</h2>
-        <div class="modal__add__button__wrapper">
-          <button class="modal__add__button">Ajouter</button>
-          <input type="file" class="modal__add__button" id="fileUpload" size="8" style="font-size:20pt;"></input>
+        <div class="row__container">
+          <div class="modal__add__button__wrapper">
+            <button class="modal__add__button">Ajouter</button>
+            <input type="file" class="modal__add__button" id="fileUpload" size="8" style="font-size:20pt;"></input>
+          </div>
+          <div>
+            <input list="application" type="text" id="choice_application" class="input_style" onfocus="this.value=''" size="8"></input>
+            <datalist id="application">
+              <option value="Cube Timer">
+              <option value="Twisty Timer">
+            </datalist>
+          </div>
         </div>
+
         <div class="modal__button__container">
             <p>Average</p>
             <p class="modal__arrow">▼</p>
