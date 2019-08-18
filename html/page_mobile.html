@@ -36,28 +36,28 @@
                   <h2>Moyenne</h2>
                   <p> Meilleurs moyenne des 5</p>
               </div>
-              <p class="average__title__result" id="best_average"> 12.102s</p>
+              <p class="average__title__result" id="best_avg5"> 12.102s</p>
           </div>
           <div class="average__results__container">
               <div class="average__results">
                 <p class="average__results__label">
                     5 derniers
                 </p>
-                <p class="average__results__chrono" id="average_results__5"> 18.560 s</p>
+                <p class="average__results__chrono" id="avg5"> 18.560 s</p>
               </div>
               <hr/>
               <div class="average__results">
                 <p class="average__results__label">
                     20 derniers
                 </p>
-                <p class="average__results__chrono" id="average_results__5"> 17.960 s</p>
+                <p class="average__results__chrono" id="avg12"> 17.960 s</p>
               </div>
               <hr/>
               <div class="average__results">
                 <p class="average__results__label">
                     50 derniers
                 </p>
-                <p class="average__results__chrono" id="average_results__5"> 19.241 s</p>
+                <p class="average__results__chrono" id="avg50"> 19.241 s</p>
               </div>
           </div>
       </div>
@@ -71,7 +71,7 @@
               <p class="extremum__best__label">
                   Meilleurs temps
               </p>
-              <p class="extremum__best__time">
+              <p class="extremum__best__time" id="extremum__best__time">
                   10.103 s
               </p>
           </div>
@@ -79,7 +79,7 @@
             <p class="extremum__worst__label">
                 Meilleurs moyennes des 5
             </p>
-            <p class="extremum__worst__time">
+            <p class="extremum__worst__time" id="extremum__worst__time">
                 12.230 s
             </p>
           </div>
@@ -109,7 +109,7 @@
             </div>
         </div>
     </footer>
-    <div class="modal" id="addModal">
+    <div class="modal" id="addModal" onclick="main_dark()">
       <div class="modal__add" id="insideModal">
         <h2> Ajouter un fichier</h2>
         <div class="modal__add__button__wrapper">
@@ -195,4 +195,9 @@
     </div>
   </body>
   <script type="text/javascript" src="../js/eventHandler.js"></script>
+
+  <script type="text/javascript" src="../js/math.js"></script>
+  <script type="text/javascript" src="../js/drawing.js"></script>
+  <script type="text/javascript" src="../js/display.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
 </html>
