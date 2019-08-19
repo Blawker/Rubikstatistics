@@ -20,8 +20,7 @@ function main(theme) {
         var table=document.createElement("table");
         var rows=e.target.result.split("\n");
 
-        const application="Cube Timer"; //document.getElementById("choice_application").value;
-        
+        const application=document.getElementById("choice_application").value;
         if (application=="Twisty Timer") {
           if (categorie=="3x3x3") {
             for (var i=0; i<rows.length-1; i++) {
