@@ -302,6 +302,11 @@ button {
   justify-content: space-between;
 }
 
+.center {
+  justify-content: space-evenly;
+  margin-bottom: 5%;
+}
+
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
@@ -342,7 +347,6 @@ button {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  margin-left: 29%;
 }
 
 .modal__add__button__wrapper input[type=file] {
@@ -370,6 +374,25 @@ button {
   font-weight: bold;
 
 }
+
+.modal__add__input {
+    width: 300px;
+    height: 80px;
+}
+
+.modal__add__input input {
+  width: 100%;
+  height: 100%;
+  border-radius: 64px;
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+  border: 0;
+
+  font-size: 36px;
+  color: grey;
+}
+
 
 .modal__button__container {
   display: flex;
@@ -697,8 +720,9 @@ button {
   }
 
   .extremum__best, .extremum__worst {
+    position: relative;
     width: 47%;
-    height: 300px;
+    height: 450px;
     background-color: #2C3E5B;
     border-radius: 20px;
     display: flex;
@@ -718,6 +742,94 @@ button {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     text-align: center;
+  }
+
+  .bg {
+    opacity: .4;
+  }
+  svg {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: block;
+    width: 90%;
+    height: 90%;
+    transform: rotate(-90deg);
+}
+  }
+  circle {
+  	// stroke-width: 6;
+  	stroke-linecap: round;
+  	fill: none;
+  	// stroke-dasharray: 0 409;
+  	// opacity: 0;
+  }
+  .c1 {
+  	animation: c1 1s ease-in-out both 1s;
+  }
+  .c2 {
+  	animation: c2 1s ease-in-out both 1s;
+  }
+  .c3 {
+  	animation: c3 1s ease-in-out both 1s;
+  }
+  .c4 {
+  	animation: c4 1s ease-in-out both 1s;
+  }
+
+  .c5 {
+  	animation: c5 1s ease-in-out both 1s;
+  }
+
+  @keyframes c1 {
+  	0% {
+  		opacity: 0;
+  		stroke-dasharray: 0 409;
+  	}
+  	100% {
+  		//stroke-dasharray: 30 379;
+  		opacity: 1;
+  	}
+  }
+  @keyframes c2 {
+  	0% {
+  		opacity: 0;
+  		stroke-dasharray: 0 409;
+  	}
+  	100% {
+  		//stroke-dasharray: 166 243;
+  		opacity: 1;
+  	}
+  }
+  @keyframes c3 {
+  	0% {
+  		opacity: 0;
+  		stroke-dasharray: 0 409;
+  	}
+  	100% {
+  		//stroke-dasharray: 86 323;
+  		opacity: 1;
+  	}
+  }
+  @keyframes c4 {
+  	0% {
+  		opacity: 0;
+  		stroke-dasharray: 0 409;
+  	}
+  	100% {
+  		//stroke-dasharray: 86 323;
+  		opacity: 1;
+  	}
+  }
+  @keyframes c5 {
+  	0% {
+  		opacity: 0;
+  		stroke-dasharray: 0 409;
+  	}
+  	100% {
+  		//stroke-dasharray: 86 323;
+  		opacity: 1;
+  	}
   }
 
   .probability {
@@ -830,7 +942,6 @@ button {
     position: relative;
     display: inline-block;
     overflow: hidden;
-    margin-left: 29%;
   }
 
   .modal__add__button__wrapper input[type=file] {
@@ -845,7 +956,7 @@ button {
     align-items: center;
     justify-content: center;
 
-    width: 155px;
+    width: 300px;
     height: 80px;
     margin:auto;
     margin-bottom: 5%;
@@ -854,7 +965,6 @@ button {
     border-radius: 64px;
 
     font-size: 36px;
-    line-height: 100px;
     font-weight: bold;
 
   }
@@ -871,6 +981,9 @@ button {
     margin-bottom: 5%;
   }
 
+  .modal__add__input {
+    width: 300px;
+  }
   .modal__add__param {
     width: 460px;
     height:80px;
