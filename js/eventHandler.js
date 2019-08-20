@@ -54,3 +54,17 @@ document.getElementById('rsd12-chart').setAttribute('stroke-dasharray', "300 500
 document.getElementById('rsd50-chart').setAttribute('stroke-dasharray', "220 500");
 document.getElementById('rsd100-chart').setAttribute('stroke-dasharray', "190 500");
 */
+
+/*** PARAMETERS ***/
+const openOption = (str) => {
+  if (document.getElementById(str + 'Arrow').innerHTML === "▼") {
+      document.getElementById(str + 'Option').style.display="block";
+      document.getElementById(str + 'Arrow').innerHTML="▲";
+  }
+  else {
+    document.getElementById(str + 'Option').style.display="none";
+    document.getElementById(str + 'Arrow').innerHTML="▼";
+  }
+}
+
+document.getElementById('average').addEventListener('click', () => openOption('average'));

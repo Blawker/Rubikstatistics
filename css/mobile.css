@@ -226,7 +226,7 @@ button {
 }
 
 .extremum__worst__time, .extremum__best__time {
-  font-size: 24px;
+  font-size: 36px;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   text-align: center;
@@ -267,7 +267,7 @@ button {
 }
 
 .footer__img {
-  width: 24px;
+  width: 36px;
   height: max-content;
 }
 
@@ -334,7 +334,7 @@ button {
 
 .modal__add h2 {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 36px;
   line-height: 33px;
   display: flex;
   align-items: center;
@@ -452,7 +452,7 @@ button {
   display: none;
 }
 
-#active {
+.active {
   background: linear-gradient(225deg, #00FFFF 0%, #0038FF 100%);
 }
 
@@ -577,7 +577,7 @@ button {
   .header__name {
     color: white;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .header__level {
@@ -611,8 +611,8 @@ button {
   }
 
   .chronos__img {
-    width: 24px;
-    height: max-content;
+    width: 36px;
+    height: 36px;
     align-self: center;
   }
 
@@ -674,7 +674,7 @@ button {
   }
 
   .average__results__label {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   .average__results__chrono {
@@ -702,13 +702,13 @@ button {
   }
 
   .graph__average__text, .graph__time__text, .probability__text {
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     align-self: center;
   }
 
   .graph__average__button, .graph__time__button {
-    width: 24px;
+    width: 36px;
     height: max-content;
     align-self: center;
   }
@@ -731,7 +731,7 @@ button {
   }
 
   .extremum__best__label, .extremum__worst__label {
-    font-size: 24px;
+    font-size: 36px;
     line-height: 93.4%;
 
     text-align: center;
@@ -866,7 +866,7 @@ button {
 
   .footer__img {
     width: 48px;
-    height: max-content;
+    height: 55px;
   }
 
   .footer__button {
@@ -1046,4 +1046,135 @@ button {
     width: 80px;
     height: 80px;
   }
+
+  #averageOption {
+    display: none;
+  }
+
+  .option__table {
+    width: 100%;
+    font-size: 36px;
+  }
+
+  .option__table td{
+    width: 20%;
+    text-align: center;
+  }
+
+/**** CHECKBOX *******/
+.option {
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+.checkbox__container p {
+  font-size: 36px;
+  text-align: center;
+  width: 20%;
+}
+
+.checkbox {
+  width: 20%;
+  margin-left:  27px;
+}
+
+.checkbox__container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  width: 90%;
+  height: 90px;
+}
+.checkbox input[type="checkbox"] {
+    opacity: 0;
+}
+
+.checkbox label {
+    position: relative;
+    display: inline-block;
+}
+
+.checkbox label::before,
+.checkbox label::after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+}
+
+/*Outer box of the fake checkbox*/
+.checkbox label::before{
+    height: 65px;
+    width: 65px;
+
+    border: 1px solid white;
+}
+
+/*Checkmark of the fake checkbox*/
+.checkbox label::after {
+    background:none;
+    height: 65px;
+    width: 65px;
+    font-size: 55px;
+    text-align: center;
+}
+
+/*
+.cinq label::before,
+.cinq label::after {
+  height: 65px;
+  width: 65px;
+  font-size: 45px;
+  text-align: center;
+  content:"5";
+}
+
+.douze label::before,
+.douze label::after {
+  height: 65px;
+  width: 65px;
+  font-size: 45px;
+  text-align: center;
+  content:"12";
+}
+
+.cinquante label::before,
+.cinquante label::after {
+  height: 65px;
+  width: 65px;
+  font-size: 45px;
+  text-align: center;
+  content:"50";
+}
+
+.cent label::before,
+.cent label::after {
+  height: 65px;
+  width: 100px;
+  font-size: 45px;
+  text-align: center;
+  content:"100";
+}
+
+.mille label::before,
+.mille label::after {
+  height: 65px;
+  width: 125px;
+  font-size: 45px;
+  text-align: center;
+  content:"1000";
+}*/
+
+/*Hide the checkmark by default*/
+.checkbox input[type="checkbox"] + label::after {
+    background: none;
+}
+
+/*Unhide on the checked state*/
+.checkbox input[type="checkbox"]:checked + label::after {
+    background:linear-gradient(63.5deg, #0038FF 0%, #00FFFF 100%);
+}
+
+
+
+
 }

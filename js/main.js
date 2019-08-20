@@ -6,9 +6,22 @@ function main_dark() {
   main("dark");
 }
 
+let categorie = "3x3x3";
 
+const setCategorie = (str) => {
+  document.getElementById(categorie).className = "modal__cube__image__container"
+  categorie = str;
+  document.getElementById(categorie).className = "modal__cube__image__container active"
+}
+
+document.getElementById("3x3x3").addEventListener("click", () => setCategorie("3x3x3"));
+document.getElementById("2x2x2").addEventListener("click", () => setCategorie("2x2x2"));
+document.getElementById("4x4x4").addEventListener("click", () => setCategorie("4x4x4"));
+document.getElementById("5x5x5").addEventListener("click", () => setCategorie("5x5x5"));
+document.getElementById("6x6x6").addEventListener("click", () => setCategorie("6x6x6"));
+document.getElementById("7x7x7").addEventListener("click", () => setCategorie("7x7x7"));
 function main(theme) {
-  const categorie="3x3x3"; //String(document.getElementById("choix_cubes").value);
+  //const categorie="3x3x3"; //String(document.getElementById("choix_cubes").value);
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 

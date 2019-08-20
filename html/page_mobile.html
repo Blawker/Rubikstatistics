@@ -146,14 +146,44 @@
             </datalist>
           </div>
         </div>
-
-        <div class="modal__button__container">
+        <div class="modal__button__container" id="average">
             <p>Average</p>
-            <p class="modal__arrow">▼</p>
+            <p class="modal__arrow" id="averageArrow">▼</p>
+        </div>
+        <div class="option" id="averageOption">
+          <div class="checkbox__container">
+              <p>5</p>
+              <p>12</p>
+              <p>50</p>
+              <p>100</p>
+              <p>1000</p>
+          </div>
+          <div class="checkbox__container">
+            <div class="checkbox cinq">
+              <input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg5_check">  </label>
+            </div>
+            <div class="checkbox douze">
+              <input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg12_check">  </label>
+            </div>
+            <div class="checkbox cinquante">
+              <input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg50_check">  </label>
+            </div>
+            <div class="checkbox cent">
+              <input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg100_check">  </label>
+            </div>
+            <div class="checkbox mille">
+              <input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg1000_check"  >  </label>
+            </div>
+          </div>
         </div>
         <div class="modal__button__container">
             <p>Standard deviation</p>
-            <p class="modal__arrow">▼</p>
+            <p class="modal__arrow" >▼</p>
         </div>
         <div class="modal__button__container">
             <p>Relative Standard Deviation</p>
@@ -199,28 +229,29 @@
 
         </div>
     </div>
-    <div class="modal" id="cubeModal">
+    <div class="modal" id="cubeModal" onclick="main_dark()">
       <div class="modal__cube">
         <h2> Sélectionne ton cube : </h2>
         <div class="modal__cube__container">
-            <div class="modal__cube__image__container" id="active">
-                <img src="../image/cube/3x3x3.svg" alt="3x3" />
+            <div id="3x3x3" class="modal__cube__image__container active" >
+                <img src="../image/cube/3x3x3.png" alt="3x3" />
             </div>
-            <div class="modal__cube__image__container">
-                <img src="../image/cube/4x4x4.svg" alt="2x2" />
+            <div id="2x2x2" class="modal__cube__image__container">
+                <img  src="../image/cube/2x2x2.png" alt="2x2" />
             </div>
-            <div class="modal__cube__image__container">
-                <img src="../image/cube/5x5x5.svg" alt="4x4" />
+            <div id="4x4x4" class="modal__cube__image__container">
+                <img  src="../image/cube/4x4x4.png" alt="4x4" />
             </div>
-            <div class="modal__cube__image__container">
-                <img src="../image/cube/6x6x6.svg" alt="5x5" />
+            <div id="5x5x5" class="modal__cube__image__container">
+                <img  src="../image/cube/5x5x5.png" alt="5x5" />
             </div>
-            <div class="modal__cube__image__container">
-                <img src="../image/cube/7x7x7.svg" alt="6x6" />
+            <div id="6x6x6" class="modal__cube__image__container">
+                <img  src="../image/cube/6x6x6.png" alt="6x6" />
             </div>
-            <div class="modal__cube__image__container">
-                <img src="../image/cube/2x2x2.svg" alt="7x7" />
+            <div id="7x7x7" class="modal__cube__image__container">
+                <img src="../image/cube/7x7x7.png" alt="7x7" />
             </div>
+
         </div>
       </div>
     </div>
