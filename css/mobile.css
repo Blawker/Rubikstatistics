@@ -755,14 +755,13 @@ button {
     width: 90%;
     height: 90%;
     transform: rotate(-90deg);
-}
   }
   circle {
-  	// stroke-width: 6;
   	stroke-linecap: round;
   	fill: none;
+    /*stroke-width: 6;
   	// stroke-dasharray: 0 409;
-  	// opacity: 0;
+  	// opacity: 0;*/
   }
   .c1 {
   	animation: c1 1s ease-in-out both 1s;
@@ -776,7 +775,6 @@ button {
   .c4 {
   	animation: c4 1s ease-in-out both 1s;
   }
-
   .c5 {
   	animation: c5 1s ease-in-out both 1s;
   }
@@ -787,7 +785,7 @@ button {
   		stroke-dasharray: 0 409;
   	}
   	100% {
-  		//stroke-dasharray: 30 379;
+  		/*stroke-dasharray: 30 379;*/
   		opacity: 1;
   	}
   }
@@ -797,7 +795,7 @@ button {
   		stroke-dasharray: 0 409;
   	}
   	100% {
-  		//stroke-dasharray: 166 243;
+  		/*stroke-dasharray: 166 243;*/
   		opacity: 1;
   	}
   }
@@ -807,7 +805,7 @@ button {
   		stroke-dasharray: 0 409;
   	}
   	100% {
-  		//stroke-dasharray: 86 323;
+  		/*stroke-dasharray: 86 323;*/
   		opacity: 1;
   	}
   }
@@ -817,7 +815,7 @@ button {
   		stroke-dasharray: 0 409;
   	}
   	100% {
-  		//stroke-dasharray: 86 323;
+  		/*stroke-dasharray: 86 323;*/
   		opacity: 1;
   	}
   }

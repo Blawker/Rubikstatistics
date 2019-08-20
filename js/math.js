@@ -52,7 +52,12 @@ function compte_to_time(n) {
 function valeurs_tableau(liste,val) {
   document.getElementById("chronos_total").innerHTML=" "+String(liste.length);
   document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
-  document.getElementById("extremum__worst__time").innerHTML=str_round(compte_to_time(maxi_liste(liste)));
+  document.getElementById("rsd_center_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,100)[0]*1000)/1000));
+  const pb_id_pie_chart=document.getElementById("pb_pie_chart");
+  if (pb_id_pie_chart!=null) {
+    const r=pb_id_pie_chart.r.baseVal.value;
+    pb_id_pie_chart.setAttribute('stroke-dasharray', String(mini_liste(liste)*2*Math.PI*r/60)+" "+String(2*Math.PI*r));
+  }
 
   const level_score=[5,10,15,30]; // for the 3x3
   const level_name=["Legendary","Epique","Rare","Common"];
@@ -86,6 +91,23 @@ function affichage(best_avg,avg,std,rsd,liste,n) {
   }
   if (document.getElementById(rsd)!=null) {
     document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+  }
+
+  if (document.getElementById(avg+"_pie_chart")!=null) {
+    const avg_id_pie_chart=document.getElementById(avg+"_pie_chart");
+    const avg_const=mobile_average(liste,n)[0];
+    const r=avg_id_pie_chart.r.baseVal.value;
+    const p=String(avg_const*2*Math.PI*r/60); // ou juste avg_const
+    const p_t=String(2*Math.PI*r);
+    avg_id_pie_chart.setAttribute('stroke-dasharray', p+" "+p_t);
+  }
+  if (document.getElementById(rsd+"_pie_chart")!=null) {
+    const rsd_id_pie_chart=document.getElementById(rsd+"_pie_chart");
+    const rsd_const=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
+    const r=rsd_id_pie_chart.r.baseVal.value;
+    const p=String(rsd_const*2*Math.PI*r/20);
+    const p_t=String(2*Math.PI*r);
+    rsd_id_pie_chart.setAttribute('stroke-dasharray', p+" "+p_t);
   }
 }
 

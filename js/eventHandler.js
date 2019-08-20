@@ -43,7 +43,7 @@ share.addEventListener('click', () => alert('fonctionalité indisponible (en cou
 
 /** GRAPH **/
 
-document.getElementById('pb-chart').setAttribute('stroke-dasharray', "350 500");
+/*document.getElementById('pb-chart').setAttribute('stroke-dasharray', "350 500");
 document.getElementById('avg5-chart').setAttribute('stroke-dasharray', "300 500");
 document.getElementById('avg12-chart').setAttribute('stroke-dasharray', "175 500");
 document.getElementById('avg50-chart').setAttribute('stroke-dasharray', "190 500");
@@ -53,3 +53,4 @@ document.getElementById('rsd5-chart').setAttribute('stroke-dasharray', "350 500"
 document.getElementById('rsd12-chart').setAttribute('stroke-dasharray', "300 500");
 document.getElementById('rsd50-chart').setAttribute('stroke-dasharray', "220 500");
 document.getElementById('rsd100-chart').setAttribute('stroke-dasharray', "190 500");
+*/
