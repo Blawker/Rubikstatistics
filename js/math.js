@@ -70,10 +70,31 @@ function update_circle_pie_chart(element,anime,liste,n) {
 
 function valeurs_tableau(liste,val) {
   document.getElementById("chronos_total").innerHTML=" "+String(liste.length);
-  document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
-  document.getElementById("rsd_center_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,100)[0]*1000)/1000));
-  if (document.getElementById("pb_pie_chart")!=null) {
-    update_circle_pie_chart(document.getElementById("pb_pie_chart"),document.getElementById("anime_pb_pie_chart"),liste);
+
+  // PB Pie Chart
+  if (liste.length!=0) {
+    document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
+    if (document.getElementById("pb_pie_chart")!=null) {
+      update_circle_pie_chart(document.getElementById("pb_pie_chart"),document.getElementById("anime_pb_pie_chart"),liste);
+    }
+  }
+  else {
+    document.getElementById("extremum__best__time").innerHTML="0.000";//"PB: "+str_round(compte_to_time(mini_liste(liste)));
+    if (document.getElementById("pb_pie_chart")!=null) {
+      update_circle_pie_chart(document.getElementById("pb_pie_chart"),document.getElementById("anime_pb_pie_chart"),[0]);
+    }
+  }
+
+  // RSD Pie Chart
+  for (let i=val.length-1; i>=0; i--) {
+    if (val[i]<=liste.length) {
+      document.getElementById("rsd_center_value_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,val[i])[0]*1000)/1000));
+      document.getElementById("rsd_center_label_pie_chart").innerHTML="Rsd"+String(val[i]);
+      break;
+    }
+    else {
+      document.getElementById("rsd_center_value_pie_chart").innerHTML="0.000";
+    }
   }
 
   const level_score=[5,10,15,30]; // for the 3x3
