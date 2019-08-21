@@ -76,11 +76,21 @@
               <svg viewbox="0 0 136 136" stroke-width="4">
                 <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
                 <!--text x="68" y="-68" fill="white" transform="rotate(90 0,0)">I love SVG!</text-->
-                <circle id="pb_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="100 500" stroke-dashoffset="0"/>
-                <circle id="avg5_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="130 500" stroke-dashoffset="0"/>
-                <circle id="avg12_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="150 500" stroke-dashoffset="0"/>
-                <circle id="avg50_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF00A8" stroke-dasharray="180 500" stroke-dashoffset="0"/>
-                <circle id="avg100_pie_chart" class="c5" cx="68" cy="68" r="45" stroke="#FF8A00" stroke-dasharray="200 500" stroke-dashoffset="0"/>
+                <circle id="pb_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="90 500" stroke-dashoffset="0">
+                  <animate id="anime_pb_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="90 409" to="0 500"/>
+                </circle>
+                <circle id="avg5_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="130 500" stroke-dashoffset="0">
+                  <animate id="anime_avg5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="130 500"/>
+                </circle>
+                <circle id="avg12_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="150 500" stroke-dashoffset="0">
+                  <animate id="anime_avg12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="150 500"/>
+                </circle>
+                <circle id="avg50_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF00A8" stroke-dasharray="180 500" stroke-dashoffset="0">
+                  <animate id="anime_avg50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
+                </circle>
+                <circle id="avg100_pie_chart" class="c5" cx="68" cy="68" r="45" stroke="#FF8A00" stroke-dasharray="200 500" stroke-dashoffset="0">
+                  <animate id="anime_avg100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="200 500"/>
+                </circle>
               </svg>
               <p class="extremum__best__label">
                   Meilleur temps
@@ -92,10 +102,18 @@
           <div class="extremum__worst">
             <svg viewbox="0 0 136 136" stroke-width="4">
               <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
-              <circle id="rsd5_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="170 500" stroke-dashoffset="0"/>
-              <circle id="rsd12_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="180 500" stroke-dashoffset="0"/>
-              <circle id="rsd50_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="120 500" stroke-dashoffset="0"/>
-              <circle id="rsd100_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF8A00" stroke-dasharray="140 500" stroke-dashoffset="0"/>
+              <circle id="rsd5_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="170 500" stroke-dashoffset="0">
+                <animate id="anime_rsd5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="170 500"/>
+              </circle>
+              <circle id="rsd12_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="180 500" stroke-dashoffset="0">
+                <animate id="anime_rsd12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
+              </circle>
+              <circle id="rsd50_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="120 500" stroke-dashoffset="0">
+                <animate id="anime_rsd50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="120 500"/>
+              </circle>
+              <circle id="rsd100_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF8A00" stroke-dasharray="140 500" stroke-dashoffset="0">
+                <animate id="anime_rsd100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="140 500"/>
+              </circle>
             </svg>
             <p class="extremum__worst__label">
                 Rsd100
