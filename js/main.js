@@ -25,6 +25,8 @@ function main(theme) {
   if (document.getElementById("choix_cubes")!=null) {
     categorie=String(document.getElementById("choix_cubes").value);
   }
+  // update image cube selection
+  document.getElementById("activeCube").src="../image/cube/"+categorie+".png";
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 

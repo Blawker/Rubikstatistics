@@ -9,11 +9,12 @@ const openModal = (element) => {
 addBtn.addEventListener('click', () => openModal(addModal));
 addModal.addEventListener('click', (e) => {
   if (e.target.id === 'addModal') {
-    addModal.style.display = 'none';
+    closeParamtModal();
   }
 })
 
 /** PARAMETERS MODAL EVENT HANDLER**/
+/*
 const openParamModal = document.getElementById('openParamModal');
 const paramModal = document.getElementById('paramModal');
 openParamModal.addEventListener('click', () => openModal(paramModal));
@@ -22,6 +23,29 @@ paramModal.addEventListener('click', (e) => {
     paramModal.style.display = 'none';
   }
 })
+*/
+const openParamModal = () => {
+  let modal = document.getElementById('insideModal');
+  modal.style.top='-50px';
+  modal.style.bottom='unset';
+  modal.style.paddingTop='200px';
+  document.getElementById('modalTitle').style.display = 'none';
+  document.getElementById('modalAddButton').style.display = 'none';
+  openModal(addModal);
+}
+
+const closeParamtModal = () => {
+  let modal = document.getElementById('insideModal');
+  modal.style.bottom='-10px';
+  modal.style.top='unset';
+  modal.style.paddingTop='unset';
+  document.getElementById('modalTitle').style.display = 'block';
+  document.getElementById('modalAddButton').style.display = 'flex';
+  addModal.style.display = 'none';
+}
+
+const paramModal = document.getElementById('openParamModal');
+paramModal.addEventListener('click', () => openParamModal());
 
 /** CUBE MODAL EVENT HANDLER **/
 const cube = document.getElementById('activeCube');
@@ -67,4 +91,8 @@ const openOption = (str) => {
   }
 }
 
-document.getElementById('average').addEventListener('click', () => openOption('average'));
+document.getElementById('avg').addEventListener('click', () => openOption('avg'));
+document.getElementById('std').addEventListener('click', () => openOption('std'));
+document.getElementById('rsd').addEventListener('click', () => openOption('rsd'));
+document.getElementById('reg').addEventListener('click', () => openOption('reg'));
+document.getElementById('rep').addEventListener('click', () => openOption('rep'));

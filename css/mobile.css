@@ -1047,9 +1047,22 @@ button {
     height: 80px;
   }
 
-  #averageOption {
+
+  #avgOption {
     display: none;
   }
+  #stdOption {
+    display: none;
+  }
+  #rsdOption {
+   display:none;
+  }
+   #regOption {
+     display: none;
+   }
+   #repOption {
+    display: none;
+   }
 
   .option__table {
     width: 100%;
@@ -1066,6 +1079,13 @@ button {
   margin-top: -20px;
   margin-bottom: 20px;
 }
+
+.option__label {
+  font-size: 36px;
+  align-self: center;
+  text-align: left;
+}
+
 .checkbox__container p {
   font-size: 36px;
   text-align: center;
@@ -1085,6 +1105,20 @@ button {
   width: 90%;
   height: 90px;
 }
+
+.checkbox__container--w50 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  width: 90%;
+  height: 90px;
+}
+
+.checkbox__container--w50 p{
+  width:80%;
+}
+
 .checkbox input[type="checkbox"] {
     opacity: 0;
 }
@@ -1118,52 +1152,6 @@ button {
     text-align: center;
 }
 
-/*
-.cinq label::before,
-.cinq label::after {
-  height: 65px;
-  width: 65px;
-  font-size: 45px;
-  text-align: center;
-  content:"5";
-}
-
-.douze label::before,
-.douze label::after {
-  height: 65px;
-  width: 65px;
-  font-size: 45px;
-  text-align: center;
-  content:"12";
-}
-
-.cinquante label::before,
-.cinquante label::after {
-  height: 65px;
-  width: 65px;
-  font-size: 45px;
-  text-align: center;
-  content:"50";
-}
-
-.cent label::before,
-.cent label::after {
-  height: 65px;
-  width: 100px;
-  font-size: 45px;
-  text-align: center;
-  content:"100";
-}
-
-.mille label::before,
-.mille label::after {
-  height: 65px;
-  width: 125px;
-  font-size: 45px;
-  text-align: center;
-  content:"1000";
-}*/
-
 /*Hide the checkmark by default*/
 .checkbox input[type="checkbox"] + label::after {
     background: none;
@@ -1174,7 +1162,58 @@ button {
     background:linear-gradient(63.5deg, #0038FF 0%, #00FFFF 100%);
 }
 
+/*** INPUT ***/
+
+.input__container {
+  display: flex;
+  flex-direction: row;
+  font-size: 36px;
+  margin: 5% 0;
+}
+
+.input__chrono__container {
+  display: flex;
+  flex-direction: row;
+  font-size: 36px;
+  margin: 5% 0;
+}
+
+.input__chrono__container p {
+  width: 30%;
+  padding-left: 5%;
+}
+
+.input__chrono {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 36px;
+  margin: 5% 0;
+  width:42%;
+}
 
 
+.input__container > * {
+  width:50%;
+}
 
+input {
+  font-size:36px;
+  text-align: center;
+}
+
+.input__container .option__label {
+  padding-left: 5%;
+}
+
+.w--55 {
+  width:30%;
+}
+
+#avg_reg_input {
+  width: 100%;
+}
+
+.justify-content {
+  justify-content: space-between;
 }
