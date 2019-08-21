@@ -23,7 +23,7 @@ function draw_text(context,text,x,y,color,size) {
 
 function graphique(canvas,context,liste,val,color,style,scale,d,l,margin) { // val=valeurs des moyennes; d=distance par rapport au bord haut du canvas; l=largeur du graphique
   const max=maxi_liste(liste),min=mini_liste(liste);
-  const scale_x=(canvas.width-margin)/liste.length;
+  const scale_x=(canvas.width-margin)/(liste.length-1);
   const scale_y=(l-margin)/(max-min);
   const x0=20;
   const y0=d+min*scale_y-margin;
@@ -112,7 +112,7 @@ function plot(context,x0,y0,scale_x,scale_y,liste,color,style,text) {
       draw_arc(context,x0+i*scale_x,y0-liste[i]*scale_y,2);
     }
   }
-  draw_text(context,text,x0+i*scale_x,y0-liste[i-1]*scale_y,color,17);
+  draw_text(context,text,x0+(i-1)*scale_x+2,y0-liste[i-1]*scale_y,color,17);
 }
 
 function plot_pb(context,x0,y0,scale_x,scale_y,liste,color) {
@@ -187,7 +187,7 @@ function graph_rsd(canvas,context,liste,val,color,style,d,l,margin) {
       }
     }
   }
-  const scale_x=(canvas.width-margin)/liste.length;
+  const scale_x=(canvas.width-margin)/(liste.length-1);
   const scale_y=(l-margin)/(max-min);
   const x0=20;
   const y0=canvas.height+min*scale_y-margin/2;
@@ -219,19 +219,28 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
   const dt=(maxi_liste(liste)-mini_liste(liste))/1000;
   const t0=mini_liste(liste);
   const liste_rep=repartition_function(liste,t0,dt);
+
+  // draw the grid
+  console.log(parseInt(mini_liste(liste))-1,parseInt(maxi_liste(liste))+1,scale);
+  for (let i=parseInt(mini_liste(liste))-1; i<parseInt(maxi_liste(liste))+1; i+=scale) {
+    console.log(i);
+    draw_single_line(context,i*(canvas.width-2*margin)/liste_rep.length,0,i*(canvas.width-2*margin)/liste_rep.length,canvas.height,"gray");
+  }
+
+  // draw the repartition with the chronos
   plot(context,x0,y0,(canvas.width-2*margin)/liste_rep.length,l-margin,liste_rep,color[1],".-","");
 
   // middle of the repartition function
-  var offset_sig=0;
-  for (var i=0; i<liste_rep.length-1; i++) {
+  let offset_sig=0;
+  for (let i=0; i<liste_rep.length-1; i++) {
     if (liste_rep[i]<=0.5 && liste_rep[i+1]>=0.5) {
       offset_sig=dt*(2*i+1)/2;
       break;
     }
   }
   const a=4*derivate(liste_rep,offset_sig,dt,50);
-  var liste_sig=[];
-  for (var i=0; i<liste_rep.length; i++) {
+  let liste_sig=[];
+  for (let i=0; i<liste_rep.length; i++) {
     liste_sig.push(sigmoid(i*dt-offset_sig,a));
   }
   context.lineWidth=2;

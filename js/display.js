@@ -81,5 +81,5 @@ function display(theme,categorie,data) {
     // graphique chrono & moyenne & écart-type
     draw_text(context,"Chronos Chart",10,30,color[0],26);
     graphique(canvas,context,liste,val,color,style,scale,canvas.height,canvas.height-margin/2,margin);
-  }*/
+  }//*/
 }

@@ -21,7 +21,10 @@ document.getElementById("5x5x5").addEventListener("click", () => setCategorie("5
 document.getElementById("6x6x6").addEventListener("click", () => setCategorie("6x6x6"));
 document.getElementById("7x7x7").addEventListener("click", () => setCategorie("7x7x7"));
 function main(theme) {
-  //const categorie="3x3x3"; //String(document.getElementById("choix_cubes").value);
+  // choose the cube on the desktop version
+  if (document.getElementById("choix_cubes")!=null) {
+    categorie=String(document.getElementById("choix_cubes").value);
+  }
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 

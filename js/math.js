@@ -86,23 +86,28 @@ function valeurs_tableau(liste,val) {
   }
 
   // RSD Pie Chart
-  for (let i=val.length-1; i>=0; i--) {
-    if (val[i]<=liste.length) {
-      document.getElementById("rsd_center_value_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,val[i])[0]*1000)/1000));
-      document.getElementById("rsd_center_label_pie_chart").innerHTML="Rsd"+String(val[i]);
-      break;
-    }
-    else {
-      document.getElementById("rsd_center_value_pie_chart").innerHTML="0.000";
+  if (document.getElementById("rsd_center_value_pie_chart")!=null) {
+    for (let i=val.length-1; i>=0; i--) {
+      if (val[i]<=liste.length) {
+        document.getElementById("rsd_center_value_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,val[i])[0]*1000)/1000));
+        document.getElementById("rsd_center_label_pie_chart").innerHTML="Rsd"+String(val[i]);
+        break;
+      }
+      else {
+        document.getElementById("rsd_center_value_pie_chart").innerHTML="0.000";
+      }
     }
   }
 
-  const level_score=[5,10,15,30]; // for the 3x3
-  const level_name=["Legendary","Epique","Rare","Common"];
-  for (let i=0; i<level_score.length; i++) {
-    if (mini_liste(liste)<=level_score[i]) {
-      document.getElementById("level_cuber").innerHTML=level_name[i];
-      break;
+  // level of the Cuber
+  if (document.getElementById("level_cuber")!=null) {
+    const level_score=[5,10,15,30]; // for the 3x3
+    const level_name=["Legendary","Epique","Rare","Common"];
+    for (let i=0; i<level_score.length; i++) {
+      if (mini_liste(liste)<=level_score[i]) {
+        document.getElementById("level_cuber").innerHTML=level_name[i];
+        break;
+      }
     }
   }
 
