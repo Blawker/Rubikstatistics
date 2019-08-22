@@ -1064,6 +1064,10 @@ button {
     display: none;
    }
 
+   #tableAverage {
+     display: none;
+   }
+
   .option__table {
     width: 100%;
     font-size: 36px;
@@ -1216,4 +1220,36 @@ input {
 
 .justify-content {
   justify-content: space-between;
+}
+
+
+/*** Block Stat ***/
+
+.block__stat {
+  background-color: #2C3E5B;
+  border-radius: 40px;
+}
+
+.table__average__wrapper {
+  display: block;
+  font-size: 36px;
+  padding: 2%;
+}
+
+table {
+  text-align: center;
+}
+
+.table__entries {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.table__average tr {
+  margin-bottom: 2%;
+}
+
+td.table__entries {
+  text-align: right;
 }

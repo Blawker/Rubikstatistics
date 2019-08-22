@@ -3,7 +3,12 @@ const addBtn = document.getElementById('addBtn');
 const addModal = document.getElementById('addModal');
 
 const openModal = (element) => {
-  element.style.display = 'block';
+  if (element.style.display === 'none') {
+      element.style.display = 'block';
+  }
+  else {
+    element.style.display = 'none';
+  }
 };
 
 addBtn.addEventListener('click', () => openModal(addModal));
@@ -96,3 +101,8 @@ document.getElementById('std').addEventListener('click', () => openOption('std')
 document.getElementById('rsd').addEventListener('click', () => openOption('rsd'));
 document.getElementById('reg').addEventListener('click', () => openOption('reg'));
 document.getElementById('rep').addEventListener('click', () => openOption('rep'));
+
+
+/**** TABLE ***/
+
+document.getElementById('openTableAverage').addEventListener('click', () => openModal(document.getElementById('tableAverage')));

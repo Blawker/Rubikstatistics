@@ -61,11 +61,60 @@
               </div>
           </div>
       </div>
-      <div class="table__average graph__average">
-        <img class="graph__average__img" alt="graphic" src="../image/table.png" />
-        <p class="graph__average__text"> Show Average Table </p>
-        <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+      <div class="block__stat" id="openTableAverage">
+        <div class="table__average graph__average">
+          <img class="graph__average__img" alt="graphic" src="../image/table.png" />
+          <p class="graph__average__text"> Show Average Table </p>
+          <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div class="table__average__wrapper" id="tableAverage">
+          <table class="table__average">
+          <tr class="table__entries">
+            <td></td>
+            <td width="25%">Best Avg</td>
+            <td width="25%">Avg</td>
+            <td width="20%">Std</td>
+            <td width="20%">Rsd</td>
+          </tr>
+          <tr>
+            <td class="table__entries">5</td>
+            <td id="best_avg5"></td>
+            <td id="avg5"></td>
+            <td id="std5"></td>
+            <td id="rsd5"></td>
+          </tr>
+          <tr>
+            <td class="table__entries">12</td>
+            <td id="best_avg12"></td>
+            <td id="avg12"></td>
+            <td id="std12"></td>
+            <td id="rsd12"></td>
+          </tr>
+          <tr>
+            <td class="table__entries">50</td>
+            <td id="best_avg50"></td>
+            <td id="avg50"></td>
+            <td id="std50"></td>
+            <td id="rsd50"></td>
+          </tr>
+          <tr>
+            <td class="table__entries">100</td>
+            <td id="best_avg100"></td>
+            <td id="avg100"></td>
+            <td id="std100"></td>
+            <td id="rsd100"></td>
+          </tr>
+          <tr>
+            <td class="table__entries">1000</td>
+            <td id="best_avg1000"></td>
+            <td id="avg1000"></td>
+            <td id="std1000"></td>
+            <td id="rsd1000"></td>
+          </tr>
+        </table>
+        </div>
       </div>
+
       <div class="graph__average">
             <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
             <p class="graph__average__text"> Show graph of averages </p>
