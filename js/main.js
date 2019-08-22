@@ -6,7 +6,7 @@ function main_dark() {
   main("dark");
 }
 
-let categorie = "3x3x3";
+let categorie="3x3x3";
 
 const setCategorie = (str) => {
   document.getElementById(categorie).className = "modal__cube__image__container"
@@ -20,13 +20,20 @@ document.getElementById("4x4x4").addEventListener("click", () => setCategorie("4
 document.getElementById("5x5x5").addEventListener("click", () => setCategorie("5x5x5"));
 document.getElementById("6x6x6").addEventListener("click", () => setCategorie("6x6x6"));
 document.getElementById("7x7x7").addEventListener("click", () => setCategorie("7x7x7"));
+
 function main(theme) {
   // choose the cube on the desktop version
   if (document.getElementById("choix_cubes")!=null) {
     categorie=String(document.getElementById("choix_cubes").value);
+    // update image cube selection
+    document.getElementById("activeCube").src="../image/cube/"+categorie+".jpg";
   }
-  // update image cube selection
-  document.getElementById("activeCube").src="../image/cube/"+categorie+".png";
+  else {
+    // update image cube selection on mobile version
+    document.getElementById("activeCube").src="../image/cube/"+categorie+".png";
+  }
+
+  // extraction of the file
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 

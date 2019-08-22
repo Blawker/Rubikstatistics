@@ -29,7 +29,7 @@ function graphique(canvas,context,liste,val,color,style,scale,d,l,margin) { // v
   const y0=d+min*scale_y-margin;
 
   // plot grid
-  grid_plot(context,y0,scale_y,scale,min,max,"gray");
+  grid_plot(canvas,context,y0,scale_y,scale,min,max,"gray");
 
   // plot chrono
   plot(context,x0,y0,scale_x,scale_y,liste,color[0],style[0],"");
@@ -126,7 +126,7 @@ function plot_pb(context,x0,y0,scale_x,scale_y,liste,color) {
   //document.getElementById("PB").innerHTML="PB: "+compte_to_time((height-pbliste[1]-d)/c+x_m);
 }
 
-function grid_plot(context,y0,scale_y,scale,min,max,color) {
+function grid_plot(canvas,context,y0,scale_y,scale,min,max,color) {
   const cst=parseInt(min)%scale;
   for (var i=parseInt(min)-cst; i<=parseInt(max); i+=scale) {
     draw_single_line(context,0,y0-i*scale_y,canvas.width,y0-i*scale_y,color);
@@ -157,7 +157,7 @@ function plot_ecart_type(context,x0,y0,scale_x,scale_y,avg_liste,ect_liste,n,col
 }
 
 
-function grid_rsd(context,y0,scale_y,min,max,color) {
+function grid_rsd(canvas,context,y0,scale_y,min,max,color) {
   for (var i=parseInt(min); i<=parseInt(max); i++) {
     if (i==8 || i==12) {
       draw_single_line(context,0,y0-i*scale_y,canvas.width,y0-i*scale_y,"red");
@@ -192,7 +192,7 @@ function graph_rsd(canvas,context,liste,val,color,style,d,l,margin) {
   const x0=20;
   const y0=canvas.height+min*scale_y-margin/2;
 
-  grid_rsd(context,y0,scale_y,min,max,"gray");
+  grid_rsd(canvas,context,y0,scale_y,min,max,"gray");
 
   for (var i=1; i<val.length; i++) {
     if (document.getElementById("rsd"+String(val[i])+"_check").checked===true) {
@@ -221,9 +221,9 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
   const liste_rep=repartition_function(liste,t0,dt);
 
   // draw the grid
-  console.log(parseInt(mini_liste(liste))-1,parseInt(maxi_liste(liste))+1,scale);
+  //console.log(parseInt(mini_liste(liste))-1,parseInt(maxi_liste(liste))+1,scale);
   for (let i=parseInt(mini_liste(liste))-1; i<parseInt(maxi_liste(liste))+1; i+=scale) {
-    console.log(i);
+    //console.log(i);
     draw_single_line(context,i*(canvas.width-2*margin)/liste_rep.length,0,i*(canvas.width-2*margin)/liste_rep.length,canvas.height,"gray");
   }
 
