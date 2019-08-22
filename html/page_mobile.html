@@ -9,66 +9,66 @@
   <body>
     <div class="body">
       <div class="header">
-          <div class="header__cube">
-              <img class="header__img" id="activeCube" alt="3x3 cube" src="../image/cube/Cube3.png"/>
-          </div>
-          <div class="header__label">
-              <p class="header__name">
-                  Rubik'Statistics
-              </p>
-              <p class="header__level">
-                  <b>Niveau:</b> <b id="level_cuber">Epique</b>
-              </p>
-          </div>
-          <img class="header__img" id="openParamModal" alt="parameters" src="../image/gear_white.png"/>
+        <div class="header__cube">
+          <img class="header__img" id="activeCube" alt="3x3 cube" src="../image/cube/Cube3.png"/>
+        </div>
+        <div class="header__label">
+          <p class="header__name">
+            Rubik'Statistics
+          </p>
+          <p class="header__level">
+            <b>Level:</b> <b id="level_cuber">Epic</b>
+          </p>
+        </div>
+        <img class="header__img" id="openParamModal" alt="parameters" src="../image/gear_white.png"/>
       </div>
       <div class="chronos">
           <img class="chronos__img" alt="chronos" src="../image/chronos.png" />
           <div class="chronos__text">
-            <p class="chronos__selected" id="chronos_selected"> 200 </p>
+            <p class="chronos__selected" id="chronos_selected"> 100 </p>
             <p> / </p>
-            <p id="chronos_total"> 200 </p>
+            <p id="chronos_total"> 100 </p>
           </div>
       </div>
       <div class="average">
           <div class="average__title">
               <div class="average__title__label">
-                  <h2>Moyenne</h2>
-                  <p> Meilleurs moyenne des 5</p>
+                  <h2> Average </h2>
+                  <p> Best Average of 5 </p>
               </div>
               <p class="average__title__result" id="best_avg5"> 12.102s</p>
           </div>
           <div class="average__results__container">
               <div class="average__results">
                 <p class="average__results__label">
-                    5 derniers
+                    Last 5
                 </p>
-                <p class="average__results__chrono" id="avg5"> 18.560 s</p>
+                <p class="average__results__chrono" id="avg5"> 0.000 s</p>
               </div>
               <hr/>
               <div class="average__results">
                 <p class="average__results__label">
-                    20 derniers
+                    last 12
                 </p>
-                <p class="average__results__chrono" id="avg12"> 17.960 s</p>
+                <p class="average__results__chrono" id="avg12"> 0.000 s</p>
               </div>
               <hr/>
               <div class="average__results">
                 <p class="average__results__label">
-                    50 derniers
+                    Last 50
                 </p>
-                <p class="average__results__chrono" id="avg50"> 19.241 s</p>
+                <p class="average__results__chrono" id="avg50"> 0.000 s</p>
               </div>
           </div>
       </div>
       <div class="table__average graph__average">
             <img class="graph__average__img" alt="graphic" src="../image/table.png" />
-            <p class="graph__average__text"> Voir le tableau des moyennes</p>
+            <p class="graph__average__text"> Show Average Table </p>
             <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
       </div>
       <div class="graph__average">
             <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
-            <p class="graph__average__text"> Voir le graphique des moyennes</p>
+            <p class="graph__average__text"> Show graph of averages </p>
             <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
       </div>
       <div class="extremum">
@@ -93,7 +93,7 @@
                 </circle>
               </svg>
               <p class="extremum__best__label">
-                  Meilleur temps
+                  Personal Best
               </p>
               <p id="extremum__best__time" class="extremum__best__time">
                   0.000
@@ -125,12 +125,12 @@
       </div>
       <div class="graph__time">
             <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
-            <p class="graph__time__text"> Voir la répartition des chronos</p>
+            <p class="graph__time__text"> Show chrono distribution </p>
             <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
       </div>
       <div class="probability">
             <img class="probability__img" alt="graphic" src="../image/cube/Cube3.png" />
-            <p class="probability__text" id="probability"> 0 cubes avant avg50 sub20</p>
+            <p class="probability__text" id="probability"> 0 cubes before avg50 sub20</p>
       </div>
     </div>
     <footer>
@@ -150,10 +150,10 @@
     </footer>
     <div class="modal" id="addModal" onclick="main_dark()">
       <div class="modal__add" id="insideModal">
-        <h2 id="modalTitle"> Ajouter un fichier</h2>
+        <h2 id="modalTitle"> Add a file </h2>
         <div class="row__container center" id="modalAddButton">
           <div class="modal__add__button__wrapper">
-            <button class="modal__add__button">Ajouter</button>
+            <button class="modal__add__button"> Add </button>
             <input type="file" class="modal__add__button" id="fileUpload" size="8" style="font-size:20px;"></input>
           </div>
           <div class="modal__add__input">
@@ -308,7 +308,7 @@
                 <div class="row__container w--55 justify-content">
                   <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0>
                   <p> &nbsp : &nbsp </p>
-                  <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=15>
+                  <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=5>
                 </div>
             </div>
             <div class="input__chrono__container">
@@ -316,7 +316,7 @@
               <div class="row__container w--55 justify-content">
                   <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1"  size="1" value=0>
                   <p> &nbsp : &nbsp </p>
-                  <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1"  size="1" value=15>
+                  <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1"  size="1" value=20>
               </div>
             </div>
         </div>
@@ -325,27 +325,26 @@
     </div>
     <div class="modal" id="cubeModal" onclick="main_dark()">
       <div class="modal__cube">
-        <h2> Sélectionne ton cube : </h2>
+        <h2> Select your cube : </h2>
         <div class="modal__cube__container">
-            <div id="3x3x3" class="modal__cube__image__container active" >
-                <img src="../image/cube/3x3x3.png" alt="3x3" />
-            </div>
-            <div id="2x2x2" class="modal__cube__image__container">
-                <img src="../image/cube/2x2x2.png" alt="2x2" />
-            </div>
-            <div id="4x4x4" class="modal__cube__image__container">
-                <img src="../image/cube/4x4x4.png" alt="4x4" />
-            </div>
-            <div id="5x5x5" class="modal__cube__image__container">
-                <img src="../image/cube/5x5x5.png" alt="5x5" />
-            </div>
-            <div id="6x6x6" class="modal__cube__image__container">
-                <img src="../image/cube/6x6x6.png" alt="6x6" />
-            </div>
-            <div id="7x7x7" class="modal__cube__image__container">
-                <img src="../image/cube/7x7x7.png" alt="7x7" />
-            </div>
-
+          <div id="3x3x3" class="modal__cube__image__container active" >
+              <img src="../image/cube/3x3x3.png" alt="3x3" />
+          </div>
+          <div id="2x2x2" class="modal__cube__image__container">
+              <img src="../image/cube/2x2x2.png" alt="2x2" />
+          </div>
+          <div id="4x4x4" class="modal__cube__image__container">
+              <img src="../image/cube/4x4x4.png" alt="4x4" />
+          </div>
+          <div id="5x5x5" class="modal__cube__image__container">
+              <img src="../image/cube/5x5x5.png" alt="5x5" />
+          </div>
+          <div id="6x6x6" class="modal__cube__image__container">
+              <img src="../image/cube/6x6x6.png" alt="6x6" />
+          </div>
+          <div id="7x7x7" class="modal__cube__image__container">
+              <img src="../image/cube/7x7x7.png" alt="7x7" />
+          </div>
         </div>
       </div>
     </div>

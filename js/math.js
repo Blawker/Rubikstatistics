@@ -60,8 +60,13 @@ function update_circle_pie_chart(element,anime,liste,n) {
     value=String(avg_const*2*Math.PI*r/60);
   }
   else if (element.id[0]=='r') {
-    const rsd_const=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
-    value=String(rsd_const*2*Math.PI*r/20);
+    if (liste[0]==0) {
+      value=String("0");
+    }
+    else {
+      const rsd_const=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
+      value=String(rsd_const*2*Math.PI*r/20);
+    }
   }
   element.setAttribute('stroke-dasharray', value+" "+p_t);
   anime.setAttribute('to', value+" "+p_t);
@@ -102,7 +107,7 @@ function valeurs_tableau(liste,val) {
   // level of the Cuber
   if (document.getElementById("level_cuber")!=null) {
     const level_score=[5,10,15,30]; // for the 3x3
-    const level_name=["Legendary","Epique","Rare","Common"];
+    const level_name=["Legendary","Epic","Rare","Common"];
     for (let i=0; i<level_score.length; i++) {
       if (mini_liste(liste)<=level_score[i]) {
         document.getElementById("level_cuber").innerHTML=level_name[i];
@@ -189,16 +194,23 @@ function str_round(str) {
 
 function vide(best_avg,avg,std,rsd) {
   if (document.getElementById(best_avg)!=null) {
-    document.getElementById(best_avg).innerHTML="";
+    document.getElementById(best_avg).innerHTML="0.000";
   }
   if (document.getElementById(avg)!=null) {
-    document.getElementById(avg).innerHTML="";
+    document.getElementById(avg).innerHTML="0.000";
   }
   if (document.getElementById(std)!=null) {
-    document.getElementById(std).innerHTML="";
+    document.getElementById(std).innerHTML="0.000";
   }
   if (document.getElementById(rsd)!=null) {
-    document.getElementById(rsd).innerHTML="";
+    document.getElementById(rsd).innerHTML="0.000";
+  }
+
+  if (document.getElementById(avg+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(avg+"_pie_chart"),document.getElementById("anime_"+avg+"_pie_chart"),[0],1);
+  }
+  if (document.getElementById(rsd+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(rsd+"_pie_chart"),document.getElementById("anime_"+rsd+"_pie_chart"),[0],1);
   }
 }
 
