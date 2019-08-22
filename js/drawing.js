@@ -221,10 +221,23 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
   const liste_rep=repartition_function(liste,t0,dt);
 
   // draw the grid
-  //console.log(parseInt(mini_liste(liste))-1,parseInt(maxi_liste(liste))+1,scale);
-  for (let i=parseInt(mini_liste(liste))-1; i<parseInt(maxi_liste(liste))+1; i+=scale) {
-    //console.log(i);
-    draw_single_line(context,i*(canvas.width-2*margin)/liste_rep.length,0,i*(canvas.width-2*margin)/liste_rep.length,canvas.height,"gray");
+  for (let i=parseInt(mini_liste(liste))-parseInt(mini_liste(liste))%scale; i<parseInt(maxi_liste(liste))+1; i+=scale) {
+    const x=x0+(i-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
+    draw_single_line(context,x,0,x,canvas.height,"gray");
+    draw_text(context,String(compte_to_time(i)),x+2,y0-10,"gray",12);
+  }
+  for (let i=0; i<=1; i+=0.25) {
+    const y=y0-(l-margin)*i;
+    const text=String(i*100)+"%";
+    let offset=24;
+    if (text.length==3) {
+      offset=29;
+    }
+    else if (text.length==4) {
+      offset=34;
+    }
+    draw_single_line(context,0,y,canvas.width-offset,y,"gray");
+    draw_text(context,String(i*100)+"%",canvas.width-offset,y+1,"gray",12);
   }
 
   // draw the repartition with the chronos
