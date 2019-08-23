@@ -3,6 +3,7 @@ const addBtn = document.getElementById('addBtn');
 const addModal = document.getElementById('addModal');
 
 const openModal = (element) => {
+  console.log('click');
   if (element.style.display === 'none') {
       element.style.display = 'block';
   }
@@ -106,3 +107,7 @@ document.getElementById('rep').addEventListener('click', () => openOption('rep')
 /**** TABLE ***/
 
 document.getElementById('openTableAverage').addEventListener('click', () => openModal(document.getElementById('tableAverage')));
+
+/**** GRAPH AVERAGE RSD ***/
+
+document.getElementById('openGraphAverage').addEventListener('click', () => openModal(document.getElementById('canvas__container')));

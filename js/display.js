@@ -1,8 +1,9 @@
 function display(theme,categorie,data) {
-  const periode=parseInt(document.getElementById("chronos_selected").value);
+  const periode=100;//parseInt(document.getElementById("chronos_selected").value);
+
   const len_l=data.length;
   const margin=100;
-  var liste=[];
+  let liste=[];
 
   // setup mobile average and standard deviation style and values
   const val=  [1,   5,  12, 50, 100,1000] ;
@@ -36,19 +37,21 @@ function display(theme,categorie,data) {
   }
   liste.reverse();
 
+  // choix de l'échelle de la grille
+  for (let i=0; i<type_cube.length; i++) {
+    if (categorie===type_cube[i]) {
+      scale=scale_table[i];
+      break;
+    }
+  }
+
+  graphic(liste,scale,val,periode);
+
   if (document.getElementById("canvas_graph_avg_rsd")!=null) {
     var canvas=document.getElementById("canvas_graph_avg_rsd");
     var context=canvas.getContext("2d");
     context.lineWidth=2;
     context.clearRect(0,0,canvas.width,canvas.height);
-
-    // choix de l'échelle de la grille
-    for (let i=0; i<type_cube.length; i++) {
-      if (categorie===type_cube[i]) {
-        scale=scale_table[i];
-        break;
-      }
-    }
 
     // display every charts
     let nb_graph=0;

@@ -191,6 +191,12 @@ button {
   background-color: #2C3E5B;
 }
 
+.graph__average__container {
+  background-color: #2C3E5B;
+  border-radius: 40px;
+  margin: 5% 0;
+}
+
 .graph__average__img, .graph__time__img, .probability__img {
   width: 25px;
   height: max-content;
@@ -701,7 +707,10 @@ button {
     margin: 5% 0;
   }
 
-  .graph__average, .graph__time {
+  .graph__average {
+
+  }
+  .graph__average__label, .graph__time {
     padding: 3%;
     margin: 5% 0;
     border-radius: 40px;
@@ -1082,6 +1091,10 @@ button {
    }
 
    #tableAverage {
+     display: none;
+   }
+
+   #canvas__container{
      display: none;
    }
 

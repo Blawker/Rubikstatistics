@@ -116,10 +116,16 @@
           </table>
         </div>
       </div>
-      <div class="graph__average">
-        <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
-        <p class="graph__average__text"> Show graph of averages </p>
-        <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+      <div class="graph__average__container" id="openGraphAverage">
+        <div class="graph__average__label">
+          <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
+          <p class="graph__average__text"> Show graph of averages </p>
+          <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div id="canvas__container">
+          <canvas class="graph__average__canvas" id="canvas_graph_avg_rsd"></canvas>
+        </div>
+
       </div>
       <div class="extremum">
         <div class="extremum__best">
@@ -398,10 +404,11 @@
       </div>
     </div>
   </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../js/eventHandler.js"></script>
-
   <script type="text/javascript" src="../js/math.js"></script>
   <script type="text/javascript" src="../js/drawing.js"></script>
   <script type="text/javascript" src="../js/display.js"></script>
+  <script type="text/javascript" src="../js/graph.js"></script>
   <script type="text/javascript" src="../js/main.js"></script>
 </html>
