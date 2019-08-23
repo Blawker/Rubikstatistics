@@ -152,6 +152,12 @@ button {
 }
 
 .average__title__result {
+  width: 40%;
+  align-self: center;
+  margin-left: 10%;
+}
+
+.average__title__result__chrono {
   font-size: 30px;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
@@ -634,10 +640,15 @@ button {
   }
 
   .average__title {
-    display: flex;
+    display: flex; /* le problème vient de là !!! */
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 10%;
+  }
+
+  .average__title__label {
+    width: 40%;
+    margin-left: 10%;
   }
 
   .average__results__container {
@@ -662,6 +673,12 @@ button {
   }
 
   .average__title__result {
+    width: 40%;
+    align-self: center;
+    margin-left: 10%;
+  }
+
+  .average__title__result__chrono {
     font-size: 60px;
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;

@@ -116,23 +116,28 @@ function valeurs_tableau(liste,val) {
     }
   }
 
+  //document.getElementById("best_avg5_home").innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,5))));
   for (let i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
-      affichage("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n),liste,n);
+      affichage(liste,n,"best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n));
+      affichage(liste,n,"best_avg"+String(n)+"_home","avg"+String(n)+"_home");
     }
     else {
       vide("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n));
+      vide("best_avg"+String(n)+"_home","avg"+String(n)+"_home");
     }
   }
 }
 
-function affichage(best_avg,avg,std,rsd,liste,n) {
+function affichage(liste,n,best_avg,avg,std,rsd) {
+  console.log(document.getElementById(best_avg),document.getElementById(avg));
   if (document.getElementById(best_avg)!=null) {
     document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
   }
   if (document.getElementById(avg)!=null) {
-    document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
+    const cst=str_round(compte_to_time(mobile_average(liste,n)[0]));
+    document.getElementById(avg).innerHTML=cst;
   }
   if (document.getElementById(std)!=null) {
     document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
@@ -194,16 +199,16 @@ function str_round(str) {
 
 function vide(best_avg,avg,std,rsd) {
   if (document.getElementById(best_avg)!=null) {
-    document.getElementById(best_avg).innerHTML="0.000";
+    document.getElementById(best_avg).innerHTML="-";
   }
   if (document.getElementById(avg)!=null) {
-    document.getElementById(avg).innerHTML="0.000";
+    document.getElementById(avg).innerHTML="-";
   }
   if (document.getElementById(std)!=null) {
-    document.getElementById(std).innerHTML="0.000";
+    document.getElementById(std).innerHTML="-";
   }
   if (document.getElementById(rsd)!=null) {
-    document.getElementById(rsd).innerHTML="0.000";
+    document.getElementById(rsd).innerHTML="-";
   }
 
   if (document.getElementById(avg+"_pie_chart")!=null) {

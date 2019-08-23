@@ -31,35 +31,37 @@
           </div>
       </div>
       <div class="average">
-          <div class="average__title">
-              <div class="average__title__label">
-                  <h2> Average </h2>
-                  <p> Best Average of 5 </p>
-              </div>
-              <p class="average__title__result" id="best_avg5"> 0.000 </p>
+        <div class="average__title"> <!-- Le probleme vient de la classe "average__title" !!! -->
+          <div class="average__title__label">
+            <h2> Average </h2>
+            <p> Best Average of 5 </p>
           </div>
-          <div class="average__results__container">
-              <div class="average__results">
-                <p class="average__results__label">
-                    Last 5
-                </p>
-                <p class="average__results__chrono" id="avg5"> 0.000 </p>
-              </div>
-              <hr/>
-              <div class="average__results">
-                <p class="average__results__label">
-                    Last 12
-                </p>
-                <p class="average__results__chrono" id="avg12"> 0.000 </p>
-              </div>
-              <hr/>
-              <div class="average__results">
-                <p class="average__results__label">
-                    Last 50
-                </p>
-                <p class="average__results__chrono" id="avg50"> 0.000 </p>
-              </div>
+          <div class="average__title__result">
+            <p class="average__title__result__chrono" id="best_avg5_home"> - </p>
           </div>
+        </div>
+        <div class="average__results__container">
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 5
+            </p>
+            <p class="average__results__chrono" id="avg5_home"> - </p>
+          </div>
+          <hr/>
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 12
+            </p>
+            <p class="average__results__chrono" id="avg12_home"> - </p>
+          </div>
+          <hr/>
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 50
+            </p>
+            <p class="average__results__chrono" id="avg50_home"> - </p>
+          </div>
+        </div>
       </div>
       <div class="block__stat" id="openTableAverage">
         <div class="table__average graph__average">
@@ -111,42 +113,42 @@
             <td id="std1000"></td>
             <td id="rsd1000"></td>
           </tr>
-        </table>
+          </table>
         </div>
       </div>
 
       <div class="graph__average">
-            <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
-            <p class="graph__average__text"> Show graph of averages </p>
-            <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+        <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
+        <p class="graph__average__text"> Show graph of averages </p>
+        <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
       </div>
       <div class="extremum">
         <div class="extremum__best">
-            <svg viewbox="0 0 136 136" stroke-width="4">
-              <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
-              <!--text x="68" y="-68" fill="white" transform="rotate(90 0,0)">I love SVG!</text-->
-              <circle id="pb_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="90 500" stroke-dashoffset="0">
-                <animate id="anime_pb_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="90 409" to="0 500"/>
-              </circle>
-              <circle id="avg5_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="130 500" stroke-dashoffset="0">
-                <animate id="anime_avg5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="130 500"/>
-              </circle>
-              <circle id="avg12_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="150 500" stroke-dashoffset="0">
-                <animate id="anime_avg12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="150 500"/>
-              </circle>
-              <circle id="avg50_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF00A8" stroke-dasharray="180 500" stroke-dashoffset="0">
-                <animate id="anime_avg50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
-              </circle>
-              <circle id="avg100_pie_chart" class="c5" cx="68" cy="68" r="45" stroke="#FF8A00" stroke-dasharray="200 500" stroke-dashoffset="0">
-                <animate id="anime_avg100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="200 500"/>
-              </circle>
-            </svg>
-            <p class="extremum__best__label">
-                Personal Best
-            </p>
-            <p id="extremum__best__time" class="extremum__best__time">
-                0.000
-            </p>
+          <svg viewbox="0 0 136 136" stroke-width="4">
+            <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
+            <!--text x="68" y="-68" fill="white" transform="rotate(90 0,0)">I love SVG!</text-->
+            <circle id="pb_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="90 500" stroke-dashoffset="0">
+              <animate id="anime_pb_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="90 409" to="0 500"/>
+            </circle>
+            <circle id="avg5_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="130 500" stroke-dashoffset="0">
+              <animate id="anime_avg5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="130 500"/>
+            </circle>
+            <circle id="avg12_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="150 500" stroke-dashoffset="0">
+              <animate id="anime_avg12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="150 500"/>
+            </circle>
+            <circle id="avg50_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF00A8" stroke-dasharray="180 500" stroke-dashoffset="0">
+              <animate id="anime_avg50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
+            </circle>
+            <circle id="avg100_pie_chart" class="c5" cx="68" cy="68" r="45" stroke="#FF8A00" stroke-dasharray="200 500" stroke-dashoffset="0">
+              <animate id="anime_avg100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="200 500"/>
+            </circle>
+          </svg>
+          <p class="extremum__best__label">
+              Personal Best
+          </p>
+          <p id="extremum__best__time" class="extremum__best__time">
+              0.000
+          </p>
         </div>
         <div class="extremum__worst">
           <svg viewbox="0 0 136 136" stroke-width="4">
