@@ -7,7 +7,7 @@ html {
   font-family: 'Nunito', sans-serif;
   height: 100%;
   color: white;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 
 p {
@@ -533,7 +533,7 @@ button {
     font-family: 'Nunito', sans-serif;
     height: 100%;
     color: white;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
   }
 
   p {
@@ -707,9 +707,6 @@ button {
     margin: 5% 0;
   }
 
-  .graph__average {
-
-  }
   .graph__average__label, .graph__time__label {
     padding: 3%;
     margin: 5% 0;
@@ -722,6 +719,9 @@ button {
     background-color: #2C3E5B;
   }
 
+  .graph__average__canvas {
+    /*height: 1000px;*/
+  }
 
   .graph__average__img, .graph__time__img, .probability__img {
     width: 50px;
