@@ -20,6 +20,12 @@ document.getElementById("4x4x4").addEventListener("click", () => setCategorie("4
 document.getElementById("5x5x5").addEventListener("click", () => setCategorie("5x5x5"));
 document.getElementById("6x6x6").addEventListener("click", () => setCategorie("6x6x6"));
 document.getElementById("7x7x7").addEventListener("click", () => setCategorie("7x7x7"));
+document.getElementById("3x3x3_Blindfold").addEventListener("click", () => setCategorie("3x3x3_Blindfold"));
+document.getElementById("3x3x3_One_Hand").addEventListener("click", () => setCategorie("3x3x3_One_Hand"));
+document.getElementById("Megaminx").addEventListener("click", () => setCategorie("Megaminx"));
+document.getElementById("Pyraminx").addEventListener("click", () => setCategorie("Pyraminx"));
+document.getElementById("Skewb").addEventListener("click", () => setCategorie("Skewb"));
+document.getElementById("Square-1").addEventListener("click", () => setCategorie("Square-1"));
 
 function main(theme) {
   // choose the cube on the desktop version
