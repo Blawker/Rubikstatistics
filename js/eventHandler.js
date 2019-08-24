@@ -111,3 +111,7 @@ document.getElementById('openTableAverage').addEventListener('click', () => open
 /**** GRAPH AVERAGE RSD ***/
 
 document.getElementById('openGraphAverage').addEventListener('click', () => openModal(document.getElementById('canvas__container')));
+
+/**** GRAPH CHRONO DISTRIBUTION ***/
+
+document.getElementById('openGraphDistribution').addEventListener('click', () => openModal(document.getElementById('canvas__distribution__container')));

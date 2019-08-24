@@ -179,7 +179,7 @@ button {
   margin: 5% 0;
 }
 
-.graph__average, .graph__time {
+.graph__average {
   padding: 3%;
   margin: 5% 0;
   border-radius: 20px;
@@ -191,7 +191,7 @@ button {
   background-color: #2C3E5B;
 }
 
-.graph__average__container {
+.graph__average__container, .graph__time {
   background-color: #2C3E5B;
   border-radius: 40px;
   margin: 5% 0;
@@ -710,7 +710,7 @@ button {
   .graph__average {
 
   }
-  .graph__average__label, .graph__time {
+  .graph__average__label, .graph__time__label {
     padding: 3%;
     margin: 5% 0;
     border-radius: 40px;
@@ -721,6 +721,7 @@ button {
 
     background-color: #2C3E5B;
   }
+
 
   .graph__average__img, .graph__time__img, .probability__img {
     width: 50px;
@@ -1095,6 +1096,10 @@ button {
    }
 
    #canvas__container{
+     display: none;
+   }
+
+   #canvas__distribution__container {
      display: none;
    }
 

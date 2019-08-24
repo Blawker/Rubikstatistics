@@ -179,10 +179,15 @@
           </p>
         </div>
       </div>
-      <div class="graph__time">
-            <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
-            <p class="graph__time__text"> Show chrono distribution </p>
-            <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
+      <div class="graph__time" id="openGraphDistribution">
+        <div class="graph__time__label">
+          <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
+          <p class="graph__time__text"> Show chrono distribution </p>
+          <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div id="canvas__distribution__container">
+            <canvas class="graph__distribution__canvas" id="canvas_repartition"></canvas>
+        </div>
       </div>
       <div class="probability">
         <img class="probability__img" alt="graphic" src="../image/cube/Cube3.png" />
