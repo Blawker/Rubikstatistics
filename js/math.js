@@ -131,7 +131,6 @@ function valeurs_tableau(liste,val) {
 }
 
 function affichage(liste,n,best_avg,avg,std,rsd) {
-  console.log(document.getElementById(best_avg),document.getElementById(avg));
   if (document.getElementById(best_avg)!=null) {
     document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
   }
