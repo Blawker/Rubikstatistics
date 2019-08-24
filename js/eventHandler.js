@@ -3,8 +3,7 @@ const addBtn = document.getElementById('addBtn');
 const addModal = document.getElementById('addModal');
 
 const openModal = (element) => {
-  console.log('click');
-  if (element.style.display === 'none') {
+  if (element.style.display === 'none' || element.style.display === '') {
       element.style.display = 'block';
   }
   else {
