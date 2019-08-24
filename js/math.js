@@ -136,8 +136,7 @@ function affichage(liste,n,best_avg,avg,std,rsd) {
     document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
   }
   if (document.getElementById(avg)!=null) {
-    const cst=str_round(compte_to_time(mobile_average(liste,n)[0]));
-    document.getElementById(avg).innerHTML=cst;
+    document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
   }
   if (document.getElementById(std)!=null) {
     document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
