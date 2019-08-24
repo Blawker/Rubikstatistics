@@ -8,6 +8,19 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
     scaleY.push(compte_to_time(i));
   }
 
+  // PB
+  let pb_min=liste[0];
+  let pb_liste=[liste[0]];
+  for (let i=1; i<liste.length; i++) {
+    if (liste[i]<pb_min) {
+      pb_liste.push(liste[i]);
+      pb_min=liste[i];
+    }
+    else {
+      pb_liste.push(null);
+    }
+  }
+
   // AVG
   let avg_liste=[];
   for (let i=1; i<value_avg.length; i++) {
@@ -103,15 +116,47 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
   const rsd100=rsd_liste[3];
   const rsd1000=rsd_liste[4];
 
+  // Exponential Regression
+  let liste_exp=[];
+  if (document.getElementById("reg_check").checked==true) {
+    const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
+    const temp_exp=graph_exp_reg_II(liste,offset_exp);
+    for (let i=0; i<temp_exp.length+offset_exp; i++) {
+      if (i<offset_exp) {
+        liste_exp.push(null);
+      }
+      else {
+        liste_exp.push(temp_exp[i-offset_exp]);
+      }
+    }
+  }
+  else {
+    const sub_time=time_to_compte([parseFloat(document.getElementById("sub_reg_min_input").value),parseFloat(document.getElementById("sub_reg_input").value)]);
+    document.getElementById("probability").innerHTML="0 Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
+  }
+
   let ctx = document.getElementById('canvas_graph_avg');//.getContext('2d');
   let graphAvg = new Chart(ctx, {
       type: 'line',
       data: {
           datasets: [{
+              data: pb_liste,
+              label: 'PB',
+              borderColor: '#00FFFF',
+              fill: false
+            },
+            {
               data: liste,
               label: 'Chrono',
               borderColor: 'rgba(255, 255, 255, 1)',
               fill: false
+            },
+            {
+              data: liste_exp,
+              label: 'Exponential Regression',
+              borderColor: 'rgba(255, 255, 255, 1)',
+              fill: false,
+              pointRadius: 2
             },
             {
               data: avg5,

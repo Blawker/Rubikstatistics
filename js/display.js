@@ -1,5 +1,5 @@
 function display(theme,categorie,data) {
-  const periode=parseInt(document.getElementById("chronos_selected").value);
+  const periode=100;//parseInt(document.getElementById("chronos_selected").value);
 
   const len_l=data.length;
   const margin=100;
@@ -17,8 +17,8 @@ function display(theme,categorie,data) {
   }
 
   // setup cube
-  const type_cube=["2x2x2","3x3x3","4x4x4","5x5x5","6x6x6","7x7x7","Megaminx"];
-  const scale_table=[ 1,      1,      5,      15,     15,     15,     10]; // en secondes
+  const type_cube= ["2x2x2","3x3x3","4x4x4","5x5x5","6x6x6","7x7x7","Megaminx","Pyraminx","3x3x3_Blindfold","3x3x3_One_Hand","Skewb","Square-1"];
+  const scale_table=[1,      1,      5,      15,     15,     15,     10,        1,         5,                1,               1,      1]; // en secondes
   let scale=1;
 
   // update the value of the table
@@ -48,6 +48,11 @@ function display(theme,categorie,data) {
   graphic_avg_rsd(liste,scale,val);
 
   graphic_rep(liste);
+
+  if (document.getElementById("reg_check").checked==true) {
+    const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
+    const liste_exp=graph_exp_reg_II(liste,offset_exp);
+  }
 
   /*
 
