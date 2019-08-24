@@ -152,3 +152,51 @@ const backToChronoText = (event) => {
 }
 
 chronoInput.addEventListener('keyup', (e) => backToChronoText(e));
+
+/*** DEFAULT PARAMETERS ***/
+
+const defaultParameters = {
+  avg: true,
+  std: false,
+  rsd: true,
+  reg: {
+    activate: false,
+    size: 50,
+    goalMin: 0,
+    goalSec: 50,
+  },
+  prob: {
+    lowerChronoMin: 0,
+    lowerChronoSec: 5,
+    upperChronoMin: 0,
+    upperChronoSec: 20,
+  }
+};
+
+const resetParameter = () => {
+  document.getElementById('avg5_check').checked = defaultParameters.avg;
+  document.getElementById('avg12_check').checked = defaultParameters.avg;
+  document.getElementById('avg50_check').checked = defaultParameters.avg;
+  document.getElementById('avg100_check').checked = defaultParameters.avg;
+  document.getElementById('avg1000_check').checked = defaultParameters.avg;
+  document.getElementById('std5_check').checked = defaultParameters.std;
+  document.getElementById('std12_check').checked = defaultParameters.std;
+  document.getElementById('std50_check').checked = defaultParameters.std;
+  document.getElementById('std100_check').checked = defaultParameters.std;
+  document.getElementById('std1000_check').checked = defaultParameters.std;
+  document.getElementById('rsd5_check').checked = defaultParameters.rsd;
+  document.getElementById('rsd12_check').checked = defaultParameters.rsd;
+  document.getElementById('rsd50_check').checked = defaultParameters.rsd;
+  document.getElementById('rsd100_check').checked = defaultParameters.rsd;
+  document.getElementById('rsd1000_check').checked = defaultParameters.rsd;
+  document.getElementById('reg_check').checked = defaultParameters.reg.activate;
+  document.getElementById('avg_reg_input').value = defaultParameters.reg.size;
+  document.getElementById('sub_reg_min_input').value = defaultParameters.reg.goalMin;
+  document.getElementById('sub_reg_input').value = defaultParameters.reg.goalSec;
+  document.getElementById('lower_chrono_min_input').value = defaultParameters.prob.lowerChronoMin;
+  document.getElementById('lower_chrono_sec_input').value = defaultParameters.prob.lowerChronoSec;
+  document.getElementById('upper_chrono_min_input').value = defaultParameters.prob.upperChronoMin;
+  document.getElementById('upper_chrono_sec_input').value = defaultParameters.prob.upperChronoSec;
+}
+
+document.getElementById('resetBtn').addEventListener('click', () => resetParameter());
