@@ -1,5 +1,5 @@
 function display(theme,categorie,data) {
-  const periode=100;//parseInt(document.getElementById("chronos_selected").value);
+  const periode=parseInt(document.getElementById("chronos_selected").value);
 
   const len_l=data.length;
   const margin=100;
