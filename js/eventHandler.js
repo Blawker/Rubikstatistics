@@ -115,3 +115,41 @@ document.getElementById('openGraphAverage').addEventListener('click', () => open
 /**** GRAPH CHRONO DISTRIBUTION ***/
 
 document.getElementById('openGraphDistribution').addEventListener('click', () => openModal(document.getElementById('canvas__distribution__container')));
+
+
+**** INPUT CHRONO NUMBER ****/
+
+let text = document.getElementById('chronoText');
+let input = document.getElementById('inputChronos');
+
+const displayInput = () => {
+  text.style.display  = 'none';
+  input.style.display = 'block';
+}
+document.getElementById('chronoText').addEventListener('click', () => displayInput());
+
+const chronoInput = document.getElementById('chronos_selected');
+const setChronoNumber = (value) => {
+  if (value > parseInt(document.getElementById('chronos_total').innerHTML)) {
+    chronoInput.value = parseInt(document.getElementById('chronos_total').innerHTML);
+    return parseInt(document.getElementById('chronos_total').innerHTML);
+  }
+  if (value <= 0) {
+    chronoInput.value = 0;
+    return 0;
+  }
+  return value;
+};
+
+const backToChronoText = (event) => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    text.style.display  = 'flex';
+    input.style.display = 'none';
+
+    document.getElementById('chronos_selected_value').innerHTML = setChronoNumber(chronoInput.value);
+
+  }
+}
+
+chronoInput.addEventListener('keyup', (e) => backToChronoText(e));
