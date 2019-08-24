@@ -1,5 +1,5 @@
 function display(theme,categorie,data) {
-  const periode=100;//parseInt(document.getElementById("chronos_selected").value);
+  const periode=parseInt(document.getElementById("chronos_selected").value);
 
   const len_l=data.length;
   const margin=100;
@@ -47,7 +47,7 @@ function display(theme,categorie,data) {
 
   graphic(liste,scale,val,periode);
 
-  if (document.getElementById("canvas_graph_avg_rsd")!=null) {
+  /*if (document.getElementById("canvas_graph_avg_rsd")!=null) {
     var canvas=document.getElementById("canvas_graph_avg_rsd");
     var context=canvas.getContext("2d");
     context.lineWidth=2;
@@ -83,5 +83,5 @@ function display(theme,categorie,data) {
     let canvas_repartition=document.getElementById("canvas_repartition");
     let context_repartion=canvas_repartition.getContext("2d");
     plot_repartition_function(canvas_repartition,context_repartion,liste,val,color,style,scale,canvas_repartition.height-10,canvas_repartition.height-10/2,10);
-  }
+  }*/
 }
