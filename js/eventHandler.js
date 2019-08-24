@@ -117,7 +117,7 @@ document.getElementById('openGraphAverage').addEventListener('click', () => open
 document.getElementById('openGraphDistribution').addEventListener('click', () => openModal(document.getElementById('canvas__distribution__container')));
 
 
-**** INPUT CHRONO NUMBER ****/
+/**** INPUT CHRONO NUMBER ****/
 
 let text = document.getElementById('chronoText');
 let input = document.getElementById('inputChronos');
