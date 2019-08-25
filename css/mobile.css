@@ -247,6 +247,7 @@ button {
 .probability {
   padding: 3%;
   margin: 5% 0;
+  margin-bottom: 22%;
   border-radius: 20px;
 
   display: flex;
@@ -893,6 +894,7 @@ button {
   .probability {
     padding: 3%;
     margin: 5% 0;
+    margin-bottom: 22%;
     border-radius: 40px;
 
     display: flex;

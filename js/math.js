@@ -45,7 +45,13 @@ function time_to_compte(liste) {
 
 function compte_to_time(n) {
   const min=parseInt(n/60);
-  return(String(min)+":"+String(Math.round((n-min*60)*1000)/1000));
+  const sec=String(Math.round((n-min*60)*1000)/1000);
+  if (sec[1]=='.' || sec.length==1) {
+    return(String(min)+":0"+sec);
+  }
+  else {
+    return(String(min)+":"+sec);
+  }
 }
 
 function update_circle_pie_chart(element,anime,liste,n) {

@@ -1,11 +1,11 @@
 function graphic_avg_rsd(liste,scale_cube,value_avg) {
   let scaleX=[];
-  let scaleY=[];
+  let axisY=[];
   for (let i=0; i<=liste.length; i++) {
     scaleX.push(i);
   }
-  for (let i=parseInt(maxi_liste(chrono)); i>=parseInt(mini_liste(chrono))-parseInt(mini_liste(chrono))%scale_cube; i-=scale_cube) {
-    scaleY.push(compte_to_time(i));
+  for (let i=parseInt(mini_liste(chrono)); i<=parseInt(maxi_liste(chrono))%scale_cube; i+=scale_cube) {
+    axisY.push(compte_to_time(i));
   }
 
   // PB
@@ -135,8 +135,8 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
     document.getElementById("probability").innerHTML="0 Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
   }
 
-  let ctx = document.getElementById('canvas_graph_avg');//.getContext('2d');
-  let graphAvg = new Chart(ctx, {
+  let ctx_avg=document.getElementById('canvas_graph_avg');//.getContext('2d');
+  let graphAvg=new Chart(ctx_avg, {
       type: 'line',
       data: {
           datasets: [{
@@ -266,6 +266,12 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
           legend: {
             display: false,
           },
+          spanGaps: true,
+          elements: {
+            line: {
+                tension: 0.2
+            }
+          },
           scales: {
               xAxes: [{
                 gridLines: {
@@ -279,8 +285,11 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
               }],
               yAxes: [{
                   //type: 'category',
-                  labels: scaleY,
+                  //labels: axisY,
                   ticks: {
+                      callback: function(value, index, values) {
+                          return(compte_to_time(value));
+                      },
                       suggestedMin: parseInt(mini_liste(liste)),
                       suggestedMax: parseInt(maxi_liste(liste)),
                       fontSize: 36,
@@ -295,8 +304,8 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
       }
   });
 
-  let ctx_rsd = document.getElementById('canvas_graph_rsd');//.getContext('2d');
-  let graphRsd = new Chart(ctx_rsd, {
+  let ctx_rsd=document.getElementById('canvas_graph_rsd');//.getContext('2d');
+  let graphRsd=new Chart(ctx_rsd, {
       type: 'line',
       data: {
           datasets: [{
@@ -360,7 +369,7 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
               }],
               yAxes: [{
                   //type: 'category',
-                  labels: scaleY,
+                  //labels: scaleY,
                   ticks: {
                       suggestedMin: parseInt(min_rsd),
                       suggestedMax: parseInt(max_rsd),
@@ -378,8 +387,8 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
 }
 
 function graphic_rep(liste) {
-  const dt=(maxi_liste(liste)-mini_liste(liste))/1000;
-  const t0=mini_liste(liste);
+  const dt=parseInt(maxi_liste(liste)-mini_liste(liste))/1000;
+  const t0=parseInt(mini_liste(liste));
   const liste_rep=repartition_function(liste,t0,dt);
 
   // Modelisation
@@ -398,8 +407,10 @@ function graphic_rep(liste) {
   }
 
   let scaleX=[];
+  let axisX=[];
   for (let i=0; i<=liste_rep.length; i++) {
     scaleX.push(i);
+    axisX.push(compte_to_time(parseInt((t0+i*dt)*10)/10));
   }
 
   let ctx = document.getElementById('canvas_repartition');//.getContext('2d');
@@ -425,7 +436,7 @@ function graphic_rep(liste) {
       options: {
           title: {
             display: true,
-            text: 'Chrono Graph',
+            text: 'Repartition Graph',
             fontColor: '#FFF',
             fontSize: 36,
           },
@@ -434,6 +445,7 @@ function graphic_rep(liste) {
           },
           scales: {
               xAxes: [{
+                labels: axisX,
                 gridLines: {
                   display: true,
                   color: 'rgba(255, 255, 255, 0.5)',
@@ -445,7 +457,7 @@ function graphic_rep(liste) {
               }],
               yAxes: [{
                   //type: 'category',
-                  //labels: scaleY,
+                  //labels: axisY,
                   ticks: {
                       suggestedMin: 0,
                       suggestedMax: 1,

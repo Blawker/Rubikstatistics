@@ -1,5 +1,5 @@
 function display(theme,categorie,data) {
-  const periode=100;//parseInt(document.getElementById("chronos_selected").value);
+  const periode=parseInt(document.getElementById("chronos_selected").value);
 
   const len_l=data.length;
   const margin=100;
@@ -48,11 +48,6 @@ function display(theme,categorie,data) {
   graphic_avg_rsd(liste,scale,val);
 
   graphic_rep(liste);
-
-  if (document.getElementById("reg_check").checked==true) {
-    const offset_exp=parseInt(document.getElementById("avg_reg_input").value);
-    const liste_exp=graph_exp_reg_II(liste,offset_exp);
-  }
 
   /*
 
