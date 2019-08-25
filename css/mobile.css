@@ -202,10 +202,19 @@ button {
   height: max-content;
 }
 
+.probability__img {
+  position: absolute;
+  align-self: center;
+}
+
 .graph__average__text, .graph__time__text, .probability__text {
   font-size: 12px;
   font-weight: bold;
   align-self: center;
+}
+
+.probability__list__text {
+  width: 100%;
 }
 
 .graph__average__button, .graph__time__button {
