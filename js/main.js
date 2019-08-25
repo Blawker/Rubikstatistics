@@ -12,6 +12,10 @@ const setCategorie = (str) => {
   document.getElementById(categorie).className = "modal__cube__image__container"
   categorie = str;
   document.getElementById(categorie).className = "modal__cube__image__container active"
+
+  // Reset the graph when change the cube
+  graphic_avg_rsd_reset_value(graphAvg,graphRsd);
+  graphic_rep_reset_value(graphRep);
 }
 
 document.getElementById("3x3x3").addEventListener("click", () => setCategorie("3x3x3"));
