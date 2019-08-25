@@ -6,9 +6,40 @@ function main_dark() {
   main("dark");
 }
 
+let categorie="3x3x3";
+
+const setCategorie = (str) => {
+  document.getElementById(categorie).className = "modal__cube__image__container"
+  categorie = str;
+  document.getElementById(categorie).className = "modal__cube__image__container active"
+}
+
+document.getElementById("3x3x3").addEventListener("click", () => setCategorie("3x3x3"));
+document.getElementById("2x2x2").addEventListener("click", () => setCategorie("2x2x2"));
+document.getElementById("4x4x4").addEventListener("click", () => setCategorie("4x4x4"));
+document.getElementById("5x5x5").addEventListener("click", () => setCategorie("5x5x5"));
+document.getElementById("6x6x6").addEventListener("click", () => setCategorie("6x6x6"));
+document.getElementById("7x7x7").addEventListener("click", () => setCategorie("7x7x7"));
+document.getElementById("3x3x3_Blindfold").addEventListener("click", () => setCategorie("3x3x3_Blindfold"));
+document.getElementById("3x3x3_One_Hand").addEventListener("click", () => setCategorie("3x3x3_One_Hand"));
+document.getElementById("Megaminx").addEventListener("click", () => setCategorie("Megaminx"));
+document.getElementById("Pyraminx").addEventListener("click", () => setCategorie("Pyraminx"));
+document.getElementById("Skewb").addEventListener("click", () => setCategorie("Skewb"));
+document.getElementById("Square-1").addEventListener("click", () => setCategorie("Square-1"));
 
 function main(theme) {
-  const categorie=String(document.getElementById("choix_cubes").value);
+  // choose the cube on the desktop version
+  if (document.getElementById("choix_cubes")!=null) {
+    categorie=String(document.getElementById("choix_cubes").value);
+    // update image cube selection
+    document.getElementById("activeCube").src="../image/cube/"+categorie+".jpg";
+  }
+  else {
+    // update image cube selection on mobile version
+    document.getElementById("activeCube").src="../image/cube/"+categorie+".png";
+  }
+
+  // extraction of the file
   var fileUpload=document.getElementById("fileUpload");
   var regex=/^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
 
@@ -20,7 +51,8 @@ function main(theme) {
         var table=document.createElement("table");
         var rows=e.target.result.split("\n");
 
-        if (document.getElementById("choice_application").value=="Twisty Timer") {
+        const application=document.getElementById("choice_application").value;
+        if (application=="Twisty Timer") {
           if (categorie=="3x3x3") {
             for (var i=0; i<rows.length-1; i++) {
               const temp=rows[i].split(";")[0].split("\"")[1];
@@ -32,7 +64,7 @@ function main(theme) {
           liste.reverse();
         }
 
-        else if (document.getElementById("choice_application").value=="Cube Timer") {
+        else if (application=="Cube Timer") {
           // cherche les données dans le fichier .csv
           for (var i=0; i<rows.length; i++) {
             var row=table.insertRow(-1);

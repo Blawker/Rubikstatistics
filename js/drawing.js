@@ -23,13 +23,13 @@ function draw_text(context,text,x,y,color,size) {
 
 function graphique(canvas,context,liste,val,color,style,scale,d,l,margin) { // val=valeurs des moyennes; d=distance par rapport au bord haut du canvas; l=largeur du graphique
   const max=maxi_liste(liste),min=mini_liste(liste);
-  const scale_x=(canvas.width-margin)/liste.length;
+  const scale_x=(canvas.width-margin)/(liste.length-1);
   const scale_y=(l-margin)/(max-min);
   const x0=20;
   const y0=d+min*scale_y-margin;
 
   // plot grid
-  grid_plot(context,y0,scale_y,scale,min,max,"gray");
+  grid_plot(canvas,context,y0,scale_y,scale,min,max,"gray");
 
   // plot chrono
   plot(context,x0,y0,scale_x,scale_y,liste,color[0],style[0],"");
@@ -112,7 +112,7 @@ function plot(context,x0,y0,scale_x,scale_y,liste,color,style,text) {
       draw_arc(context,x0+i*scale_x,y0-liste[i]*scale_y,2);
     }
   }
-  draw_text(context,text,x0+i*scale_x,y0-liste[i-1]*scale_y,color,17);
+  draw_text(context,text,x0+(i-1)*scale_x+2,y0-liste[i-1]*scale_y,color,17);
 }
 
 function plot_pb(context,x0,y0,scale_x,scale_y,liste,color) {
@@ -126,7 +126,7 @@ function plot_pb(context,x0,y0,scale_x,scale_y,liste,color) {
   //document.getElementById("PB").innerHTML="PB: "+compte_to_time((height-pbliste[1]-d)/c+x_m);
 }
 
-function grid_plot(context,y0,scale_y,scale,min,max,color) {
+function grid_plot(canvas,context,y0,scale_y,scale,min,max,color) {
   const cst=parseInt(min)%scale;
   for (var i=parseInt(min)-cst; i<=parseInt(max); i+=scale) {
     draw_single_line(context,0,y0-i*scale_y,canvas.width,y0-i*scale_y,color);
@@ -157,7 +157,7 @@ function plot_ecart_type(context,x0,y0,scale_x,scale_y,avg_liste,ect_liste,n,col
 }
 
 
-function grid_rsd(context,y0,scale_y,min,max,color) {
+function grid_rsd(canvas,context,y0,scale_y,min,max,color) {
   for (var i=parseInt(min); i<=parseInt(max); i++) {
     if (i==8 || i==12) {
       draw_single_line(context,0,y0-i*scale_y,canvas.width,y0-i*scale_y,"red");
@@ -187,12 +187,12 @@ function graph_rsd(canvas,context,liste,val,color,style,d,l,margin) {
       }
     }
   }
-  const scale_x=(canvas.width-margin)/liste.length;
+  const scale_x=(canvas.width-margin)/(liste.length-1);
   const scale_y=(l-margin)/(max-min);
   const x0=20;
   const y0=canvas.height+min*scale_y-margin/2;
 
-  grid_rsd(context,y0,scale_y,min,max,"gray");
+  grid_rsd(canvas,context,y0,scale_y,min,max,"gray");
 
   for (var i=1; i<val.length; i++) {
     if (document.getElementById("rsd"+String(val[i])+"_check").checked===true) {
@@ -219,19 +219,41 @@ function plot_repartition_function(canvas,context,liste,val,color,style,scale,d,
   const dt=(maxi_liste(liste)-mini_liste(liste))/1000;
   const t0=mini_liste(liste);
   const liste_rep=repartition_function(liste,t0,dt);
+
+  // draw the grid
+  for (let i=parseInt(mini_liste(liste))-parseInt(mini_liste(liste))%scale; i<parseInt(maxi_liste(liste))+1; i+=scale) {
+    const x=x0+(i-t0+50*dt)*(canvas.width-2*margin)/(dt*(liste_rep.length));
+    draw_single_line(context,x,0,x,canvas.height,"gray");
+    draw_text(context,String(compte_to_time(i)),x+2,y0-10,"gray",12);
+  }
+  for (let i=0; i<=1; i+=0.25) {
+    const y=y0-(l-margin)*i;
+    const text=String(i*100)+"%";
+    let offset=24;
+    if (text.length==3) {
+      offset=29;
+    }
+    else if (text.length==4) {
+      offset=34;
+    }
+    draw_single_line(context,0,y,canvas.width-offset,y,"gray");
+    draw_text(context,String(i*100)+"%",canvas.width-offset,y+1,"gray",12);
+  }
+
+  // draw the repartition with the chronos
   plot(context,x0,y0,(canvas.width-2*margin)/liste_rep.length,l-margin,liste_rep,color[1],".-","");
 
   // middle of the repartition function
-  var offset_sig=0;
-  for (var i=0; i<liste_rep.length-1; i++) {
+  let offset_sig=0;
+  for (let i=0; i<liste_rep.length-1; i++) {
     if (liste_rep[i]<=0.5 && liste_rep[i+1]>=0.5) {
       offset_sig=dt*(2*i+1)/2;
       break;
     }
   }
   const a=4*derivate(liste_rep,offset_sig,dt,50);
-  var liste_sig=[];
-  for (var i=0; i<liste_rep.length; i++) {
+  let liste_sig=[];
+  for (let i=0; i<liste_rep.length; i++) {
     liste_sig.push(sigmoid(i*dt-offset_sig,a));
   }
   context.lineWidth=2;

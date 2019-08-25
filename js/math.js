@@ -48,26 +48,108 @@ function compte_to_time(n) {
   return(String(min)+":"+String(Math.round((n-min*60)*1000)/1000));
 }
 
+function update_circle_pie_chart(element,anime,liste,n) {
+  const r=element.r.baseVal.value;
+  const p_t=String(2*Math.PI*r);
+  let value="";
+  anime.setAttribute("from", element.getAttribute('stroke-dasharray'));
+  if (element.id[0]=='p') {
+    value=String(mini_liste(liste)*2*Math.PI*r/60);}
+  else if (element.id[0]=='a') {
+    const avg_const=mobile_average(liste,n)[0];
+    value=String(avg_const*2*Math.PI*r/60);
+  }
+  else if (element.id[0]=='r') {
+    if (liste[0]==0) {
+      value=String("0");
+    }
+    else {
+      const rsd_const=Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000;
+      value=String(rsd_const*2*Math.PI*r/20);
+    }
+  }
+  element.setAttribute('stroke-dasharray', value+" "+p_t);
+  anime.setAttribute('to', value+" "+p_t);
+  anime.beginElement();
+}
 
 function valeurs_tableau(liste,val) {
-  document.getElementById("nb_total_chronos").innerHTML=" "+String(liste.length);
-  document.getElementById("PB").innerHTML="PB: "+str_round(compte_to_time(mini_liste(liste)));
-  for (var i=1; i<val.length; i++) {
+  document.getElementById("chronos_total").innerHTML=" "+String(liste.length);
+
+  // PB Pie Chart
+  if (liste.length!=0) {
+    document.getElementById("extremum__best__time").innerHTML=str_round(compte_to_time(mini_liste(liste)));//"PB: "+str_round(compte_to_time(mini_liste(liste)));
+    if (document.getElementById("pb_pie_chart")!=null) {
+      update_circle_pie_chart(document.getElementById("pb_pie_chart"),document.getElementById("anime_pb_pie_chart"),liste);
+    }
+  }
+  else {
+    document.getElementById("extremum__best__time").innerHTML="0.000";//"PB: "+str_round(compte_to_time(mini_liste(liste)));
+    if (document.getElementById("pb_pie_chart")!=null) {
+      update_circle_pie_chart(document.getElementById("pb_pie_chart"),document.getElementById("anime_pb_pie_chart"),[0]);
+    }
+  }
+
+  // RSD Pie Chart
+  if (document.getElementById("rsd_center_value_pie_chart")!=null) {
+    for (let i=val.length-1; i>=0; i--) {
+      if (val[i]<=liste.length) {
+        document.getElementById("rsd_center_value_pie_chart").innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,val[i])[0]*1000)/1000));
+        document.getElementById("rsd_center_label_pie_chart").innerHTML="Rsd"+String(val[i]);
+        break;
+      }
+      else {
+        document.getElementById("rsd_center_value_pie_chart").innerHTML="0.000";
+      }
+    }
+  }
+
+  // level of the Cuber
+  if (document.getElementById("level_cuber")!=null) {
+    const level_score=[5,10,15,30]; // for the 3x3
+    const level_name=["Legendary","Epic","Rare","Common"];
+    for (let i=0; i<level_score.length; i++) {
+      if (mini_liste(liste)<=level_score[i]) {
+        document.getElementById("level_cuber").innerHTML=level_name[i];
+        break;
+      }
+    }
+  }
+
+  //document.getElementById("best_avg5_home").innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,5))));
+  for (let i=1; i<val.length; i++) {
     const n=val[i];
     if (liste.length>=n) {
-      affichage("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n),liste,n);
+      affichage(liste,n,"best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n));
+      affichage(liste,n,"best_avg"+String(n)+"_home","avg"+String(n)+"_home");
     }
     else {
       vide("best_avg"+String(n),"avg"+String(n),"std"+String(n),"rsd"+String(n));
+      vide("best_avg"+String(n)+"_home","avg"+String(n)+"_home");
     }
   }
 }
 
-function affichage(best_avg,avg,std,rsd,liste,n) {
-  document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
-  document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
-  document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
-  document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+function affichage(liste,n,best_avg,avg,std,rsd) {
+  if (document.getElementById(best_avg)!=null) {
+    document.getElementById(best_avg).innerHTML=str_round(compte_to_time(mini_liste(mobile_average(liste,n))));
+  }
+  if (document.getElementById(avg)!=null) {
+    document.getElementById(avg).innerHTML=str_round(compte_to_time(mobile_average(liste,n)[0]));
+  }
+  if (document.getElementById(std)!=null) {
+    document.getElementById(std).innerHTML=str_round(String(Math.round(standard_deviation(liste,n)[0]*1000)/1000));
+  }
+  if (document.getElementById(rsd)!=null) {
+    document.getElementById(rsd).innerHTML=str_round(String(Math.round(relative_standard_deviation(liste,n)[0]*1000)/1000));
+  }
+
+  if (document.getElementById(avg+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(avg+"_pie_chart"),document.getElementById("anime_"+avg+"_pie_chart"),liste,n);
+  }
+  if (document.getElementById(rsd+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(rsd+"_pie_chart"),document.getElementById("anime_"+rsd+"_pie_chart"),liste,n);
+  }
 }
 
 function str_min_round(str) {
@@ -114,10 +196,25 @@ function str_round(str) {
 }
 
 function vide(best_avg,avg,std,rsd) {
-  document.getElementById(best_avg).innerHTML="";
-  document.getElementById(avg).innerHTML="";
-  document.getElementById(std).innerHTML="";
-  document.getElementById(rsd).innerHTML="";
+  if (document.getElementById(best_avg)!=null) {
+    document.getElementById(best_avg).innerHTML="-";
+  }
+  if (document.getElementById(avg)!=null) {
+    document.getElementById(avg).innerHTML="-";
+  }
+  if (document.getElementById(std)!=null) {
+    document.getElementById(std).innerHTML="-";
+  }
+  if (document.getElementById(rsd)!=null) {
+    document.getElementById(rsd).innerHTML="-";
+  }
+
+  if (document.getElementById(avg+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(avg+"_pie_chart"),document.getElementById("anime_"+avg+"_pie_chart"),[0],1);
+  }
+  if (document.getElementById(rsd+"_pie_chart")!=null) {
+    update_circle_pie_chart(document.getElementById(rsd+"_pie_chart"),document.getElementById("anime_"+rsd+"_pie_chart"),[0],1);
+  }
 }
 
 
@@ -289,7 +386,7 @@ function graph_exp_reg_II(liste,offset) { // test and fonctionnal
     y.push(a*Math.exp(-b*i));
   }
   const sub_time=time_to_compte([parseFloat(document.getElementById("sub_reg_min_input").value),parseFloat(document.getElementById("sub_reg_input").value)]);
-  document.getElementById("estimation_avg_sub").innerHTML=String(parseInt(1/b*Math.log(a/sub_time)-avg_liste.length))+" Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
+  document.getElementById("probability").innerHTML=String(parseInt(1/b*Math.log(a/sub_time)-avg_liste.length))+" Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
   return(y);
 }
 

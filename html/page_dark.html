@@ -12,7 +12,7 @@
     <div style="position:absolute;top:65px;height:85%;width:99%;">
       <div style="display:flex;height:8%;width:100%;">
         <div class="frame" style="margin-left:0;">
-          <label id="PB" class="label_frame">PB: 0:00.000</label>
+          <label id="extremum__best__time" class="label_frame">PB: 0:00.000</label>
         </div>
         <div class="frame">
           <label id="estimation_avg_sub" class="label_frame">0 cubes before avg50 sub20</label>
@@ -23,7 +23,7 @@
       </div>
 
       <div style="display:flex;height:92%;width:auto;">
-        <canvas id="canvas" height=1000 width=1600 style="height:100%;width:65%;margin-right:1%;"></canvas>
+        <canvas id="canvas_graph_avg_rsd" height=1000 width=1600 style="height:100%;width:65%;margin-right:1%;"></canvas>
 
         <div style="height:100%;width:35%;margin-right:1%;">
           <table style="height:65%;width:100%;"> <!-- style="height:100%;width:35%;margin-right:1%;"-->
@@ -82,7 +82,7 @@
           <label class="wm_container" style="font-size:20pt;"> Rubik'Statistics </label>
 
           <div class="cube_img_container">
-            <img id="cube_selection_image" class="cube_selection"></img>
+            <img id="activeCube" class="cube_selection"></img>
           </div>
 
           <input id="choix_cubes" type="text" list="cubes" class="input_style" class="wm_container" onfocus="this.value=''" value="Cube choice"></input>
@@ -102,7 +102,9 @@
           </datalist>
 
           <div class="wm_container">
-            <input id="input_nb_chronos" type="text" name="text_input" class="input_style" class="wm_container" required minlength="1" size="3" value=100>/<label id="nb_total_chronos" value="0">0</label>
+            <input id="chronos_selected" type="text" name="text_input" class="input_style" class="wm_container" required minlength="1" size="3" value=100 onkeypress="main_dark()">
+            /
+            <label id="chronos_total" value="0">0</label>
           </div>
 
           <div class="wm_container">
@@ -195,11 +197,11 @@
         <nav style="position:absolute;top:10px;left:90%;width:8%;">
           <div>
             <a href='page_dark.html'><button class="color_mode"> Dark </button></a>
-            <a href='page_mobile_dark.html'><button class="color_mode"> Dark Mobile </button></a>
+            <a href='page_mobile.html'><button class="color_mode"> Dark Mobile </button></a>
           </div>
           <div>
             <a href='page_light.html'><button class="color_mode"> Light </button></a>
-            <a href='page_mobile_light.html'><button class="color_mode"> Light Mobile </button></a>
+            <a href='page_mobile.html'><button class="color_mode"> Light Mobile </button></a>
           </div>
         </nav>
 

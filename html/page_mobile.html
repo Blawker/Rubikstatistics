@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title> Rubik'Statistics </title>
+  <head>
+    <link rel="stylesheet" href="../css/mobile.css">
+  </head>
+
+  <body>
+    <div class="body">
+      <div class="header">
+        <div class="header__cube">
+          <img class="header__img" id="activeCube" alt="3x3 cube" src="../image/cube/3x3x3.png"/>
+        </div>
+        <div class="header__label">
+          <p class="header__name">
+            Rubik'Statistics
+          </p>
+          <p class="header__level">
+            <b>Level:</b> <b id="level_cuber">Epic</b>
+          </p>
+        </div>
+        <img class="header__img" id="openParamModal" alt="parameters" src="../image/gear_white.png"/>
+      </div>
+      <div class="chronos">
+          <img class="chronos__img" alt="chronos" src="../image/chronos.png" />
+          <div class="chronos__display__container" id="nbChronos">
+            <div class="chronos__text" id="chronoText">
+              <p class="chronos__selected" id="chronos_selected_value"> 100 </p>
+              <p> / </p>
+              <p id="chronos_total"> 100 </p>
+            </div>
+            <div id="inputChronos">
+              <input id="chronos_selected" type="number" name="text_input" class="chronos__input" class="wm_container" required minlength="1" size="2" value=100 onkeypress="main_dark()">
+            </div>
+          </div>
+
+      </div>
+      <div class="average">
+        <div class="average__title"> <!-- Le probleme vient de la classe "average__title" !!! -->
+          <div class="average__title__label">
+            <h2> Average </h2>
+            <p> Best Average of 5 </p>
+          </div>
+          <div class="average__title__result">
+            <p class="average__title__result__chrono" id="best_avg5_home"> - </p>
+          </div>
+        </div>
+        <div class="average__results__container">
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 5
+            </p>
+            <p class="average__results__chrono" id="avg5_home"> - </p>
+          </div>
+          <hr/>
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 12
+            </p>
+            <p class="average__results__chrono" id="avg12_home"> - </p>
+          </div>
+          <hr/>
+          <div class="average__results">
+            <p class="average__results__label">
+                Last 50
+            </p>
+            <p class="average__results__chrono" id="avg50_home"> - </p>
+          </div>
+        </div>
+      </div>
+      <div class="block__stat" id="openTableAverage">
+        <div class="table__average graph__average">
+          <img class="graph__average__img" alt="graphic" src="../image/table.png" />
+          <p class="graph__average__text"> Show Average Table </p>
+          <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div class="table__average__wrapper" id="tableAverage">
+          <table class="table__average">
+            <tr class="table__entries">
+              <td></td>
+              <td width="25%">Best Avg</td>
+              <td width="25%">Avg</td>
+              <td width="20%">Std</td>
+              <td width="20%">Rsd</td>
+            </tr>
+            <tr>
+              <td class="table__entries">5</td>
+              <td id="best_avg5"></td>
+              <td id="avg5"></td>
+              <td id="std5"></td>
+              <td id="rsd5"></td>
+            </tr>
+            <tr>
+              <td class="table__entries">12</td>
+              <td id="best_avg12"></td>
+              <td id="avg12"></td>
+              <td id="std12"></td>
+              <td id="rsd12"></td>
+            </tr>
+            <tr>
+              <td class="table__entries">50</td>
+              <td id="best_avg50"></td>
+              <td id="avg50"></td>
+              <td id="std50"></td>
+              <td id="rsd50"></td>
+            </tr>
+            <tr>
+              <td class="table__entries">100</td>
+              <td id="best_avg100"></td>
+              <td id="avg100"></td>
+              <td id="std100"></td>
+              <td id="rsd100"></td>
+            </tr>
+            <tr>
+              <td class="table__entries">1000</td>
+              <td id="best_avg1000"></td>
+              <td id="avg1000"></td>
+              <td id="std1000"></td>
+              <td id="rsd1000"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="graph__average__container" id="openGraphAverage">
+        <div class="graph__average__label">
+          <img class="graph__average__img" alt="graphic" src="../image/graphLogo.png" />
+          <p class="graph__average__text"> Show graph of averages </p>
+          <img class="graph__average__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div id="canvas__container">
+          <canvas class="graph__average__canvas" id="canvas_graph_avg"></canvas>
+          <canvas class="graph__average__canvas" id="canvas_graph_rsd"></canvas>
+        </div>
+
+      </div>
+      <div class="extremum">
+        <div class="extremum__best">
+          <svg viewbox="0 0 136 136" stroke-width="4">
+            <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
+            <!--text x="68" y="-68" fill="white" transform="rotate(90 0,0)">I love SVG!</text-->
+            <circle id="pb_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#00FFFF" stroke-dasharray="90 500" stroke-dashoffset="0">
+              <animate id="anime_pb_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="90 409" to="0 500"/>
+            </circle>
+            <circle id="avg5_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#4200FF" stroke-dasharray="130 500" stroke-dashoffset="0">
+              <animate id="anime_avg5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="130 500"/>
+            </circle>
+            <circle id="avg12_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#AD00FF" stroke-dasharray="150 500" stroke-dashoffset="0">
+              <animate id="anime_avg12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="150 500"/>
+            </circle>
+            <circle id="avg50_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF00A8" stroke-dasharray="180 500" stroke-dashoffset="0">
+              <animate id="anime_avg50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
+            </circle>
+            <circle id="avg100_pie_chart" class="c5" cx="68" cy="68" r="45" stroke="#FF8A00" stroke-dasharray="200 500" stroke-dashoffset="0">
+              <animate id="anime_avg100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="200 500"/>
+            </circle>
+          </svg>
+          <p class="extremum__best__label">
+              Personal Best
+          </p>
+          <p id="extremum__best__time" class="extremum__best__time">
+              0.000
+          </p>
+        </div>
+        <div class="extremum__worst">
+          <svg viewbox="0 0 136 136" stroke-width="4">
+            <circle class="bg" cx="68" cy="68" r="65" stroke="#f2f2f2"/>
+            <circle id="rsd5_pie_chart" class="c1" cx="68" cy="68" r="65" stroke="#4200FF" stroke-dasharray="170 500" stroke-dashoffset="0">
+              <animate id="anime_rsd5_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="170 500"/>
+            </circle>
+            <circle id="rsd12_pie_chart" class="c2" cx="68" cy="68" r="60" stroke="#AD00FF" stroke-dasharray="180 500" stroke-dashoffset="0">
+              <animate id="anime_rsd12_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="180 500"/>
+            </circle>
+            <circle id="rsd50_pie_chart" class="c3" cx="68" cy="68" r="55" stroke="#FF00A8" stroke-dasharray="120 500" stroke-dashoffset="0">
+              <animate id="anime_rsd50_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="120 500"/>
+            </circle>
+            <circle id="rsd100_pie_chart" class="c4" cx="68" cy="68" r="50" stroke="#FF8A00" stroke-dasharray="140 500" stroke-dashoffset="0">
+              <animate id="anime_rsd100_pie_chart" attributeName="stroke-dasharray" dur="1s" repeatCount="1" restart="always" from="0 409" to="140 500"/>
+            </circle>
+          </svg>
+          <p id="rsd_center_label_pie_chart" class="extremum__worst__label">
+              Rsd100
+          </p>
+          <p id="rsd_center_value_pie_chart" class="extremum__worst__time">
+              0.000
+          </p>
+        </div>
+      </div>
+      <div class="graph__time" id="openGraphDistribution">
+        <div class="graph__time__label">
+          <img class="graph__time__img" alt="graphic" src="../image/graphLogo.png" />
+          <p class="graph__time__text"> Show chrono distribution </p>
+          <img class="graph__time__button" alt="down arrow" src="../image/arrow.png" />
+        </div>
+        <div id="canvas__distribution__container">
+          <canvas class="graph__distribution__canvas" id="canvas_repartition"></canvas>
+        </div>
+      </div>
+      <div class="probability">
+        <img class="probability__img" alt="graphic" src="../image/cube/Cube3.png" />
+        <p class="probability__text" id="probability"> 0 cubes before avg50 sub20</p>
+      </div>
+    </div>
+    <footer>
+      <div class="footer__button" id="addBtn">
+        <img class="footer__button__img" alt="add" src="../image/add.png" />
+      </div>
+      <div class="footer__menu">
+        <div class="button__container">
+          <button id="openChronos">
+            <img class="footer__img" alt="chronos" src="../image/chronos.png"/>
+          </button>
+          <button id="share">
+            <img class="footer__img" alt="share" src="../image/share.png"/>
+          </button>
+        </div>
+      </div>
+    </footer>
+    <div class="modal" id="addModal" onclick="main_dark()">
+      <div class="modal__add" id="insideModal">
+        <h2 id="modalTitle"> Add a file </h2>
+        <div class="row__container center" id="modalAddButton">
+          <div class="modal__add__button__wrapper">
+            <button class="modal__add__button"> Add </button>
+            <input type="file" class="modal__add__button" id="fileUpload" size="8" style="font-size:20px;"></input>
+          </div>
+          <div class="modal__add__input">
+            <input list="application" type="text" id="choice_application" class="input_style" value="Cube Timer" onfocus="this.value=''"></input>
+            <datalist id="application">
+              <option value="Cube Timer">
+              <option value="Twisty Timer">
+            </datalist>
+          </div>
+        </div>
+        <div class="modal__button__container" id="avg">
+            <p>Average</p>
+            <p class="modal__arrow" id="avgArrow">▼</p>
+        </div>
+        <div class="option" id="avgOption">
+          <div class="checkbox__container">
+            <p>5</p>
+            <p>12</p>
+            <p>50</p>
+            <p>100</p>
+            <p>1000</p>
+          </div>
+          <div class="checkbox__container">
+            <div class="checkbox cinq">
+              <input type="checkbox" id="avg5_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg5_check">  </label>
+            </div>
+            <div class="checkbox douze">
+              <input type="checkbox" id="avg12_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg12_check">  </label>
+            </div>
+            <div class="checkbox cinquante">
+              <input type="checkbox" id="avg50_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg50_check">  </label>
+            </div>
+            <div class="checkbox cent">
+              <input type="checkbox" id="avg100_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg100_check">  </label>
+            </div>
+            <div class="checkbox mille">
+              <input type="checkbox" id="avg1000_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="avg1000_check"  >  </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal__button__container" id="std">
+          <p>Standard Deviation</p>
+          <p class="modal__arrow" id="stdArrow">▼</p>
+        </div>
+        <div class="option" id="stdOption">
+          <div class="checkbox__container">
+            <p>5</p>
+            <p>12</p>
+            <p>50</p>
+            <p>100</p>
+            <p>1000</p>
+          </div>
+          <div class="checkbox__container">
+            <div class="checkbox cinq">
+              <input type="checkbox" id="std5_check" class="largerCheckbox"/>
+              <label for="std5_check">  </label>
+            </div>
+            <div class="checkbox douze">
+              <input type="checkbox" id="std12_check" class="largerCheckbox"/>
+              <label for="std12_check">  </label>
+            </div>
+            <div class="checkbox cinquante">
+              <input type="checkbox" id="std50_check" class="largerCheckbox"/>
+              <label for="std50_check">  </label>
+            </div>
+            <div class="checkbox cent">
+              <input type="checkbox" id="std100_check" class="largerCheckbox"/>
+              <label for="std100_check">  </label>
+            </div>
+            <div class="checkbox mille">
+              <input type="checkbox" id="std1000_check" class="largerCheckbox"/>
+              <label for="std1000_check"  >  </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal__button__container" id="rsd">
+          <p>Relative Standard Deviation</p>
+          <p class="modal__arrow" id="rsdArrow">▼</p>
+        </div>
+        <div class="option" id="rsdOption">
+          <div class="checkbox__container">
+            <p>5</p>
+            <p>12</p>
+            <p>50</p>
+            <p>100</p>
+            <p>1000</p>
+          </div>
+          <div class="checkbox__container">
+            <div class="checkbox cinq">
+              <input type="checkbox" id="rsd5_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="rsd5_check">  </label>
+            </div>
+            <div class="checkbox douze">
+              <input type="checkbox" id="rsd12_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="rsd12_check">  </label>
+            </div>
+            <div class="checkbox cinquante">
+              <input type="checkbox" id="rsd50_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="rsd50_check">  </label>
+            </div>
+            <div class="checkbox cent">
+              <input type="checkbox" id="rsd100_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="rsd100_check">  </label>
+            </div>
+            <div class="checkbox mille">
+              <input type="checkbox" id="rsd1000_check" class="largerCheckbox" defaultChecked="True" checked="True">
+              <label for="rsd1000_check"  >  </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal__button__container" id="reg">
+          <p>Exponential Regression</p>
+          <p class="modal__arrow" id="regArrow">▼</p>
+        </div>
+        <div class="option" id="regOption">
+          <div class="checkbox__container--w50">
+            <div class="checkbox cinq">
+              <input type="checkbox" id="reg_check" class="largerCheckbox"/>
+              <label for="reg_check"></label>
+            </div>
+            <p class="option__label">Activate</p>
+          </div>
+          <div class="input__container">
+            <p class="option__label"> Average Size</p>
+            <div class="row__container w--55">
+              <input id="avg_reg_input" type="text" name="text_input" class="input_style" required minlength="1" value=50>
+            </div>
+          </div>
+          <div class="input__container">
+            <p class="option__label"> Average Goal </p>
+            <div class="row__container w--55 justify-content">
+              <input id="sub_reg_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1"  value=0>
+              <p> &nbsp : &nbsp </p>
+              <input id="sub_reg_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=20>
+            </div>
+          </div>
+        </div>
+        <div class="modal__button__container" id="rep">
+          <p>Probability</p>
+          <p class="modal__arrow" id="repArrow">▼</p>
+        </div>
+        <div class="option" id="repOption">
+          <p class="option__label"> probability to be between</p>
+          <div class="input__chrono__container">
+            <p class="option__label">Lower chrono</p>
+            <div class="row__container w--55 justify-content">
+              <input id="lower_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=0>
+              <p> &nbsp : &nbsp </p>
+              <input id="lower_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1" size="1" value=5>
+            </div>
+          </div>
+          <div class="input__chrono__container">
+            <p class="option__label"> Upper chrono</p>
+            <div class="row__container w--55 justify-content">
+              <input id="upper_chrono_min_input" type="text" name="text_input" class="input_style" required minlength="1"  size="1" value=0>
+              <p> &nbsp : &nbsp </p>
+              <input id="upper_chrono_sec_input" type="text" name="text_input" class="input_style" required minlength="1"  size="1" value=20>
+            </div>
+          </div>
+        </div>
+        <button class="modal__add__param" id='resetBtn'>Paramètres par défaut</button>
+      </div>
+    </div>
+    <div class="modal" id="cubeModal" onclick="main_dark()">
+      <div class="modal__cube">
+        <h2> Select your cube : </h2>
+        <div class="modal__cube__container">
+          <div id="3x3x3" class="modal__cube__image__container active" >
+              <img src="../image/cube/3x3x3.png" alt="3x3" />
+          </div>
+          <div id="2x2x2" class="modal__cube__image__container">
+              <img src="../image/cube/2x2x2.png" alt="2x2" />
+          </div>
+          <div id="4x4x4" class="modal__cube__image__container">
+              <img src="../image/cube/4x4x4.png" alt="4x4" />
+          </div>
+          <div id="5x5x5" class="modal__cube__image__container">
+              <img src="../image/cube/5x5x5.png" alt="5x5" />
+          </div>
+          <div id="6x6x6" class="modal__cube__image__container">
+              <img src="../image/cube/6x6x6.png" alt="6x6" />
+          </div>
+          <div id="7x7x7" class="modal__cube__image__container">
+              <img src="../image/cube/7x7x7.png" alt="7x7" />
+          </div>
+        </div>
+        <div class="modal__cube__container">
+          <div id="3x3x3_Blindfold" class="modal__cube__image__container" >
+              <img src="../image/cube/3x3x3_Blindfold.png" alt="3x3" />
+          </div>
+          <div id="3x3x3_One_Hand" class="modal__cube__image__container">
+              <img src="../image/cube/3x3x3_One_Hand.png" alt="2x2" />
+          </div>
+          <div id="Megaminx" class="modal__cube__image__container">
+              <img src="../image/cube/Megaminx.png" alt="4x4" />
+          </div>
+          <div id="Pyraminx" class="modal__cube__image__container">
+              <img src="../image/cube/Pyraminx.png" alt="5x5" />
+          </div>
+          <div id="Skewb" class="modal__cube__image__container">
+              <img src="../image/cube/Skewb.png" alt="6x6" />
+          </div>
+          <div id="Square-1" class="modal__cube__image__container">
+              <img src="../image/cube/Square-1.png" alt="7x7" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="text/javascript" src="../js/eventHandler.js"></script>
+  <script type="text/javascript" src="../js/math.js"></script>
+  <script type="text/javascript" src="../js/drawing.js"></script>
+  <script type="text/javascript" src="../js/display.js"></script>
+  <script type="text/javascript" src="../js/graph.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
+</html>
