@@ -189,7 +189,7 @@ function graphic_rep(graphRep,liste) {
 
     const text_prob_betw=String(Math.round(1000*100*(sigmoid(upper_chrono-t0+50*dt-offset_sig,a)-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)))/1000)+"%";
 
-    document.getElementById("probability_between").innerHTML="P("+String(compte_to_time(upper_chrono))+"&lt;X&lt;"+String(compte_to_time(lower_chrono))+")="+text_prob_betw;
+    document.getElementById("probability_between").innerHTML="P("+String(compte_to_time(lower_chrono))+"&lt;X&lt;"+String(compte_to_time(upper_chrono))+")="+text_prob_betw;
 
     let scaleX=[];
     let axisX=[];
