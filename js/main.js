@@ -285,18 +285,32 @@ let ctx_rep=document.getElementById('canvas_repartition');//.getContext('2d');
 let graphRep=new Chart(ctx_rep, {
     type: 'line',
     data: {
-        datasets: [{ // liste repartition of the Chronos
+        datasets: [{ // Upper Chrono
             data: [],
-            label: 'Repartition',
-            borderColor: 'rgba(255, 255, 255, 1)',
-            fill: false
+            label: 'Upper Chrono',
+            borderColor: 'green',
+            fill: false,
+            pointRadius: 3,
+          },
+          { // Lower Chrono
+            data: [],
+            label: 'Lower Chrono',
+            borderColor: 'green',
+            fill: true,
+            pointRadius: 3,
           },
           { // liste of the Model of the repartition
             data: [],
             label: 'Model',
-            borderColor: '#4200FF',
-            fill: false,
+            borderColor: '#f04646',
+            fill: true,
             pointRadius: 1
+          },
+          { // liste repartition of the Chronos
+            data: [],
+            label: 'Repartition',
+            borderColor: 'rgba(255, 255, 255, 1)',
+            fill: false
           }
         ],
         labels: [],
@@ -338,7 +352,8 @@ let graphRep=new Chart(ctx_rep, {
                 },
             }],
         }
-    }
+    },
+    lineAtIndex: [2,4,20]
 });
 
 function main(theme) {

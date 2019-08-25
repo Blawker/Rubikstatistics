@@ -174,6 +174,8 @@ const defaultParameters = {
 };
 
 const resetParameter = () => {
+  document.getElementById('chronos_selected').value=100;
+  document.getElementById('chronos_selected_value').innerHTML=100;
   document.getElementById('avg5_check').checked = defaultParameters.avg;
   document.getElementById('avg12_check').checked = defaultParameters.avg;
   document.getElementById('avg50_check').checked = defaultParameters.avg;

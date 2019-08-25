@@ -157,12 +157,14 @@ function graphic_avg_rsd_reset_value(graphAvg,graphRsd) {
     for (let i=0; i<5; i++) {
       graphRsd.data.datasets[i].data=[];
     }
+    graphAvg.data.labels=[];
+    graphRsd.data.labels=[];
   }
 }
 
 function graphic_rep(graphRep,liste) {
-  const len_graph_canvas=graphRep.data.labels.length;
-  if (len_graph_canvas!=liste.length || len_graph_canvas==0) {
+  const len_liste_canvas=graphRep.data.labels.length;
+  if (len_liste_canvas!=liste.length || len_graph_canvas==0) {
     const dt=parseInt(maxi_liste(liste)-mini_liste(liste))/1000;
     const t0=parseInt(mini_liste(liste));
     const liste_rep=repartition_function(liste,t0,dt);
@@ -182,18 +184,45 @@ function graphic_rep(graphRep,liste) {
       liste_sig.push(sigmoid(i*dt-offset_sig,a));
     }
 
+    const upper_chrono=time_to_compte([parseFloat(document.getElementById("upper_chrono_min_input").value),parseFloat(document.getElementById("upper_chrono_sec_input").value)]);
+    const lower_chrono=time_to_compte([parseFloat(document.getElementById("lower_chrono_min_input").value),parseFloat(document.getElementById("lower_chrono_sec_input").value)]);
+
+    const text_prob_betw=String(Math.round(1000*100*(sigmoid(upper_chrono-t0+50*dt-offset_sig,a)-sigmoid(lower_chrono-t0+50*dt-offset_sig,a)))/1000)+"%";
+
+    document.getElementById("probability_between").innerHTML="P("+String(compte_to_time(upper_chrono))+"&lt;X&lt;"+String(compte_to_time(lower_chrono))+")="+text_prob_betw;
+
     let scaleX=[];
     let axisX=[];
+    let upper_chrono_liste=[],lower_chrono_liste=[];
     for (let i=0; i<=liste_rep.length; i++) {
       scaleX.push(i);
       axisX.push(compte_to_time(parseInt((t0+i*dt)*10)/10));
+
+      if (upper_chrono>=t0+i*dt && upper_chrono<=t0+(i+1)*dt) {
+        upper_chrono_liste[upper_chrono_liste.length-1]=0;
+        upper_chrono_liste.push(sigmoid(i*dt-offset_sig,a));
+      }
+      else {
+        upper_chrono_liste.push(null);
+      }
+      if (lower_chrono>=t0+i*dt && lower_chrono<=t0+(i+1)*dt) {
+        lower_chrono_liste[lower_chrono_liste.length-1]=0;
+        lower_chrono_liste.push(sigmoid(i*dt-offset_sig,a));
+      }
+      else {
+        lower_chrono_liste.push(null);
+      }
     }
 
     // Update Graph Repartition
     graphRep.data.labels=scaleX;
-    graphRep.data.datasets[0].data=liste_rep;
-    graphRep.data.datasets[1].data=liste_sig;
+    graphRep.data.datasets[2].data=liste_sig;
+    graphRep.data.datasets[3].data=liste_rep;
     graphRep.options.scales.xAxes[0].labels=axisX;
+
+    graphRep.data.datasets[0].data=upper_chrono_liste;
+    graphRep.data.datasets[1].data=lower_chrono_liste;
+
     graphRep.update();
   }
 }
