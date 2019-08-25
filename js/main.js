@@ -27,6 +27,316 @@ document.getElementById("Pyraminx").addEventListener("click", () => setCategorie
 document.getElementById("Skewb").addEventListener("click", () => setCategorie("Skewb"));
 document.getElementById("Square-1").addEventListener("click", () => setCategorie("Square-1"));
 
+let ctx_avg=document.getElementById('canvas_graph_avg');
+let graphAvg=new Chart(ctx_avg, {
+    type: 'line',
+    data: {
+      datasets: [{ // PB
+          data: [],
+          label: 'PB',
+          borderColor: '#00FFFF',
+          fill: false
+        },
+        { // Chronos
+          data: [],
+          label: 'Chrono',
+          borderColor: 'rgba(255, 255, 255, 1)',
+          fill: false
+        },
+        { // Exponential Regression
+          data: [],
+          label: 'Exponential Regression',
+          borderColor: 'rgba(255, 255, 255, 1)',
+          fill: false,
+          pointRadius: 2
+        },
+        { // avg5
+          data: [],
+          label: 'avg5',
+          borderColor: '#4200FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_up5
+          data: [],
+          borderColor: '#4200FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_down5
+          data: [],
+          borderColor: '#4200FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // avg12
+          data: [],
+          label: 'avg12',
+          borderColor: '#AD00FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_up12
+          data: [],
+          borderColor: '#AD00FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_down12
+          data: [],
+          borderColor: '#AD00FF',
+          fill: false,
+          pointRadius: 1
+        },
+        { // avg50
+          data: [],
+          label: 'avg50',
+          borderColor: '#FF00A8',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_up50
+          data: [],
+          borderColor: '#FF00A8',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_down50
+          data: [],
+          borderColor: '#FF00A8',
+          fill: false,
+          pointRadius: 1
+        },
+        { // avg100
+          data: [],
+          label: 'avg100',
+          borderColor: '#FF8A00',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_up100
+          data: [],
+          borderColor: '#FF8A00',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_down100
+          data: [],
+          borderColor: '#FF8A00',
+          fill: false,
+          pointRadius: 1
+        },
+        { // avg1000
+          data: [],
+          label: 'avg1000',
+          borderColor: 'purple',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_up1000
+          data: [],
+          borderColor: 'purple',
+          fill: false,
+          pointRadius: 1
+        },
+        { // std_down1000
+          data: [],
+          borderColor: 'purple',
+          fill: false,
+          pointRadius: 1
+        }
+      ],
+      labels: [],
+    },
+    options: {
+        title: {
+          display: true,
+          text: 'Chrono Graph',
+          fontColor: '#FFF',
+          fontSize: 36,
+        },
+        legend: {
+          display: false,
+        },
+        spanGaps: true,
+        elements: {
+          line: {
+              tension: 0.2
+          }
+        },
+        scales: {
+            xAxes: [{
+              gridLines: {
+                display: true,
+                color: 'rgba(255, 255, 255, 0.5)',
+              },
+              ticks: {
+                fontSize: 36,
+                fontColor: '#FFF'
+              }
+            }],
+            yAxes: [{
+                //type: 'category',
+                //labels: axisY,
+                ticks: {
+                    callback: function(value, index, values) {
+                        return(compte_to_time(value));
+                    },
+                    suggestedMin: 5,//parseInt(mini_liste(liste)),
+                    suggestedMax: 20,//parseInt(maxi_liste(liste)),
+                    fontSize: 36,
+                    fontColor: '#FFF',
+                },
+                gridLines: {
+                  display: true,
+                  color: 'rgba(255, 255, 255, 0.5)',
+                },
+            }],
+        }
+    }
+});
+
+let ctx_rsd=document.getElementById('canvas_graph_rsd');//.getContext('2d');
+let graphRsd=new Chart(ctx_rsd, {
+    type: 'line',
+    data: {
+        datasets: [{ // rsd5
+            data: [],
+            label: 'rsd5',
+            borderColor: '#4200FF',
+            fill: false,
+            pointRadius: 1
+          },
+          { // rsd12
+            data: [],
+            label: 'rsd12',
+            borderColor: '#AD00FF',
+            fill: false,
+            pointRadius: 1
+          },
+          { // rsd50
+            data: [],
+            label: 'rsd50',
+            borderColor: '#FF00A8',
+            fill: false,
+            pointRadius: 1
+          },
+          { // rsd100
+            data: [],
+            label: 'rsd100',
+            borderColor: '#FF8A00',
+            fill: false,
+            pointRadius: 1
+          },
+          { // rsd1000
+            data: [],
+            label: 'rsd1000',
+            borderColor: 'purple',
+            fill: false,
+            pointRadius: 1
+          },
+        ],
+        labels: [],
+    },
+    options: {
+        title: {
+          display: true,
+          text: 'RSD Graph',
+          fontColor: '#FFF',
+          fontSize: 36,
+        },
+        legend: {
+          display: false,
+        },
+        scales: {
+            xAxes: [{
+              gridLines: {
+                display: true,
+                color: 'rgba(255, 255, 255, 0.5)',
+              },
+              ticks: {
+                fontSize: 36,
+                fontColor: '#FFF'
+              }
+            }],
+            yAxes: [{
+                //type: 'category',
+                //labels: scaleY,
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 5,
+                    fontSize: 36,
+                    fontColor: '#FFF',
+                },
+                gridLines: {
+                  display: true,
+                  color: 'rgba(255, 255, 255, 0.5)',
+                },
+            }],
+        }
+    }
+});
+
+let ctx_rep=document.getElementById('canvas_repartition');//.getContext('2d');
+let graphRep=new Chart(ctx_rep, {
+    type: 'line',
+    data: {
+        datasets: [{ // liste repartition of the Chronos
+            data: [],
+            label: 'Repartition',
+            borderColor: 'rgba(255, 255, 255, 1)',
+            fill: false
+          },
+          { // liste of the Model of the repartition
+            data: [],
+            label: 'Model',
+            borderColor: '#4200FF',
+            fill: false,
+            pointRadius: 1
+          }
+        ],
+        labels: [],
+    },
+    options: {
+        title: {
+          display: true,
+          text: 'Repartition Graph',
+          fontColor: '#FFF',
+          fontSize: 36,
+        },
+        legend: {
+          display: false,
+        },
+        scales: {
+            xAxes: [{
+              labels: [],
+              gridLines: {
+                display: true,
+                color: 'rgba(255, 255, 255, 0.5)',
+              },
+              ticks: {
+                fontSize: 36,
+                fontColor: '#FFF'
+              }
+            }],
+            yAxes: [{
+                //type: 'category',
+                //labels: axisY,
+                ticks: {
+                    suggestedMin: 0,
+                    suggestedMax: 1,
+                    fontSize: 36,
+                    fontColor: '#FFF',
+                },
+                gridLines: {
+                  display: true,
+                  color: 'rgba(255, 255, 255, 0.5)',
+                },
+            }],
+        }
+    }
+});
+
 function main(theme) {
   // choose the cube on the desktop version
   if (document.getElementById("choix_cubes")!=null) {
@@ -85,7 +395,7 @@ function main(theme) {
           }
         }
 
-        display(theme,categorie,liste);
+        display(theme,categorie,liste,graphAvg,graphRsd,graphRep);
 
       }
       reader.readAsText(fileUpload.files[0]);

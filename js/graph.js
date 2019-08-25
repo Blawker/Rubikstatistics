@@ -1,7 +1,7 @@
-function graphic_avg_rsd(liste,scale_cube,value_avg) {
+function graphic_avg_rsd(graphAvg,graphRsd,liste,scale_cube,value_avg) {
   let scaleX=[];
   let axisY=[];
-  for (let i=0; i<=liste.length; i++) {
+  for (let i=0; i<liste.length; i++) {
     scaleX.push(i);
   }
   for (let i=parseInt(mini_liste(chrono)); i<=parseInt(maxi_liste(chrono))%scale_cube; i+=scale_cube) {
@@ -27,7 +27,7 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
     if (liste.length>=value_avg[i]) {
       if (document.getElementById("avg"+String(value_avg[i])+"_check").checked==true) {
         let temp_liste=[];
-        for (let j=0; j<value_avg[i]; j++) {
+        for (let j=0; j<value_avg[i]-1; j++) {
           temp_liste.push(null);
         }
         const temp_avg=mobile_average(liste,value_avg[i]);
@@ -53,7 +53,7 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
     if (liste.length>=value_avg[i]) {
       if (document.getElementById("avg"+String(value_avg[i])+"_check").checked==true && document.getElementById("std"+String(value_avg[i])+"_check").checked==true) {
         let temp_up_liste=[],temp_down_liste=[];
-        for (let j=0; j<value_avg[i]; j++) {
+        for (let j=0; j<value_avg[i]-1; j++) {
           temp_up_liste.push(null);
           temp_down_liste.push(null);
         }
@@ -135,258 +135,43 @@ function graphic_avg_rsd(liste,scale_cube,value_avg) {
     document.getElementById("probability").innerHTML="0 Cubes before avg"+document.getElementById("avg_reg_input").value+" sub"+String(sub_time);
   }
 
-  let ctx_avg=document.getElementById('canvas_graph_avg');//.getContext('2d');
-  let graphAvg=new Chart(ctx_avg, {
-      type: 'line',
-      data: {
-          datasets: [{
-              data: pb_liste,
-              label: 'PB',
-              borderColor: '#00FFFF',
-              fill: false
-            },
-            {
-              data: liste,
-              label: 'Chrono',
-              borderColor: 'rgba(255, 255, 255, 1)',
-              fill: false
-            },
-            {
-              data: liste_exp,
-              label: 'Exponential Regression',
-              borderColor: 'rgba(255, 255, 255, 1)',
-              fill: false,
-              pointRadius: 2
-            },
-            {
-              data: avg5,
-              label: 'avg5',
-              borderColor: '#4200FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_up5,
-              borderColor: '#4200FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_down5,
-              borderColor: '#4200FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: avg12,
-              label: 'avg12',
-              borderColor: '#AD00FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_up12,
-              borderColor: '#AD00FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_down12,
-              borderColor: '#AD00FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: avg50,
-              label: 'avg50',
-              borderColor: '#FF00A8',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_up50,
-              borderColor: '#FF00A8',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_down50,
-              borderColor: '#FF00A8',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: avg100,
-              label: 'avg100',
-              borderColor: '#FF8A00',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_up100,
-              borderColor: '#FF8A00',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_down100,
-              borderColor: '#FF8A00',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: avg1000,
-              label: 'avg1000',
-              borderColor: 'purple',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_up1000,
-              borderColor: 'purple',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: std_down1000,
-              borderColor: 'purple',
-              fill: false,
-              pointRadius: 1
-            }
-          ],
-          labels: scaleX,
-      },
-      options: {
-          title: {
-            display: true,
-            text: 'Chrono Graph',
-            fontColor: '#FFF',
-            fontSize: 36,
-          },
-          legend: {
-            display: false,
-          },
-          spanGaps: true,
-          elements: {
-            line: {
-                tension: 0.2
-            }
-          },
-          scales: {
-              xAxes: [{
-                gridLines: {
-                  display: true,
-                  color: 'rgba(255, 255, 255, 0.5)',
-                },
-                ticks: {
-                  fontSize: 36,
-                  fontColor: '#FFF'
-                }
-              }],
-              yAxes: [{
-                  //type: 'category',
-                  //labels: axisY,
-                  ticks: {
-                      callback: function(value, index, values) {
-                          return(compte_to_time(value));
-                      },
-                      suggestedMin: parseInt(mini_liste(liste)),
-                      suggestedMax: parseInt(maxi_liste(liste)),
-                      fontSize: 36,
-                      fontColor: '#FFF',
-                  },
-                  gridLines: {
-                    display: true,
-                    color: 'rgba(255, 255, 255, 0.5)',
-                  },
-              }],
-          }
-      }
-  });
+  // Update Graph Chronos + PB + AVG + RSD
+  graphAvg.options.scales.yAxes[0].ticks.suggestedMin=parseInt(mini_liste(liste));
+  graphAvg.options.scales.yAxes[0].ticks.suggestedMax=parseInt(maxi_liste(liste));
+  graphAvg.data.labels=scaleX;
+  graphAvg.data.datasets[0].data=pb_liste;
+  graphAvg.data.datasets[1].data=liste;
+  graphAvg.data.datasets[2].data=liste_exp;
+  graphAvg.data.datasets[3].data=avg5;
+  graphAvg.data.datasets[4].data=std_up5;
+  graphAvg.data.datasets[5].data=std_down5;
+  graphAvg.data.datasets[6].data=avg12;
+  graphAvg.data.datasets[7].data=std_up12;
+  graphAvg.data.datasets[8].data=std_down12;
+  graphAvg.data.datasets[9].data=avg50;
+  graphAvg.data.datasets[10].data=std_up50;
+  graphAvg.data.datasets[11].data=std_down50;
+  graphAvg.data.datasets[12].data=avg100;
+  graphAvg.data.datasets[13].data=std_up100;
+  graphAvg.data.datasets[14].data=std_down100;
+  graphAvg.data.datasets[15].data=avg1000;
+  graphAvg.data.datasets[16].data=std_up1000;
+  graphAvg.data.datasets[17].data=std_down1000;
+  graphAvg.update();
 
-  let ctx_rsd=document.getElementById('canvas_graph_rsd');//.getContext('2d');
-  let graphRsd=new Chart(ctx_rsd, {
-      type: 'line',
-      data: {
-          datasets: [{
-              data: rsd5,
-              label: 'rsd5',
-              borderColor: '#4200FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: rsd12,
-              label: 'rsd12',
-              borderColor: '#AD00FF',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: rsd50,
-              label: 'rsd50',
-              borderColor: '#FF00A8',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: rsd100,
-              label: 'rsd100',
-              borderColor: '#FF8A00',
-              fill: false,
-              pointRadius: 1
-            },
-            {
-              data: rsd1000,
-              label: 'rsd1000',
-              borderColor: 'purple',
-              fill: false,
-              pointRadius: 1
-            },
-          ],
-          labels: scaleX,
-      },
-      options: {
-          title: {
-            display: true,
-            text: 'RSD Graph',
-            fontColor: '#FFF',
-            fontSize: 36,
-          },
-          legend: {
-            display: false,
-          },
-          scales: {
-              xAxes: [{
-                gridLines: {
-                  display: true,
-                  color: 'rgba(255, 255, 255, 0.5)',
-                },
-                ticks: {
-                  fontSize: 36,
-                  fontColor: '#FFF'
-                }
-              }],
-              yAxes: [{
-                  //type: 'category',
-                  //labels: scaleY,
-                  ticks: {
-                      suggestedMin: parseInt(min_rsd),
-                      suggestedMax: parseInt(max_rsd),
-                      fontSize: 36,
-                      fontColor: '#FFF',
-                  },
-                  gridLines: {
-                    display: true,
-                    color: 'rgba(255, 255, 255, 0.5)',
-                  },
-              }],
-          }
-      }
-  });
+  // Update Graph RSD
+  graphRsd.options.scales.yAxes[0].ticks.suggestedMin=parseInt(min_rsd);
+  graphRsd.options.scales.yAxes[0].ticks.suggestedMax=parseInt(max_rsd);
+  graphRsd.data.labels=scaleX;
+  graphRsd.data.datasets[0].data=rsd5;
+  graphRsd.data.datasets[1].data=rsd12;
+  graphRsd.data.datasets[2].data=rsd50;
+  graphRsd.data.datasets[3].data=rsd100;
+  graphRsd.data.datasets[4].data=rsd1000;
+  graphRsd.update();
 }
 
-function graphic_rep(liste) {
+function graphic_rep(graphRep,liste) {
   const dt=parseInt(maxi_liste(liste)-mini_liste(liste))/1000;
   const t0=parseInt(mini_liste(liste));
   const liste_rep=repartition_function(liste,t0,dt);
@@ -413,63 +198,10 @@ function graphic_rep(liste) {
     axisX.push(compte_to_time(parseInt((t0+i*dt)*10)/10));
   }
 
-  let ctx = document.getElementById('canvas_repartition');//.getContext('2d');
-  let graphRep = new Chart(ctx, {
-      type: 'line',
-      data: {
-          datasets: [{
-              data: liste_rep,
-              label: 'Repartition',
-              borderColor: 'rgba(255, 255, 255, 1)',
-              fill: false
-            },
-            {
-              data: liste_sig,
-              label: 'Model',
-              borderColor: '#4200FF',
-              fill: false,
-              pointRadius: 1
-            }
-          ],
-          labels: scaleX,
-      },
-      options: {
-          title: {
-            display: true,
-            text: 'Repartition Graph',
-            fontColor: '#FFF',
-            fontSize: 36,
-          },
-          legend: {
-            display: false,
-          },
-          scales: {
-              xAxes: [{
-                labels: axisX,
-                gridLines: {
-                  display: true,
-                  color: 'rgba(255, 255, 255, 0.5)',
-                },
-                ticks: {
-                  fontSize: 36,
-                  fontColor: '#FFF'
-                }
-              }],
-              yAxes: [{
-                  //type: 'category',
-                  //labels: axisY,
-                  ticks: {
-                      suggestedMin: 0,
-                      suggestedMax: 1,
-                      fontSize: 36,
-                      fontColor: '#FFF',
-                  },
-                  gridLines: {
-                    display: true,
-                    color: 'rgba(255, 255, 255, 0.5)',
-                  },
-              }],
-          }
-      }
-  });
+  // Update Graph Repartition
+  graphRep.data.labels=scaleX;
+  graphRep.data.datasets[0].data=liste_rep;
+  graphRep.data.datasets[1].data=liste_sig;
+  graphRep.options.scales.xAxes[0].labels=axisX;
+  graphRep.update();
 }

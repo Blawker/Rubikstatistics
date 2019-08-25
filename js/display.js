@@ -1,4 +1,4 @@
-function display(theme,categorie,data) {
+function display(theme,categorie,data,graphAvg,graphRsd,graphRep) {
   const periode=parseInt(document.getElementById("chronos_selected").value);
 
   const len_l=data.length;
@@ -45,9 +45,9 @@ function display(theme,categorie,data) {
     }
   }
 
-  graphic_avg_rsd(liste,scale,val);
+  graphic_avg_rsd(graphAvg,graphRsd,liste,scale,val);
 
-  graphic_rep(liste);
+  graphic_rep(graphRep,liste);
 
   /*
 
