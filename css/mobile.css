@@ -215,6 +215,7 @@ button {
 
 .probability__list__text {
   width: 100%;
+  align-items: center;
 }
 
 .graph__average__button, .graph__time__button {
