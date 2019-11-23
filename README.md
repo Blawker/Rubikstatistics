@@ -8,6 +8,7 @@ This method is an estimation but it is quite realistic.
 This application is more efficient if you have a lot of data to visualized.
 
 Currently, the program accepte file that came from "Cube Timer" and only the 3x3x3 for "Twisty Timer".
+Tried with the file "BackupSave" to see graph and the structure of the application.
 I can add more application's file, leave me the file and the name of the application and I fixed it.
 
 If you have any suggestions, you can leave a message to improve the application.
